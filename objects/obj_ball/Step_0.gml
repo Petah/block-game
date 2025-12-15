@@ -133,6 +133,9 @@ if (_steps > 0)
                 obj_game.bonus_balls++;
             }
 
+            // Reset idle timer on block hit
+            self.idle_timer = 0;
+
             // Reduce block health
             _block.health--;
             obj_game.score += 10;
@@ -167,6 +170,22 @@ vspeed = _vsp;
 if (_move_speed > 0)
 {
     part_particles_create(obj_game.part_sys, x, y, obj_game.part_ball_trail, 1);
+}
+
+// Increment idle timer and check for timeout
+self.idle_timer++;
+if (self.idle_timer >= self.idle_timeout)
+{
+    // Ball has been bouncing without hitting blocks for too long
+    // First ball to return sets the new launch position
+    if (obj_game.balls_returned == 0)
+    {
+        obj_game.launch_x = x;
+    }
+
+    obj_game.balls_returned++;
+    instance_destroy();
+    exit;
 }
 
 // Destroy ball when it goes off bottom

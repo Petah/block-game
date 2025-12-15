@@ -1,4 +1,5 @@
-// Debug drawing - grid and aiming line with bounces
+// Debug drawing - only when visible (press D to toggle)
+if (!self.visible) exit;
 
 var _game = obj_game;
 
@@ -33,9 +34,8 @@ draw_set_alpha(1);
 // Draw aiming line with bounces
 if (_game.state == "aiming")
 {
-    var _launch_y = room_height - 50;
     var _start_x = _game.launch_x;
-    var _start_y = _launch_y;
+    var _start_y = _game.launch_y;
     var _angle = _game.aim_angle;
 
     var _max_bounces = 5;
@@ -100,9 +100,10 @@ if (_game.state == "aiming")
 // Draw debug indicators
 draw_set_color(c_yellow);
 draw_set_halign(fa_right);
-draw_text(room_width - 10, 50, "Speed: " + string(self.speed_multiplier) + "x [F]");
-draw_text(room_width - 10, 70, "Test Room [T]");
-draw_text(room_width - 10, 90, "Restart [R]");
+draw_text(room_width - 10, 100, "DEBUG MODE [D]");
+draw_text(room_width - 10, 120, "Speed: " + string(self.speed_multiplier) + "x [F]");
+draw_text(room_width - 10, 140, "Test Room [T]");
+draw_text(room_width - 10, 160, "Restart [R]");
 
 // Reset
 draw_set_halign(fa_left);

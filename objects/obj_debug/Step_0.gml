@@ -1,3 +1,9 @@
+// Press D to toggle debug UI visibility
+if (keyboard_check_pressed(ord("D")))
+{
+    self.visible = !self.visible;
+}
+
 // Press F to cycle speed: 1x -> 2x -> 4x -> 1x
 if (keyboard_check_pressed(ord("F")))
 {

@@ -21,7 +21,7 @@
 - [ ] Block color based on health (green -> yellow -> orange -> red)
 - [ ] Block damage/crack sprites as health decreases
 - [x] Particle effects on block destruction
-- [ ] Screen shake on big combos
+- [x] Screen shake on big combos
 - [x] Ball trail effect
 - [ ] Smooth block movement (animate down instead of snap)
 - [x] Background gradient or pattern

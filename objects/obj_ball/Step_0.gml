@@ -145,6 +145,14 @@ if (_steps > 0)
 
             if (_block.health <= 0)
             {
+                // Increment combo and reset timer
+                obj_game.combo++;
+                obj_game.combo_timer = obj_game.combo_timeout;
+
+                // Screen shake scales with combo (bigger combos = more shake)
+                var _shake = min(2 + obj_game.combo * 0.5, 8);
+                obj_game.shake_amount = max(obj_game.shake_amount, _shake);
+
                 // Emit destroy particles before destroying
                 part_particles_create(obj_game.part_sys, _block.x, _block.y, obj_game.part_block_destroy, 15);
 

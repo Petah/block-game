@@ -83,6 +83,22 @@ part_type_color3(self.part_ball_trail, c_red, c_orange, c_yellow);
 part_type_alpha3(self.part_ball_trail, 0.5, 0.3, 0);
 part_type_life(self.part_ball_trail, 10, 15);
 
+// Screen shake
+self.shake_amount = 0;
+self.shake_x = 0;
+self.shake_y = 0;
+
+// Camera for screen shake
+self.cam = camera_create_view(0, 0, room_width, room_height);
+view_enabled = true;
+view_visible[0] = true;
+view_camera[0] = self.cam;
+
+// Combo system
+self.combo = 0;
+self.combo_timer = 0;
+self.combo_timeout = 30; // Frames before combo resets
+
 // Spawn initial rows of blocks
 for (var _row = 0; _row < 4; _row++)
 {

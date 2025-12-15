@@ -1,7 +1,5 @@
 // Debug drawing - grid and aiming line with bounces
 
-if (!instance_exists(obj_game)) exit;
-
 var _game = obj_game;
 
 // Draw grid (full room width)
@@ -99,10 +97,12 @@ if (_game.state == "aiming")
     draw_set_alpha(1);
 }
 
-// Draw speed indicator
+// Draw debug indicators
 draw_set_color(c_yellow);
 draw_set_halign(fa_right);
 draw_text(room_width - 10, 50, "Speed: " + string(self.speed_multiplier) + "x [F]");
+draw_text(room_width - 10, 70, "Test Room [T]");
+draw_text(room_width - 10, 90, "Restart [R]");
 
 // Reset
 draw_set_halign(fa_left);

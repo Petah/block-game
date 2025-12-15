@@ -20,3 +20,18 @@ if (keyboard_check_pressed(ord("F")))
         ball_speed = _new_speed;
     }
 }
+
+// Press T to toggle between test room and game room
+if (keyboard_check_pressed(ord("T")))
+{
+    if (room == rm_test)
+        room_goto(rm_game);
+    else
+        room_goto(rm_test);
+}
+
+// Press R to restart current room
+if (keyboard_check_pressed(ord("R")))
+{
+    room_restart();
+}

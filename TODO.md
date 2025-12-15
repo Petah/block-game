@@ -37,7 +37,7 @@
 
 ## UI/UX
 
-- [ ] Main menu screen
+- [x] Main menu screen
 - [ ] Pause menu
 - [ ] High score system with local save
 - [ ] Tutorial/first-time player hints

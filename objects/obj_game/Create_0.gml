@@ -37,8 +37,10 @@ self.bonus_balls = 0;
 self.header_height = 90;
 
 // Grid settings (full room width)
-self.grid_cell_size = 32;
-self.grid_cols = floor(room_width / self.grid_cell_size);
+// self.grid_cell_size = 64;
+// self.grid_cols = floor(room_width / self.grid_cell_size);
+self.grid_cols = 32;
+self.grid_cell_size = room_width / self.grid_cols;
 self.grid_start_x = self.grid_cell_size / 2; // First column center
 self.grid_start_y = self.header_height + self.grid_cell_size / 2; // Below header bar
 self.grid_bottom_y = room_height - 150; // Game over line
@@ -55,11 +57,11 @@ self.combo_timer = 0;
 self.combo_timeout = 30; // Frames before combo resets
 
 // Spawn initial rows of blocks
-scr_spawn_blocks();
+scr_spawn_blocks(false);
 scr_move_blocks_down();
-scr_spawn_blocks();
+scr_spawn_blocks(false);
 scr_move_blocks_down();
-scr_spawn_blocks();
+scr_spawn_blocks(false);
 scr_move_blocks_down();
 scr_spawn_blocks();
 scr_move_blocks_down();

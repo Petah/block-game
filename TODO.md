@@ -24,7 +24,7 @@
 - [ ] Screen shake on big combos
 - [x] Ball trail effect
 - [ ] Smooth block movement (animate down instead of snap)
-- [ ] Background gradient or pattern
+- [x] Background gradient or pattern
 
 ## Audio
 

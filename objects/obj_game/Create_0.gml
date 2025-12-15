@@ -34,7 +34,7 @@ self.bonus_balls = 0;
 self.grid_cell_size = 32;
 self.grid_cols = floor(room_width / self.grid_cell_size);
 self.grid_start_x = self.grid_cell_size / 2; // First column center
-self.grid_start_y = 80;
+self.grid_start_y = 100; // Below 90px header bar
 self.grid_bottom_y = room_height - 150; // Game over line
 
 // Particle system

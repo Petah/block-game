@@ -9,10 +9,12 @@ This is a GameMaker Studio 2 project implementing a ball-shooting block game (si
 ## Game Architecture
 
 ### Core Objects
-- **obj_game** - Game controller managing score, aiming, ball firing, game state, and UI rendering
+- **obj_game** - Game controller managing score, aiming, ball firing, game state, particles, and UI rendering
 - **obj_ball** - Projectile that bounces off walls and damages blocks on contact
-- **obj_paddle** - (Unused) Legacy paddle object
 - **obj_block** - Blocks with health that display their HP and get destroyed when health reaches 0
+- **obj_power_up** - Collectible power-ups (extra ball, fireball, split, big ball)
+- **obj_shooter** - Visual indicator showing launch point and aim direction
+- **obj_debug** - Debug overlay with grid, aim preview, and controls (hidden by default, press D)
 
 ### Game Flow
 1. **obj_game** initializes the scene in Create_0.gml by spawning a grid of blocks with varying health
@@ -57,7 +59,7 @@ SVG files use gradients and highlights for a polished look. See `svg/ball.svg` a
   - `obj_*/Create_0.gml` - Object initialization
   - `obj_*/Step_0.gml` - Per-frame update logic
   - `obj_*/Draw_64.gml` - GUI drawing (obj_game only)
-- `sprites/` - Sprite assets (spr_ball, spr_paddle, spr_block)
+- `sprites/` - Sprite assets (spr_ball, spr_block, spr_power_up, spr_shooter)
 - `svg/` - Source SVG files for sprites (rendered to PNG with resvg)
 - `rooms/rm_game/` - Game room layout and settings
 - Room size: 720x1280 pixels (9:16 portrait aspect ratio for mobile)

@@ -153,7 +153,9 @@ if (_steps > 0)
             obj_game.score += 10;
 
             // Emit hit particles at block position
-            part_particles_create(obj_particles.part_sys, _block.x, _block.y, obj_particles.part_block_hit, 5);
+            var _hit_part = self.fireball ? obj_particles.part_fire_destroy : obj_particles.part_block_hit;
+            var _hit_count = self.fireball ? 8 : 5;
+            part_particles_create(obj_particles.part_sys, _block.x, _block.y, _hit_part, _hit_count);
 
             if (_block.health <= 0)
             {
@@ -166,7 +168,9 @@ if (_steps > 0)
                 obj_screen_shake.shake_amount = max(obj_screen_shake.shake_amount, _shake);
 
                 // Emit destroy particles before destroying
-                part_particles_create(obj_particles.part_sys, _block.x, _block.y, obj_particles.part_block_destroy, 15);
+                var _destroy_part = self.fireball ? obj_particles.part_fire_destroy : obj_particles.part_block_destroy;
+                var _destroy_count = self.fireball ? 25 : 15;
+                part_particles_create(obj_particles.part_sys, _block.x, _block.y, _destroy_part, _destroy_count);
 
                 instance_destroy(_block);
 
@@ -189,7 +193,9 @@ vspeed = _vsp;
 // Emit trail particles
 if (_move_speed > 0)
 {
-    part_particles_create(obj_particles.part_sys, x, y, obj_particles.part_ball_trail, 1);
+    var _trail_part = self.fireball ? obj_particles.part_fire_trail : obj_particles.part_ball_trail;
+    var _trail_count = self.fireball ? 3 : 1;
+    part_particles_create(obj_particles.part_sys, x, y, _trail_part, _trail_count);
 }
 
 // Increment idle timer and check for timeout

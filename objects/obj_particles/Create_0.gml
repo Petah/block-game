@@ -40,3 +40,25 @@ part_type_size(self.part_ball_trail, 0.2, 0.4, -0.02, 0);
 part_type_color3(self.part_ball_trail, c_red, c_orange, c_yellow);
 part_type_alpha3(self.part_ball_trail, 0.5, 0.3, 0);
 part_type_life(self.part_ball_trail, 10, 15);
+
+// Fireball trail particles (bigger, more intense)
+self.part_fire_trail = part_type_create();
+part_type_shape(self.part_fire_trail, pt_shape_flare);
+part_type_size(self.part_fire_trail, 0.4, 0.8, -0.03, 0);
+part_type_color3(self.part_fire_trail, c_yellow, c_orange, c_red);
+part_type_alpha3(self.part_fire_trail, 0.8, 0.5, 0);
+part_type_speed(self.part_fire_trail, 0.5, 2, -0.05, 0);
+part_type_direction(self.part_fire_trail, 250, 290, 0, 10);
+part_type_life(self.part_fire_trail, 15, 25);
+part_type_gravity(self.part_fire_trail, 0.05, 90);
+
+// Fire block destroy particles (explosive orange/red)
+self.part_fire_destroy = part_type_create();
+part_type_shape(self.part_fire_destroy, pt_shape_flare);
+part_type_size(self.part_fire_destroy, 0.4, 1.0, -0.03, 0);
+part_type_color3(self.part_fire_destroy, c_white, c_orange, c_red);
+part_type_alpha3(self.part_fire_destroy, 1, 0.6, 0);
+part_type_speed(self.part_fire_destroy, 4, 9, -0.2, 0);
+part_type_direction(self.part_fire_destroy, 0, 360, 0, 0);
+part_type_life(self.part_fire_destroy, 20, 35);
+part_type_gravity(self.part_fire_destroy, 0.15, 270);

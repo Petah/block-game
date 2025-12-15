@@ -20,7 +20,7 @@ if (_ball != noone)
         array_push(self.collected_by, _ball);
 
         // Emit power-up particles
-        part_particles_create(obj_game.part_sys, x, y, obj_game.part_powerup, 10);
+        part_particles_create(obj_particles.part_sys, x, y, obj_particles.part_powerup, 10);
 
         // Apply power-up effect to THIS ball only
         switch (self.type)

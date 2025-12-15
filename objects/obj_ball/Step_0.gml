@@ -141,7 +141,7 @@ if (_steps > 0)
             obj_game.score += 10;
 
             // Emit hit particles at block position
-            part_particles_create(obj_game.part_sys, _block.x, _block.y, obj_game.part_block_hit, 5);
+            part_particles_create(obj_particles.part_sys, _block.x, _block.y, obj_particles.part_block_hit, 5);
 
             if (_block.health <= 0)
             {
@@ -154,7 +154,7 @@ if (_steps > 0)
                 obj_game.shake_amount = max(obj_game.shake_amount, _shake);
 
                 // Emit destroy particles before destroying
-                part_particles_create(obj_game.part_sys, _block.x, _block.y, obj_game.part_block_destroy, 15);
+                part_particles_create(obj_particles.part_sys, _block.x, _block.y, obj_particles.part_block_destroy, 15);
 
                 instance_destroy(_block);
 
@@ -177,7 +177,7 @@ vspeed = _vsp;
 // Emit trail particles
 if (_move_speed > 0)
 {
-    part_particles_create(obj_game.part_sys, x, y, obj_game.part_ball_trail, 1);
+    part_particles_create(obj_particles.part_sys, x, y, obj_particles.part_ball_trail, 1);
 }
 
 // Increment idle timer and check for timeout

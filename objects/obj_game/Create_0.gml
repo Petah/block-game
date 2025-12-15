@@ -19,6 +19,10 @@ self.fire_interval = 5;        // Frames between each ball
 self.is_aiming = false;
 self.aim_angle = 90;           // Default aim straight up
 self.launch_x = room_width / 2; // Where balls launch from
+self.launch_y = room_height - 50; // Y position for launching
+
+// Spawn shooter
+instance_create_layer(self.launch_x, self.launch_y, "Instances", obj_shooter);
 
 // Game state
 self.state = "aiming";         // "aiming", "firing", "waiting"

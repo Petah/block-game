@@ -9,17 +9,11 @@ draw_text(10, 30, "Level: " + string(self.level));
 draw_set_halign(fa_right);
 draw_text(room_width - 10, 10, "Balls: " + string(self.num_balls));
 
-var _launch_y = room_height - 50;
-
 // Draw danger line
 draw_set_color(c_red);
 draw_set_alpha(0.5);
 draw_line_width(0, self.grid_bottom_y, room_width, self.grid_bottom_y, 2);
 draw_set_alpha(1);
-
-// Draw launch point indicator
-draw_set_color(c_yellow);
-draw_circle(self.launch_x, _launch_y, 10, false);
 
 // Draw aiming line when in aiming state
 if (self.state == "aiming")
@@ -35,7 +29,7 @@ if (self.state == "aiming")
     {
         var _dist = i * _dot_spacing;
         var _dot_x = self.launch_x + lengthdir_x(_dist, self.aim_angle);
-        var _dot_y = _launch_y + lengthdir_y(_dist, self.aim_angle);
+        var _dot_y = self.launch_y + lengthdir_y(_dist, self.aim_angle);
         draw_circle(_dot_x, _dot_y, 3, false);
     }
 
@@ -55,7 +49,7 @@ if (self.state == "firing" || self.state == "waiting")
 }
 
 // Draw game over message
-if (game_over)
+if (self.game_over)
 {
     draw_set_halign(fa_center);
     draw_set_color(c_red);
@@ -66,7 +60,7 @@ if (game_over)
 }
 
 // Draw win message
-if (game_won)
+if (self.game_won)
 {
     draw_set_halign(fa_center);
     draw_set_color(c_lime);

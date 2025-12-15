@@ -7,20 +7,18 @@ if ((self.game_over || self.game_won) && keyboard_check_pressed(ord("R")))
 // Don't process if game ended
 if (self.game_over || self.game_won) exit;
 
-var _launch_y = room_height - 50;
-
 // State machine for game flow
 switch (self.state)
 {
     case "aiming":
         // Update aim based on mouse position
         var _dx = mouse_x - self.launch_x;
-        var _dy = mouse_y - _launch_y;
+        var _dy = mouse_y - self.launch_y;
 
         // Calculate angle (only allow upward angles)
         if (_dy < -10) // Mouse must be above launch point
         {
-            self.aim_angle = point_direction(self.launch_x, _launch_y, mouse_x, mouse_y);
+            self.aim_angle = point_direction(self.launch_x, self.launch_y, mouse_x, mouse_y);
             // Clamp angle to prevent shooting downward (between 20 and 160 degrees)
             self.aim_angle = clamp(self.aim_angle, 20, 160);
         }
@@ -44,7 +42,7 @@ switch (self.state)
         if (self.fire_delay <= 0 && self.balls_fired < self.balls_to_return)
         {
             // Create a ball and set its direction
-            var _ball = instance_create_layer(self.launch_x, _launch_y, "Instances", obj_ball);
+            var _ball = instance_create_layer(self.launch_x, self.launch_y, "Instances", obj_ball);
 
             // Apply debug speed multiplier if exists
             var _speed = _ball.ball_speed;

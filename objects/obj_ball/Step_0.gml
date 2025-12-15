@@ -54,22 +54,54 @@ if (_steps > 0)
             // Only bounce if not a fireball
             if (!self.fireball)
             {
-                // Move back and determine bounce direction
+                // Move back to pre-collision position
                 x -= _step_x;
                 y -= _step_y;
 
-                // Check horizontal collision
-                if (place_meeting(x + _step_x, y, obj_block))
-                {
-                    _hsp = -_hsp;
-                    _step_x = -_step_x;
-                }
+                // Calculate block bounds (assuming centered origin)
+                var _block_left = _block.x - _block.sprite_width / 2;
+                var _block_right = _block.x + _block.sprite_width / 2;
+                var _block_top = _block.y - _block.sprite_height / 2;
+                var _block_bottom = _block.y + _block.sprite_height / 2;
 
-                // Check vertical collision
-                if (place_meeting(x, y + _step_y, obj_block))
+                // Find closest point on block to ball center
+                var _closest_x = clamp(x, _block_left, _block_right);
+                var _closest_y = clamp(y, _block_top, _block_bottom);
+
+                // Calculate normal from closest point to ball
+                var _nx = x - _closest_x;
+                var _ny = y - _closest_y;
+                var _dist = point_distance(0, 0, _nx, _ny);
+
+                if (_dist > 0)
                 {
-                    _vsp = -_vsp;
-                    _step_y = -_step_y;
+                    // Normalize
+                    _nx /= _dist;
+                    _ny /= _dist;
+
+                    // Reflect velocity: v' = v - 2(v·n)n
+                    var _dot = _hsp * _nx + _vsp * _ny;
+                    _hsp = _hsp - 2 * _dot * _nx;
+                    _vsp = _vsp - 2 * _dot * _ny;
+
+                    // Update step values
+                    var _speed = point_distance(0, 0, _hsp, _vsp);
+                    _step_x = _hsp / _steps;
+                    _step_y = _vsp / _steps;
+                }
+                else
+                {
+                    // Ball center inside block - fallback to axis-aligned bounce
+                    if (place_meeting(x + _step_x, y, obj_block))
+                    {
+                        _hsp = -_hsp;
+                        _step_x = -_step_x;
+                    }
+                    if (place_meeting(x, y + _step_y, obj_block))
+                    {
+                        _vsp = -_vsp;
+                        _step_y = -_step_y;
+                    }
                 }
 
                 // Move in new direction
@@ -82,10 +114,20 @@ if (_steps > 0)
             {
                 self.will_split = false;
 
+                // Get absolute horizontal speed
+                var _abs_hsp = abs(_hsp);
+
+                // Create new ball
                 var _new_ball = instance_create_layer(x, y, "Instances", obj_ball);
-                _new_ball.hspeed = -_hsp;
-                _new_ball.vspeed = _vsp;
                 _new_ball.ball_speed = self.ball_speed;
+                _new_ball.vspeed = _vsp;
+
+                // One ball goes left, one goes right
+                _hsp = _abs_hsp;              // This ball goes right
+                _new_ball.hspeed = -_abs_hsp; // New ball goes left
+
+                // Update step values for this ball
+                _step_x = _hsp / _steps;
 
                 // Track as bonus ball (resets each turn)
                 obj_game.bonus_balls++;

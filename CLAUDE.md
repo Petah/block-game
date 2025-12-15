@@ -42,6 +42,10 @@ Objects use standard GameMaker events:
 
 GameMaker Studio projects are typically built and run through the GameMaker IDE. There are no standard command-line build tools for this project structure.
 
+### Git Commands
+
+When running git commands, cd to the project directory once at the start, then run subsequent commands without cd prefixes. When asked to commit changes, create one or more commits as appropriate - split into multiple commits if the changes are logically separate.
+
 ### SVG Asset Creation
 
 Sprite assets are created as SVGs in the `svg/` folder and rendered to PNG using resvg:

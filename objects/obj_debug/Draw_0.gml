@@ -99,5 +99,11 @@ if (_game.state == "aiming")
     draw_set_alpha(1);
 }
 
+// Draw speed indicator
+draw_set_color(c_yellow);
+draw_set_halign(fa_right);
+draw_text(room_width - 10, 50, "Speed: " + string(self.speed_multiplier) + "x [F]");
+
 // Reset
+draw_set_halign(fa_left);
 draw_set_color(c_white);

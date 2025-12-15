@@ -43,8 +43,17 @@ switch (self.state)
         {
             // Create a ball and set its direction
             var _ball = instance_create_layer(self.launch_x, _launch_y, "Instances", obj_ball);
-            _ball.hspeed = lengthdir_x(_ball.ball_speed, self.aim_angle);
-            _ball.vspeed = lengthdir_y(_ball.ball_speed, self.aim_angle);
+
+            // Apply debug speed multiplier if exists
+            var _speed = _ball.ball_speed;
+            if (instance_exists(obj_debug))
+            {
+                _speed *= obj_debug.speed_multiplier;
+                _ball.ball_speed = _speed;
+            }
+
+            _ball.hspeed = lengthdir_x(_speed, self.aim_angle);
+            _ball.vspeed = lengthdir_y(_speed, self.aim_angle);
 
             self.balls_fired++;
             self.fire_delay = self.fire_interval;
@@ -76,19 +85,38 @@ switch (self.state)
                 }
             }
 
+            // Move all power-ups down one row
+            with (obj_power_up)
+            {
+                y += other.grid_cell_size;
+
+                // Destroy if reached bottom
+                if (y >= other.grid_bottom_y)
+                {
+                    instance_destroy();
+                }
+            }
+
             // Spawn new row at top (if not game over)
             if (!self.game_over)
             {
                 for (var _col = 0; _col < self.grid_cols; _col++)
                 {
+                    var _x = self.grid_start_x + _col * self.grid_cell_size;
+
                     // Random chance to spawn a block (60-80% based on level)
                     var _spawn_chance = min(60 + self.level * 2, 85);
                     if (random(100) < _spawn_chance)
                     {
-                        var _x = self.grid_start_x + _col * self.grid_cell_size;
                         var _block = instance_create_layer(_x, self.grid_start_y, "Instances", obj_block);
                         // Health scales with level
                         _block.health = irandom_range(1, self.level + 1);
+                    }
+                    else if (random(100) < 20) // 20% chance for power-up in empty cell
+                    {
+                        var _powerup = instance_create_layer(_x, self.grid_start_y, "Instances", obj_power_up);
+                        _powerup.type = irandom(3);
+                        _powerup.image_index = _powerup.type;
                     }
                 }
             }

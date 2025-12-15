@@ -14,11 +14,16 @@ if (x >= room_width - _ball_w)
     x = room_width - _ball_w;
 }
 
-// Bounce off top wall
-if (y <= _ball_h)
+// Bounce off top of grid area (not top of room)
+var _top_limit = 64; // grid_start_y - grid_cell_size/2
+if (instance_exists(obj_game))
+{
+    _top_limit = obj_game.grid_start_y - obj_game.grid_cell_size / 2;
+}
+if (y <= _top_limit + _ball_h)
 {
     vspeed = abs(vspeed);
-    y = _ball_h;
+    y = _top_limit + _ball_h;
 }
 
 // Destroy ball when it goes off bottom - notify game controller
@@ -36,18 +41,44 @@ if (y > room_height + _ball_h)
 var _block = instance_place(x, y, obj_block);
 if (_block != noone)
 {
-    // Determine bounce direction based on collision side
-    var _prev_x = x - hspeed;
-    var _prev_y = y - vspeed;
+    // Only bounce if not a fireball
+    if (!self.fireball)
+    {
+        // Determine bounce direction based on collision side
+        var _prev_x = x - hspeed;
+        var _prev_y = y - vspeed;
 
-    // Check if we were above/below or to the side
-    if (!place_meeting(_prev_x, y, obj_block))
-    {
-        hspeed = -hspeed;
+        // Check if we were above/below or to the side
+        if (!place_meeting(_prev_x, y, obj_block))
+        {
+            hspeed = -hspeed;
+        }
+        if (!place_meeting(x, _prev_y, obj_block))
+        {
+            vspeed = -vspeed;
+        }
     }
-    if (!place_meeting(x, _prev_y, obj_block))
+
+    // Handle split power-up
+    if (self.will_split)
     {
-        vspeed = -vspeed;
+        self.will_split = false;
+
+        // Create a second ball going in mirrored direction
+        var _new_ball = instance_create_layer(x, y, "Instances", obj_ball);
+        _new_ball.hspeed = -hspeed;
+        _new_ball.vspeed = vspeed;
+        _new_ball.ball_speed = self.ball_speed;
+
+        // Inherit size if big
+        _new_ball.image_xscale = image_xscale;
+        _new_ball.image_yscale = image_yscale;
+
+        // Notify game of extra ball
+        if (instance_exists(obj_game))
+        {
+            obj_game.num_balls++;
+        }
     }
 
     // Reduce block health

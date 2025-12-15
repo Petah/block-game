@@ -11,3 +11,6 @@ image_speed = 0; // Don't animate, use fixed frame
 
 // Assign sprite
 sprite_index = spr_power_up;
+
+// Track which balls have already collected this power-up
+self.collected_by = [];

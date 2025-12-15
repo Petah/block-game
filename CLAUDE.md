@@ -70,6 +70,7 @@ SVG files use gradients and highlights for a polished look. See `svg/ball.svg` a
 - UI rendering uses `draw_text()` with alignment and color settings
 - Input handling via `keyboard_check()` and `keyboard_check_pressed()`
 - Object creation via `instance_create_layer()` targeting "Instances" layer
+- **Do not use `instance_exists(obj_game)`** - obj_game is always present in the room and can be accessed directly
 
 ## Key Gameplay Mechanics
 

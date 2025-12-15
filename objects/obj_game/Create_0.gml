@@ -11,6 +11,7 @@ self.game_won = false;
 self.num_balls = 10;           // Number of balls to fire
 self.balls_fired = 0;          // Balls fired this turn
 self.balls_returned = 0;       // Balls that came back
+self.balls_to_return = 0;      // Locked count at start of turn
 self.fire_delay = 0;           // Timer between ball shots
 self.fire_interval = 5;        // Frames between each ball
 
@@ -21,6 +22,9 @@ self.launch_x = room_width / 2; // Where balls launch from
 
 // Game state
 self.state = "aiming";         // "aiming", "firing", "waiting"
+
+// Bonus balls collected this turn (resets each turn)
+self.bonus_balls = 0;
 
 // Grid settings (full room width)
 self.grid_cell_size = 32;

@@ -32,6 +32,8 @@ switch (self.state)
             self.balls_fired = 0;
             self.balls_returned = 0;
             self.fire_delay = 0;
+            // Lock in the number of balls to wait for (won't change mid-turn)
+            self.balls_to_return = self.num_balls + self.bonus_balls;
         }
         break;
 
@@ -39,7 +41,7 @@ switch (self.state)
         // Fire balls with delay between each
         self.fire_delay--;
 
-        if (self.fire_delay <= 0 && self.balls_fired < self.num_balls)
+        if (self.fire_delay <= 0 && self.balls_fired < self.balls_to_return)
         {
             // Create a ball and set its direction
             var _ball = instance_create_layer(self.launch_x, _launch_y, "Instances", obj_ball);
@@ -60,7 +62,7 @@ switch (self.state)
         }
 
         // Switch to waiting once all balls fired
-        if (self.balls_fired >= self.num_balls)
+        if (self.balls_fired >= self.balls_to_return)
         {
             self.state = "waiting";
         }
@@ -68,7 +70,8 @@ switch (self.state)
 
     case "waiting":
         // Wait for all balls to return
-        if (self.balls_returned >= self.num_balls)
+        // balls_to_return is locked at start, bonus_balls only increases from splits (which create balls)
+        if (self.balls_returned >= self.balls_to_return + self.bonus_balls)
         {
             // All balls returned - advance to next turn
             self.level++;
@@ -88,12 +91,20 @@ switch (self.state)
             // Move all power-ups down one row
             with (obj_power_up)
             {
-                y += other.grid_cell_size;
-
-                // Destroy if reached bottom
-                if (y >= other.grid_bottom_y)
+                // Destroy if it was collected by any ball
+                if (array_length(self.collected_by) > 0)
                 {
                     instance_destroy();
+                }
+                else
+                {
+                    y += other.grid_cell_size;
+
+                    // Destroy if reached bottom
+                    if (y >= other.grid_bottom_y)
+                    {
+                        instance_destroy();
+                    }
                 }
             }
 
@@ -123,6 +134,9 @@ switch (self.state)
 
             // Increase ball count for next turn
             self.num_balls++;
+
+            // Reset bonus balls for next turn
+            self.bonus_balls = 0;
 
             // Ready for next turn
             self.state = "aiming";

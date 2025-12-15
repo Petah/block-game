@@ -19,6 +19,9 @@ if (_ball != noone)
         // Mark as collected by this ball
         array_push(self.collected_by, _ball);
 
+        // Emit power-up particles
+        part_particles_create(obj_game.part_sys, x, y, obj_game.part_powerup, 10);
+
         // Apply power-up effect to THIS ball only
         switch (self.type)
         {

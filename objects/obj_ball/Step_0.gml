@@ -137,8 +137,14 @@ if (_steps > 0)
             _block.health--;
             obj_game.score += 10;
 
+            // Emit hit particles at block position
+            part_particles_create(obj_game.part_sys, _block.x, _block.y, obj_game.part_block_hit, 5);
+
             if (_block.health <= 0)
             {
+                // Emit destroy particles before destroying
+                part_particles_create(obj_game.part_sys, _block.x, _block.y, obj_game.part_block_destroy, 15);
+
                 instance_destroy(_block);
 
                 if (!instance_exists(obj_block))
@@ -156,6 +162,12 @@ if (_steps > 0)
 // Restore velocity for next frame
 hspeed = _hsp;
 vspeed = _vsp;
+
+// Emit trail particles
+if (_move_speed > 0)
+{
+    part_particles_create(obj_game.part_sys, x, y, obj_game.part_ball_trail, 1);
+}
 
 // Destroy ball when it goes off bottom
 if (y > room_height + _ball_h)

@@ -74,60 +74,12 @@ switch (self.state)
             // All balls returned - advance to next turn
             self.level++;
 
-            // Move all blocks down one row
-            with (obj_block)
-            {
-                y += other.grid_cell_size;
-
-                // Check if any block reached the bottom
-                if (y >= other.grid_bottom_y)
-                {
-                    other.game_over = true;
-                }
-            }
-
-            // Move all power-ups down one row
-            with (obj_power_up)
-            {
-                // Destroy if it was collected by any ball
-                if (array_length(self.collected_by) > 0)
-                {
-                    instance_destroy();
-                }
-                else
-                {
-                    y += other.grid_cell_size;
-
-                    // Destroy if reached bottom
-                    if (y >= other.grid_bottom_y)
-                    {
-                        instance_destroy();
-                    }
-                }
-            }
+            scr_move_blocks_down();
 
             // Spawn new row at top (if not game over)
             if (!self.game_over)
             {
-                for (var _col = 0; _col < self.grid_cols; _col++)
-                {
-                    var _x = self.grid_start_x + _col * self.grid_cell_size;
-
-                    // Random chance to spawn a block (60-80% based on level)
-                    var _spawn_chance = min(60 + self.level * 2, 85);
-                    if (random(100) < _spawn_chance)
-                    {
-                        var _block = instance_create_layer(_x, self.grid_start_y, "Instances", obj_block);
-                        // Health scales with level
-                        _block.health = irandom_range(1, self.level + 1);
-                    }
-                    else if (random(100) < 20) // 20% chance for power-up in empty cell
-                    {
-                        var _powerup = instance_create_layer(_x, self.grid_start_y, "Instances", obj_power_up);
-                        _powerup.type = irandom(3);
-                        _powerup.image_index = _powerup.type;
-                    }
-                }
+                scr_spawn_blocks();
             }
 
             // Increase ball count for next turn
@@ -144,24 +96,6 @@ switch (self.state)
         }
         break;
 }
-
-// Update screen shake
-if (self.shake_amount > 0)
-{
-    self.shake_x = random_range(-self.shake_amount, self.shake_amount);
-    self.shake_y = random_range(-self.shake_amount, self.shake_amount);
-    self.shake_amount *= 0.85; // Decay
-
-    if (self.shake_amount < 0.5)
-    {
-        self.shake_amount = 0;
-        self.shake_x = 0;
-        self.shake_y = 0;
-    }
-}
-
-// Apply shake to camera
-camera_set_view_pos(self.cam, self.shake_x, self.shake_y);
 
 // Update combo timer
 if (self.combo_timer > 0)

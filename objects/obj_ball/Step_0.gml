@@ -30,12 +30,24 @@ if (_steps > 0)
             _hsp = abs(_hsp);
             _step_x = abs(_step_x);
             x = _ball_w;
+            
+            // Make it tilt slightly down
+            if (_vsp > 0)
+            {
+                _vsp += 0.25;
+            }
         }
         if (x >= room_width - _ball_w)
         {
             _hsp = -abs(_hsp);
             _step_x = -abs(_step_x);
             x = room_width - _ball_w;
+
+            // Make it tilt slightly down
+            if (_vsp > 0)
+            {
+                _vsp += 0.25;
+            }
         }
 
         // Bounce off top of grid area
@@ -151,7 +163,7 @@ if (_steps > 0)
 
                 // Screen shake scales with combo (bigger combos = more shake)
                 var _shake = min(2 + obj_game.combo * 0.5, 8);
-                obj_game.shake_amount = max(obj_game.shake_amount, _shake);
+                obj_screen_shake.shake_amount = max(obj_screen_shake.shake_amount, _shake);
 
                 // Emit destroy particles before destroying
                 part_particles_create(obj_particles.part_sys, _block.x, _block.y, obj_particles.part_block_destroy, 15);

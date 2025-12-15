@@ -1,29 +1,27 @@
 // Debug drawing - only when visible (press D to toggle)
 if (!self.visible) exit;
 
-var _game = obj_game;
-
 // Draw grid (full room width)
 draw_set_color(c_gray);
 draw_set_alpha(0.3);
 
-var _cell = _game.grid_cell_size;
-var _grid_top = _game.grid_start_y - _cell / 2;
+var _cell = obj_game.grid_cell_size;
+var _grid_top = obj_game.grid_start_y - _cell / 2;
 
 // Vertical lines
 var _num_cols = ceil(room_width / _cell);
 for (var _col = 0; _col <= _num_cols; _col++)
 {
     var _x = _col * _cell;
-    draw_line(_x, _grid_top, _x, _game.grid_bottom_y);
+    draw_line(_x, _grid_top, _x, obj_game.grid_bottom_y);
 }
 
 // Horizontal lines
-var _num_rows = ceil((_game.grid_bottom_y - _grid_top) / _cell);
+var _num_rows = ceil((obj_game.grid_bottom_y - _grid_top) / _cell);
 for (var _row = 0; _row <= _num_rows; _row++)
 {
     var _y = _grid_top + _row * _cell;
-    if (_y <= _game.grid_bottom_y)
+    if (_y <= obj_game.grid_bottom_y)
     {
         draw_line(0, _y, room_width, _y);
     }
@@ -32,11 +30,11 @@ for (var _row = 0; _row <= _num_rows; _row++)
 draw_set_alpha(1);
 
 // Draw aiming line with bounces
-if (_game.state == "aiming")
+if (obj_game.state == "aiming")
 {
-    var _start_x = _game.launch_x;
-    var _start_y = _game.launch_y;
-    var _angle = _game.aim_angle;
+    var _start_x = obj_game.launch_x;
+    var _start_y = obj_game.launch_y;
+    var _angle = obj_game.aim_angle;
 
     var _max_bounces = 5;
     var _max_length = 1500; // Total line length

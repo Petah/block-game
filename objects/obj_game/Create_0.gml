@@ -33,26 +33,21 @@ self.state = "aiming";         // "aiming", "firing", "waiting"
 // Bonus balls collected this turn (resets each turn)
 self.bonus_balls = 0;
 
+// UI 
+self.header_height = 90;
+
 // Grid settings (full room width)
 self.grid_cell_size = 32;
 self.grid_cols = floor(room_width / self.grid_cell_size);
 self.grid_start_x = self.grid_cell_size / 2; // First column center
-self.grid_start_y = 100; // Below 90px header bar
+self.grid_start_y = self.header_height + self.grid_cell_size / 2; // Below header bar
 self.grid_bottom_y = room_height - 150; // Game over line
 
 // Spawn particle system manager
 instance_create_layer(0, 0, "Instances", obj_particles);
 
-// Screen shake
-self.shake_amount = 0;
-self.shake_x = 0;
-self.shake_y = 0;
-
-// Camera for screen shake
-self.cam = camera_create_view(0, 0, room_width, room_height);
-view_enabled = true;
-view_visible[0] = true;
-view_camera[0] = self.cam;
+// Spawn screen shake manager
+instance_create_layer(0, 0, "Instances", obj_screen_shake);
 
 // Combo system
 self.combo = 0;
@@ -60,19 +55,11 @@ self.combo_timer = 0;
 self.combo_timeout = 30; // Frames before combo resets
 
 // Spawn initial rows of blocks
-for (var _row = 0; _row < 4; _row++)
-{
-    var _y = self.grid_start_y + _row * self.grid_cell_size;
-
-    for (var _col = 0; _col < self.grid_cols; _col++)
-    {
-        // Random chance to spawn a block (70%)
-        if (random(100) < 70)
-        {
-            var _x = self.grid_start_x + _col * self.grid_cell_size;
-            var _block = instance_create_layer(_x, _y, "Instances", obj_block);
-            // Random health between 1 and level+2
-            _block.health = irandom_range(1, self.level + 2);
-        }
-    }
-}
+scr_spawn_blocks();
+scr_move_blocks_down();
+scr_spawn_blocks();
+scr_move_blocks_down();
+scr_spawn_blocks();
+scr_move_blocks_down();
+scr_spawn_blocks();
+scr_move_blocks_down();

@@ -148,35 +148,81 @@ if (_steps > 0)
             // Reset idle timer on block hit
             self.idle_timer = 0;
 
-            // Reduce block health
-            _block.health--;
-            obj_game.score += 10;
-
-            // Emit hit particles at block position
-            var _hit_part = self.fireball ? obj_particles.part_fire_destroy : obj_particles.part_block_hit;
-            var _hit_count = self.fireball ? 8 : 5;
-            part_particles_create(obj_particles.part_sys, _block.x, _block.y, _hit_part, _hit_count);
-
-            if (_block.health <= 0)
+            // Steel blocks are indestructible
+            if (_block.block_type == "steel")
             {
-                // Increment combo and reset timer
-                obj_game.combo++;
-                obj_game.combo_timer = obj_game.combo_timeout;
+                // Just emit hit particles and bounce, no damage
+                part_particles_create(obj_particles.part_sys, _block.x, _block.y, obj_particles.part_block_hit, 3);
+            }
+            else
+            {
+                // Reduce block health
+                _block.health--;
+                obj_game.score += 10;
 
-                // Screen shake scales with combo (bigger combos = more shake)
-                var _shake = min(2 + obj_game.combo * 0.5, 8);
-                obj_screen_shake.shake_amount = max(obj_screen_shake.shake_amount, _shake);
+                // Emit hit particles at block position
+                var _hit_part = self.fireball ? obj_particles.part_fire_destroy : obj_particles.part_block_hit;
+                var _hit_count = self.fireball ? 8 : 5;
+                part_particles_create(obj_particles.part_sys, _block.x, _block.y, _hit_part, _hit_count);
 
-                // Emit destroy particles before destroying
-                var _destroy_part = self.fireball ? obj_particles.part_fire_destroy : obj_particles.part_block_destroy;
-                var _destroy_count = self.fireball ? 25 : 15;
-                part_particles_create(obj_particles.part_sys, _block.x, _block.y, _destroy_part, _destroy_count);
-
-                instance_destroy(_block);
-
-                if (!instance_exists(obj_block))
+                if (_block.health <= 0)
                 {
-                    obj_game.game_won = true;
+                    // Increment combo and reset timer
+                    obj_game.combo++;
+                    obj_game.combo_timer = obj_game.combo_timeout;
+
+                    // Screen shake scales with combo (bigger combos = more shake)
+                    var _shake = min(2 + obj_game.combo * 0.5, 8);
+
+                    // Explosive blocks destroy adjacent blocks
+                    if (_block.block_type == "explosive")
+                    {
+                        _shake = 6; // Big shake for explosion
+                        var _bx = _block.x;
+                        var _by = _block.y;
+                        var _cell = obj_game.grid_cell_size;
+
+                        // Check all 8 adjacent cells
+                        var _dirs = [
+                            [-_cell, -_cell], [0, -_cell], [_cell, -_cell],
+                            [-_cell, 0],                   [_cell, 0],
+                            [-_cell, _cell],  [0, _cell],  [_cell, _cell]
+                        ];
+
+                        for (var _d = 0; _d < 8; _d++)
+                        {
+                            var _adj = instance_position(_bx + _dirs[_d][0], _by + _dirs[_d][1], obj_block);
+                            if (_adj != noone && _adj.block_type != "steel")
+                            {
+                                // Destroy adjacent block
+                                obj_game.combo++;
+                                obj_game.score += 10;
+                                part_particles_create(obj_particles.part_sys, _adj.x, _adj.y, obj_particles.part_fire_destroy, 12);
+                                instance_destroy(_adj);
+                            }
+                        }
+                    }
+
+                    obj_screen_shake.shake_amount = max(obj_screen_shake.shake_amount, _shake);
+
+                    // Emit destroy particles before destroying
+                    var _destroy_part = self.fireball ? obj_particles.part_fire_destroy : obj_particles.part_block_destroy;
+                    var _destroy_count = self.fireball ? 25 : 15;
+                    if (_block.block_type == "explosive") _destroy_count = 30;
+                    part_particles_create(obj_particles.part_sys, _block.x, _block.y, _destroy_part, _destroy_count);
+
+                    instance_destroy(_block);
+
+                    // Check if only steel blocks remain (win condition)
+                    var _non_steel_count = 0;
+                    with (obj_block)
+                    {
+                        if (block_type != "steel") _non_steel_count++;
+                    }
+                    if (_non_steel_count == 0)
+                    {
+                        obj_game.game_won = true;
+                    }
                 }
             }
 

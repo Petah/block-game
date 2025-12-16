@@ -1,6 +1,9 @@
 // Block health - will be set by obj_game when created
 self.health = 1;
 
+// Block type: "normal", "explosive", "steel", "rainbow"
+self.block_type = "normal";
+
 // Don't animate - we set frame based on health
 image_speed = 0;
 

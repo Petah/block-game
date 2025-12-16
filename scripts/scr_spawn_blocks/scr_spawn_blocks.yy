@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_spawn_blocks",
   "parent":{
-    "name":"Block Game",
-    "path":"Block Game.yyp",
+    "name":"scripts",
+    "path":"folders/scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -4,10 +4,27 @@ function scr_move_blocks_down() {
     {
         y += obj_game.grid_cell_size;
 
-        // Check if any block reached the bottom
+        // Check if any block reached the bottom (steel blocks don't cause game over)
         if (y >= obj_game.grid_bottom_y)
         {
-            obj_game.game_over = true;
+            if (self.block_type == "steel")
+            {
+                // Steel blocks just get destroyed at the bottom
+                instance_destroy();
+            }
+            else
+            {
+                obj_game.game_over = true;
+            }
+        }
+
+        // Rainbow blocks change health each turn
+        if (self.block_type == "rainbow")
+        {
+            // Randomly change health by -2 to +3
+            self.health += irandom_range(-2, 3);
+            // Keep health between 1 and level + 5
+            self.health = clamp(self.health, 1, obj_game.level + 5);
         }
     }
 

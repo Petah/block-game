@@ -66,6 +66,7 @@ SVG files use gradients and highlights for a polished look. See `svg/ball.svg` a
 
 ## Code Patterns
 
+- **One function per script file** - Each script in `scripts/` should contain a single function matching the script name
 - Objects use `self.variable` for instance variables
 - Collision detection uses `place_meeting()` and `instance_place()`
 - Ball physics implemented with `hspeed`/`vspeed` built-in variables

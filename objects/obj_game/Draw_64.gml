@@ -10,11 +10,8 @@ draw_set_color(make_color_rgb(63, 63, 122)); // #3f3f7a
 draw_line_width(0, self.header_height, room_width, self.header_height, 2);
 
 // Score section (left)
-draw_set_halign(fa_left);
-draw_set_color(make_color_rgb(156, 163, 175)); // #9ca3af
-draw_text(30, 24, "SCORE");
-draw_set_color(c_white);
-draw_text(30, 48, string(self.score));
+scr_draw_text(30, 24, "SCORE", { font: fnt_sm, color: make_color_rgb(156, 163, 175) });
+scr_draw_text(30, 48, string(self.score), { font: fnt_lg, color: c_white });
 
 // Level badge (center)
 var _badge_w = 100;
@@ -29,14 +26,14 @@ draw_set_color(make_color_rgb(55, 48, 163)); // #3730a3
 draw_roundrect(_badge_x + 2, _badge_y + _badge_h/2, _badge_x + _badge_w - 2, _badge_y + _badge_h - 2, false);
 
 // Level text
-draw_set_halign(fa_center);
-draw_set_color(c_white);
-draw_text(_badge_x + _badge_w / 2, _badge_y + 10, "LEVEL " + string(self.level));
+scr_draw_text(_badge_x + _badge_w / 2, _badge_y + 10, "LEVEL " + string(self.level), {
+    font: fnt_md, color: c_white, halign: fa_center
+});
 
 // Ball count section (right)
-draw_set_halign(fa_right);
-draw_set_color(make_color_rgb(156, 163, 175)); // #9ca3af
-draw_text(room_width - 30, 24, "BALLS");
+scr_draw_text(room_width - 30, 24, "BALLS", {
+    font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_right
+});
 
 // Small ball icon
 var _ball_icon_x = room_width - 90;
@@ -47,8 +44,9 @@ draw_set_color(make_color_rgb(200, 60, 60)); // Darker outline
 draw_circle(_ball_icon_x, _ball_icon_y, 8, true);
 
 // Ball count text
-draw_set_color(c_white);
-draw_text(room_width - 30, 48, "x" + string(self.num_balls));
+scr_draw_text(room_width - 30, 48, "x" + string(self.num_balls), {
+    font: fnt_lg, color: c_white, halign: fa_right
+});
 
 
 // === DANGER ZONE ===
@@ -64,9 +62,9 @@ draw_set_alpha(0.1);
 draw_rectangle(0, _danger_y + 4, room_width, _danger_y + 44, false);
 
 // Danger zone text
-draw_set_alpha(0.8);
-draw_set_halign(fa_center);
-draw_text(room_width / 2, _danger_y + 18, "DANGER ZONE");
+scr_draw_text(room_width / 2, _danger_y + 18, "DANGER ZONE", {
+    font: fnt_sm, color: make_color_rgb(239, 68, 68), halign: fa_center, alpha: 0.8
+});
 
 draw_set_alpha(1);
 
@@ -74,12 +72,9 @@ draw_set_alpha(1);
 // === AIMING STATE ===
 if (self.state == "aiming")
 {
-    // Draw instructions
-    draw_set_halign(fa_center);
-    draw_set_color(c_white);
-    draw_set_alpha(0.7);
-    draw_text(room_width / 2, room_height - 100, "Drag to aim, release to fire");
-    draw_set_alpha(1);
+    scr_draw_text(room_width / 2, room_height - 100, "Drag to aim, release to fire", {
+        font: fnt_sm, color: c_white, halign: fa_center, alpha: 0.7
+    });
 }
 
 
@@ -100,9 +95,9 @@ if (self.state == "firing" || self.state == "waiting")
     draw_set_alpha(1);
 
     // Text
-    draw_set_halign(fa_center);
-    draw_set_color(make_color_rgb(156, 163, 175)); // #9ca3af
-    draw_text(_pill_x + _pill_w / 2, _pill_y + 8, "Balls in play: " + string(_remaining));
+    scr_draw_text(_pill_x + _pill_w / 2, _pill_y + 8, "Balls in play: " + string(_remaining), {
+        font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center
+    });
 }
 
 
@@ -128,17 +123,22 @@ if (self.game_over)
     draw_roundrect(_panel_x, _panel_y, _panel_x + _panel_w, _panel_y + _panel_h, true);
 
     // Text
-    draw_set_halign(fa_center);
-    draw_set_color(make_color_rgb(239, 68, 68));
-    draw_text(room_width / 2, _panel_y + 40, "GAME OVER");
-
-    draw_set_color(c_white);
-    draw_text(room_width / 2, _panel_y + 90, "Level reached: " + string(self.level));
-    draw_text(room_width / 2, _panel_y + 120, "Score: " + string(self.score));
-
-    draw_set_color(make_color_rgb(156, 163, 175));
-    draw_text(room_width / 2, _panel_y + 150, "Press R to restart");
-    draw_text(room_width / 2, _panel_y + 175, "Press M for Level Select");
+    var _cx = room_width / 2;
+    scr_draw_text(_cx, _panel_y + 40, "GAME OVER", {
+        font: fnt_xl, color: make_color_rgb(239, 68, 68), halign: fa_center
+    });
+    scr_draw_text(_cx, _panel_y + 90, "Level reached: " + string(self.level), {
+        font: fnt_md, color: c_white, halign: fa_center
+    });
+    scr_draw_text(_cx, _panel_y + 120, "Score: " + string(self.score), {
+        font: fnt_md, color: c_white, halign: fa_center
+    });
+    scr_draw_text(_cx, _panel_y + 150, "Press R to restart", {
+        font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center
+    });
+    scr_draw_text(_cx, _panel_y + 175, "Press M for Level Select", {
+        font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center
+    });
 }
 
 
@@ -164,43 +164,43 @@ if (self.level_complete)
     draw_roundrect(_panel_x, _panel_y, _panel_x + _panel_w, _panel_y + _panel_h, true);
 
     // Title
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_set_color(make_color_rgb(34, 197, 94));
-    draw_text_transformed(room_width / 2, _panel_y + 50, "LEVEL COMPLETE!", 1.5, 1.5, 0);
+    var _cx = room_width / 2;
+    scr_draw_text(_cx, _panel_y + 50, "LEVEL COMPLETE!", {
+        font: fnt_xl, color: make_color_rgb(34, 197, 94), halign: fa_center, valign: fa_middle
+    });
 
     // Level number
-    draw_set_color(c_white);
-    draw_text(room_width / 2, _panel_y + 100, "Level " + string(self.level));
+    scr_draw_text(_cx, _panel_y + 100, "Level " + string(self.level), {
+        font: fnt_lg, color: c_white, halign: fa_center, valign: fa_middle
+    });
 
     // Draw stars using sprites
     var _star_y = _panel_y + 160;
     var _star_spacing = 70;
-    var _star_start = room_width / 2 - _star_spacing;
-    var _star_scale = 0.5;
+    var _star_start = _cx - _star_spacing;
 
     for (var i = 0; i < 3; i++)
     {
         var _star_x = _star_start + i * _star_spacing;
         var _star_spr = (i < self.stars_earned) ? spr_star_filled : spr_star_empty;
-        draw_sprite_ext(_star_spr, 0, _star_x, _star_y, _star_scale, _star_scale, 0, c_white, 1);
+        draw_sprite_ext(_star_spr, 0, _star_x, _star_y, 0.5, 0.5, 0, c_white, 1);
     }
 
     // Stats
-    draw_set_color(make_color_rgb(156, 163, 175));
-    draw_text(room_width / 2, _panel_y + 220, "Turns: " + string(self.turns) + "  |  Score: " + string(self.score));
+    scr_draw_text(_cx, _panel_y + 220, "Turns: " + string(self.turns) + "  |  Score: " + string(self.score), {
+        font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center, valign: fa_middle
+    });
 
     // Instructions
-    draw_set_color(c_white);
-    draw_text(room_width / 2, _panel_y + 280, "Click: Next Level");
-    draw_set_color(make_color_rgb(156, 163, 175));
-    draw_text(room_width / 2, _panel_y + 310, "Press M for Level Select");
-
-    draw_set_valign(fa_top);
+    scr_draw_text(_cx, _panel_y + 280, "Click: Next Level", {
+        font: fnt_md, color: c_white, halign: fa_center, valign: fa_middle
+    });
+    scr_draw_text(_cx, _panel_y + 310, "Press M for Level Select", {
+        font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center, valign: fa_middle
+    });
 }
 
 
-// Reset draw settings
-draw_set_halign(fa_left);
+// Reset draw settings (for non-text drawing)
 draw_set_color(c_white);
 draw_set_alpha(1);

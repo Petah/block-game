@@ -59,6 +59,28 @@ if (_steps > 0)
             y = _top_limit + _ball_h;
         }
 
+
+        // Handle split power-up
+        if (self.will_split)
+        {
+            self.will_split = false;
+
+            // Get absolute horizontal speed
+            // Create new ball
+            var _new_ball = instance_create_layer(x, y, "Instances", obj_ball);
+            _new_ball.ball_speed = self.ball_speed;
+            _new_ball.vspeed = _vsp;
+
+            // One ball goes left, one goes right
+            _new_ball.hspeed = _hsp * -1; // New ball goes left
+
+            // Update step values for this ball
+            _step_x = _hsp / _steps;
+
+            // Track as bonus ball (resets each turn)
+            obj_game.bonus_balls++;
+        }
+    
         // Check for block collision at this step
         var _block = instance_place(x, y, obj_block);
         if (_block != noone)
@@ -121,30 +143,6 @@ if (_steps > 0)
                 y += _step_y;
             }
 
-            // Handle split power-up
-            if (self.will_split)
-            {
-                self.will_split = false;
-
-                // Get absolute horizontal speed
-                var _abs_hsp = abs(_hsp);
-
-                // Create new ball
-                var _new_ball = instance_create_layer(x, y, "Instances", obj_ball);
-                _new_ball.ball_speed = self.ball_speed;
-                _new_ball.vspeed = _vsp;
-
-                // One ball goes left, one goes right
-                _hsp = _abs_hsp;              // This ball goes right
-                _new_ball.hspeed = -_abs_hsp; // New ball goes left
-
-                // Update step values for this ball
-                _step_x = _hsp / _steps;
-
-                // Track as bonus ball (resets each turn)
-                obj_game.bonus_balls++;
-            }
-
             // Reset idle timer on block hit
             self.idle_timer = 0;
 
@@ -159,6 +157,17 @@ if (_steps > 0)
                 // Reduce block health
                 _block.health--;
                 obj_game.score += 10;
+
+                // Update sprite frame for normal blocks (color changes with health)
+                if (_block.block_type == "normal") {
+                    if (_block.health <= 2) _block.image_index = 0;
+                    else if (_block.health <= 4) _block.image_index = 1;
+                    else if (_block.health <= 6) _block.image_index = 2;
+                    else if (_block.health <= 9) _block.image_index = 3;
+                    else if (_block.health <= 12) _block.image_index = 4;
+                    else if (_block.health <= 16) _block.image_index = 5;
+                    else _block.image_index = 6;
+                }
 
                 // Emit hit particles at block position
                 var _hit_part = self.fireball ? obj_particles.part_fire_destroy : obj_particles.part_block_hit;

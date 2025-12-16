@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_spawn_blocks",
+  "%Name":"scr_spawn_block",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_spawn_blocks",
+  "name":"scr_spawn_block",
   "parent":{
     "name":"scripts",
     "path":"folders/scripts.yy",

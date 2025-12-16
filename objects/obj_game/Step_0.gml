@@ -128,7 +128,7 @@ switch (self.state)
 
                     if (!self.game_over)
                     {
-                        scr_spawn_blocks();
+                        scr_spawn_blocks_row();
                     }
 
                     self.num_balls++;

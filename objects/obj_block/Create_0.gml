@@ -1,12 +1,3 @@
-// Block health - will be set by obj_game when created
+// Default values - use scr_spawn_block() to create blocks with proper initialization
 self.health = 1;
-
-// Block type: "normal", "explosive", "steel", "rainbow"
 self.block_type = "normal";
-
-// Don't animate - we set frame based on health
-image_speed = 0;
-
-// Scale block to fit grid cell size
-image_xscale = obj_game.grid_cell_size / sprite_width;
-image_yscale = obj_game.grid_cell_size / sprite_height;

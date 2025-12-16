@@ -85,12 +85,12 @@ if (_level_data.layout != undefined) {
     }
 } else {
     // Random generation for levels beyond 9
-    scr_spawn_blocks(false);
+    scr_spawn_blocks_row(false);
     scr_move_blocks_down();
-    scr_spawn_blocks(false);
+    scr_spawn_blocks_row(false);
     scr_move_blocks_down();
-    scr_spawn_blocks(false);
+    scr_spawn_blocks_row(false);
     scr_move_blocks_down();
-    scr_spawn_blocks();
+    scr_spawn_blocks_row();
     scr_move_blocks_down();
 }

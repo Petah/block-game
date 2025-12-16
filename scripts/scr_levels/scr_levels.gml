@@ -160,29 +160,8 @@ function scr_spawn_level_blocks(_layout) {
             // Skip empty cells
             if (_cell == 0) continue;
 
-            // Create block
-            var _block = instance_create_layer(_x, _y, "Instances", obj_block);
-
-            // Handle special block types
-            if (is_string(_cell)) {
-                switch (_cell) {
-                    case "e":
-                        _block.block_type = "explosive";
-                        _block.health = 2;
-                        break;
-                    case "s":
-                        _block.block_type = "steel";
-                        _block.health = 999;
-                        break;
-                    case "r":
-                        _block.block_type = "rainbow";
-                        _block.health = 3;
-                        break;
-                }
-            } else {
-                // Normal block with specified health
-                _block.health = _cell;
-            }
+            // Create block using scr_spawn_block - handles all types
+            scr_spawn_block(_x, _y, _cell);
         }
     }
 

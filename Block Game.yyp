@@ -10,6 +10,7 @@
   },
   "defaultScriptType":1,
   "Folders":[
+    {"$GMFolder":"","%Name":"fonts","folderPath":"folders/fonts.yy","name":"fonts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"objects","folderPath":"folders/objects.yy","name":"objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"rooms","folderPath":"folders/rooms.yy","name":"rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"scripts","folderPath":"folders/scripts.yy","name":"scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -24,6 +25,10 @@
   },
   "name":"Block Game",
   "resources":[
+    {"id":{"name":"fnt_lg","path":"fonts/fnt_lg/fnt_lg.yy",},},
+    {"id":{"name":"fnt_md","path":"fonts/fnt_md/fnt_md.yy",},},
+    {"id":{"name":"fnt_sm","path":"fonts/fnt_sm/fnt_sm.yy",},},
+    {"id":{"name":"fnt_xl","path":"fonts/fnt_xl/fnt_xl.yy",},},
     {"id":{"name":"obj_ball","path":"objects/obj_ball/obj_ball.yy",},},
     {"id":{"name":"obj_block","path":"objects/obj_block/obj_block.yy",},},
     {"id":{"name":"obj_button","path":"objects/obj_button/obj_button.yy",},},
@@ -37,6 +42,7 @@
     {"id":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},},
     {"id":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
     {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
+    {"id":{"name":"scr_draw_text","path":"scripts/scr_draw_text/scr_draw_text.yy",},},
     {"id":{"name":"scr_levels","path":"scripts/scr_levels/scr_levels.yy",},},
     {"id":{"name":"scr_move_blocks_down","path":"scripts/scr_move_blocks_down/scr_move_blocks_down.yy",},},
     {"id":{"name":"scr_progress","path":"scripts/scr_progress/scr_progress.yy",},},

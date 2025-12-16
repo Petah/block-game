@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="woodGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b5a2b"/>
+      <stop offset="30%" style="stop-color:#a0522d"/>
+      <stop offset="70%" style="stop-color:#a0522d"/>
+      <stop offset="100%" style="stop-color:#8b5a2b"/>
+    </linearGradient>
+    <linearGradient id="bandGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e74c3c"/>
+      <stop offset="50%" style="stop-color:#ff6b6b"/>
+      <stop offset="100%" style="stop-color:#e74c3c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left fork -->
+  <path d="M10 8 L10 28 Q10 36 16 40 L18 40 Q14 36 14 28 L14 8 Z" fill="url(#woodGrad)" stroke="#5d3a1a" stroke-width="1"/>
+
+  <!-- Right fork -->
+  <path d="M38 8 L38 28 Q38 36 32 40 L30 40 Q34 36 34 28 L34 8 Z" fill="url(#woodGrad)" stroke="#5d3a1a" stroke-width="1"/>
+
+  <!-- Handle -->
+  <rect x="18" y="38" width="12" height="8" rx="2" fill="url(#woodGrad)" stroke="#5d3a1a" stroke-width="1"/>
+  <rect x="16" y="36" width="16" height="4" rx="1" fill="url(#woodGrad)" stroke="#5d3a1a" stroke-width="1"/>
+
+  <!-- Elastic bands -->
+  <path d="M12 10 Q24 20 24 24" fill="none" stroke="url(#bandGrad)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M36 10 Q24 20 24 24" fill="none" stroke="url(#bandGrad)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Band attachment points -->
+  <circle cx="12" cy="10" r="2" fill="#c0392b"/>
+  <circle cx="36" cy="10" r="2" fill="#c0392b"/>
+
+  <!-- Pouch -->
+  <ellipse cx="24" cy="24" rx="6" ry="4" fill="#8b4513" stroke="#5d3a1a" stroke-width="1"/>
+  <ellipse cx="24" cy="24" rx="4" ry="2.5" fill="#a0522d"/>
+
+  <!-- Wood grain details -->
+  <line x1="11" y1="12" x2="11" y2="24" stroke="#6d4a2a" stroke-width="0.5" opacity="0.5"/>
+  <line x1="13" y1="12" x2="13" y2="24" stroke="#6d4a2a" stroke-width="0.5" opacity="0.5"/>
+  <line x1="35" y1="12" x2="35" y2="24" stroke="#6d4a2a" stroke-width="0.5" opacity="0.5"/>
+  <line x1="37" y1="12" x2="37" y2="24" stroke="#6d4a2a" stroke-width="0.5" opacity="0.5"/>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="springGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b6b"/>
+      <stop offset="50%" style="stop-color:#ff8e8e"/>
+      <stop offset="100%" style="stop-color:#ff6b6b"/>
+    </linearGradient>
+    <linearGradient id="baseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd93d"/>
+      <stop offset="100%" style="stop-color:#c9a227"/>
+    </linearGradient>
+    <linearGradient id="cupGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6bcb77"/>
+      <stop offset="100%" style="stop-color:#4a9d5a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base platform -->
+  <ellipse cx="24" cy="44" rx="16" ry="4" fill="url(#baseGrad)" stroke="#a08020" stroke-width="1"/>
+  <rect x="8" y="38" width="32" height="6" fill="url(#baseGrad)" stroke="#a08020" stroke-width="1"/>
+
+  <!-- Spring coils -->
+  <ellipse cx="24" cy="34" rx="8" ry="2.5" fill="url(#springGrad)" stroke="#cc5555" stroke-width="0.5"/>
+  <ellipse cx="24" cy="30" rx="7" ry="2.5" fill="url(#springGrad)" stroke="#cc5555" stroke-width="0.5"/>
+  <ellipse cx="24" cy="26" rx="6" ry="2.5" fill="url(#springGrad)" stroke="#cc5555" stroke-width="0.5"/>
+  <ellipse cx="24" cy="22" rx="5" ry="2.5" fill="url(#springGrad)" stroke="#cc5555" stroke-width="0.5"/>
+  <ellipse cx="24" cy="18" rx="4" ry="2" fill="url(#springGrad)" stroke="#cc5555" stroke-width="0.5"/>
+
+  <!-- Launch cup -->
+  <path d="M16 8 Q16 16 24 16 Q32 16 32 8 L30 8 Q30 14 24 14 Q18 14 18 8 Z" fill="url(#cupGrad)" stroke="#3a7a4a" stroke-width="1"/>
+
+  <!-- Cup rim -->
+  <ellipse cx="24" cy="8" rx="8" ry="3" fill="none" stroke="#3a7a4a" stroke-width="2"/>
+
+  <!-- Inner cup shadow -->
+  <ellipse cx="24" cy="9" rx="6" ry="2" fill="rgba(0,0,0,0.2)"/>
+</svg>

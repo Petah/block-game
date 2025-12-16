@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#555"/>
+      <stop offset="30%" style="stop-color:#888"/>
+      <stop offset="70%" style="stop-color:#888"/>
+      <stop offset="100%" style="stop-color:#555"/>
+    </linearGradient>
+    <linearGradient id="brassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a84a"/>
+      <stop offset="100%" style="stop-color:#8b6914"/>
+    </linearGradient>
+    <radialGradient id="wheelGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6a4a2a"/>
+      <stop offset="100%" style="stop-color:#3d2a15"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Wheels -->
+  <circle cx="12" cy="42" r="5" fill="url(#wheelGrad)" stroke="#2a1a0a" stroke-width="1"/>
+  <circle cx="36" cy="42" r="5" fill="url(#wheelGrad)" stroke="#2a1a0a" stroke-width="1"/>
+  <circle cx="12" cy="42" r="2" fill="#8b6914"/>
+  <circle cx="36" cy="42" r="2" fill="#8b6914"/>
+
+  <!-- Carriage -->
+  <rect x="6" y="34" width="36" height="8" rx="2" fill="url(#wheelGrad)" stroke="#2a1a0a" stroke-width="1"/>
+
+  <!-- Cannon barrel -->
+  <rect x="18" y="8" width="12" height="28" rx="1" fill="url(#metalGrad)" stroke="#333" stroke-width="1"/>
+
+  <!-- Barrel rings -->
+  <rect x="16" y="10" width="16" height="3" rx="1" fill="url(#brassGrad)" stroke="#6b4a0a" stroke-width="0.5"/>
+  <rect x="16" y="18" width="16" height="3" rx="1" fill="url(#brassGrad)" stroke="#6b4a0a" stroke-width="0.5"/>
+  <rect x="16" y="26" width="16" height="3" rx="1" fill="url(#brassGrad)" stroke="#6b4a0a" stroke-width="0.5"/>
+
+  <!-- Barrel opening -->
+  <ellipse cx="24" cy="8" rx="6" ry="2.5" fill="#222"/>
+  <ellipse cx="24" cy="8" rx="4" ry="1.5" fill="#111"/>
+
+  <!-- Highlight -->
+  <rect x="19" y="12" width="2" height="20" fill="rgba(255,255,255,0.15)"/>
+</svg>

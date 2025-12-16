@@ -27,13 +27,14 @@ if (keyboard_check_pressed(ord("F")))
     }
 }
 
-// Press T to toggle between test room and game room
+// Press T to toggle test level (-1)
 if (keyboard_check_pressed(ord("T")))
 {
-    if (room == rm_test)
-        room_goto(rm_game);
+    if (global.selected_level == -1)
+        global.selected_level = 1;
     else
-        room_goto(rm_test);
+        global.selected_level = -1;
+    room_restart();
 }
 
 // Press R to restart current room

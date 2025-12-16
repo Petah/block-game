@@ -7,6 +7,21 @@ function scr_get_level_data(_level) {
     var _data = {};
 
     switch (_level) {
+        case -1:
+            // Test level: showcases all block types and power-ups
+            _data.balls = 10;
+            _data.layout = [
+                [0,  0,  0,  0,  0,  0,  0,  0,  0],
+                [2,  4,  6,  8, 10, 12, 14, 16, 18],
+                [0,  0,  0,  0,  0,  0,  0,  0,  0],
+                [0, "e", 5,  0, "s", 0,  5, "e", 0],
+                [0,  5,  5,  0,  0,  0,  5,  5,  0],
+                [0,  0,  0,  0, "r", 0,  0,  0,  0],
+                [0,  0,  0,  0,  0,  0,  0,  0,  0],
+            ];
+            _data.spawn_powerups = true; // Special flag for test level
+            break;
+
         case 1:
             // Level 1: Simple 3x3, 1 ball - Introduction
             _data.balls = 3;

@@ -70,6 +70,19 @@ self.combo_timeout = 30; // Frames before combo resets
 // Spawn blocks from level data or random generation
 if (_level_data.layout != undefined) {
     scr_spawn_level_blocks(_level_data.layout);
+
+    // Spawn power-ups for test level
+    if (variable_struct_exists(_level_data, "spawn_powerups") && _level_data.spawn_powerups) {
+        var _y = self.grid_start_y + 6 * self.grid_cell_size;
+        var _spacing = self.grid_cell_size;
+        var _start_x = room_width / 2 - _spacing * 1.5;
+
+        for (var i = 0; i < 4; i++) {
+            var _p = instance_create_layer(_start_x + i * _spacing, _y, "Instances", obj_power_up);
+            _p.type = i;
+            _p.image_index = i;
+        }
+    }
 } else {
     // Random generation for levels beyond 9
     scr_spawn_blocks(false);

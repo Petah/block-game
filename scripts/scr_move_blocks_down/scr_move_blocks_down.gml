@@ -12,9 +12,10 @@ function scr_move_blocks_down() {
                 // Steel blocks just get destroyed at the bottom
                 instance_destroy();
             }
-            else
+            else if (!obj_game.game_over)
             {
                 obj_game.game_over = true;
+                instance_create_layer(0, 0, "Instances", obj_game_over);
             }
         }
 

@@ -6,7 +6,7 @@ draw_set_alpha(1);
 
 // Game over panel
 var _panel_w = 300;
-var _panel_h = 200;
+var _panel_h = 240;
 var _panel_x = room_width / 2 - _panel_w / 2;
 var _panel_y = room_height / 2 - _panel_h / 2;
 
@@ -27,10 +27,13 @@ scr_draw_text(_cx, _panel_y + 90, "Level reached: " + string(obj_game.level), {
 scr_draw_text(_cx, _panel_y + 120, "Score: " + string(obj_game.score), {
     font: fnt_md, color: c_white, halign: fa_center
 });
-scr_draw_text(_cx, _panel_y + 150, "Press R to restart", {
+scr_draw_text(_cx, _panel_y + 150, "High Score: " + string(scr_get_high_score()), {
+    font: fnt_md, color: make_color_rgb(251, 191, 36), halign: fa_center
+});
+scr_draw_text(_cx, _panel_y + 185, "Press R to restart", {
     font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center
 });
-scr_draw_text(_cx, _panel_y + 175, "Press M for Level Select", {
+scr_draw_text(_cx, _panel_y + 210, "Press M for Level Select", {
     font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center
 });
 

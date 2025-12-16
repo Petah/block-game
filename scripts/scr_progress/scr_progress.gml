@@ -1,13 +1,59 @@
-// Global progress tracking
+// Global progress tracking with persistence
 // Call scr_init_progress() at game start
 
 function scr_init_progress() {
     // Initialize if not already done
-    if (!variable_global_exists("levels_unlocked")) {
-        global.levels_unlocked = 1; // Start with level 1 unlocked
-        global.level_stars = array_create(10, 0); // Stars for each level (0-3)
-        global.selected_level = 1; // Which level to play
+    if (!variable_global_exists("progress_initialized")) {
+        global.progress_initialized = true;
+        global.levels_unlocked = 1;
+        global.level_stars = array_create(100, 0); // Stars for each level (0-3)
+        global.selected_level = 1;
+        global.high_score = 0;
+
+        // Load saved progress
+        scr_load_progress();
     }
+}
+
+function scr_save_progress() {
+    ini_open("save.ini");
+
+    // Save basic progress
+    ini_write_real("progress", "levels_unlocked", global.levels_unlocked);
+    ini_write_real("progress", "high_score", global.high_score);
+
+    // Save stars as comma-separated string
+    var _stars_str = "";
+    for (var i = 0; i < array_length(global.level_stars); i++) {
+        _stars_str += string(global.level_stars[i]);
+        if (i < array_length(global.level_stars) - 1) _stars_str += ",";
+    }
+    ini_write_string("progress", "level_stars", _stars_str);
+
+    ini_close();
+}
+
+function scr_load_progress() {
+    if (!file_exists("save.ini")) return;
+
+    ini_open("save.ini");
+
+    // Load basic progress
+    global.levels_unlocked = ini_read_real("progress", "levels_unlocked", 1);
+    global.high_score = ini_read_real("progress", "high_score", 0);
+
+    // Load stars from comma-separated string
+    var _stars_str = ini_read_string("progress", "level_stars", "");
+    if (_stars_str != "") {
+        var _stars_arr = string_split(_stars_str, ",");
+        for (var i = 0; i < array_length(_stars_arr); i++) {
+            if (i < array_length(global.level_stars)) {
+                global.level_stars[i] = real(_stars_arr[i]);
+            }
+        }
+    }
+
+    ini_close();
 }
 
 function scr_get_level_stars(_level) {
@@ -22,6 +68,7 @@ function scr_set_level_stars(_level, _stars) {
     // Only update if better than previous
     if (_stars > global.level_stars[_level - 1]) {
         global.level_stars[_level - 1] = _stars;
+        scr_save_progress();
     }
 }
 
@@ -34,7 +81,21 @@ function scr_unlock_level(_level) {
     scr_init_progress();
     if (_level > global.levels_unlocked) {
         global.levels_unlocked = _level;
+        scr_save_progress();
     }
+}
+
+function scr_update_high_score(_score) {
+    scr_init_progress();
+    if (_score > global.high_score) {
+        global.high_score = _score;
+        scr_save_progress();
+    }
+}
+
+function scr_get_high_score() {
+    scr_init_progress();
+    return global.high_score;
 }
 
 function scr_complete_level(_level, _turns) {
@@ -71,4 +132,11 @@ function scr_complete_level(_level, _turns) {
     scr_unlock_level(_level + 1);
 
     return _stars;
+}
+
+function scr_reset_progress() {
+    global.levels_unlocked = 1;
+    global.level_stars = array_create(100, 0);
+    global.high_score = 0;
+    scr_save_progress();
 }

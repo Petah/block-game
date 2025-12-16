@@ -68,7 +68,7 @@ function scr_spawn_block(_x, _y, _type) {
     with (_block) {
         // Create new fixture matching the scaled size
         var _fix = physics_fixture_create();
-        var _half_size = obj_game.grid_cell_size / 2;
+        var _half_size = obj_game.grid_cell_size / 2 - 2;
         physics_fixture_set_box_shape(_fix, _half_size, _half_size);
         physics_fixture_set_restitution(_fix, 1.0);
         physics_fixture_set_friction(_fix, 0.0);

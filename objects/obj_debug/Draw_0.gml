@@ -103,6 +103,10 @@ draw_text(room_width - 10, 120, "Speed: " + string(self.speed_multiplier) + "x [
 draw_text(room_width - 10, 140, "Test Room [T]");
 draw_text(room_width - 10, 160, "Restart [R]");
 
+// Debug phsyics
+var _flag = phy_debug_render_aabb | phy_debug_render_collision_pairs | phy_debug_render_coms | phy_debug_render_core_shapes | phy_debug_render_joints | phy_debug_render_obb | phy_debug_render_shapes;
+physics_world_draw_debug(_flag);
+
 // Reset
 draw_set_halign(fa_left);
 draw_set_color(c_white);

@@ -8,3 +8,4 @@ if (self.block_type != "steel") {
         valign: fa_middle
     });
 }
+    

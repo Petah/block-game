@@ -19,7 +19,7 @@ function scr_get_level_data(_level) {
 
         case 2:
             // Level 2: 4x3, 1 ball - Slightly larger
-            _data.balls = 1;
+            _data.balls = 3;
             _data.layout = [
                 [1, 1, 1, 1],
                 [1, 2, 2, 1],
@@ -29,7 +29,7 @@ function scr_get_level_data(_level) {
 
         case 3:
             // Level 3: 5x4, 2 balls - Getting bigger
-            _data.balls = 2;
+            _data.balls = 3;
             _data.layout = [
                 [1, 1, 1, 1, 1],
                 [1, 2, 2, 2, 1],
@@ -40,7 +40,7 @@ function scr_get_level_data(_level) {
 
         case 4:
             // Level 4: 6x4, 2 balls - Diamond pattern
-            _data.balls = 2;
+            _data.balls = 3;
             _data.layout = [
                 [0, 0, 2, 2, 0, 0],
                 [0, 2, 3, 3, 2, 0],

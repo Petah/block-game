@@ -79,20 +79,7 @@ if (self.state == "aiming")
 if (self.state == "firing" || self.state == "waiting")
 {
     var _remaining = self.balls_to_return - self.balls_returned;
-
-    // Rounded pill background
-    var _pill_w = 140;
-    var _pill_h = 30;
-    var _pill_x = 20;
-    var _pill_y = room_height - 50;
-
-    draw_set_color(make_color_rgb(55, 65, 81)); // #374151
-    draw_set_alpha(0.8);
-    draw_roundrect(_pill_x, _pill_y, _pill_x + _pill_w, _pill_y + _pill_h, false);
-    draw_set_alpha(1);
-
-    // Text
-    scr_draw_text(_pill_x + _pill_w / 2, _pill_y + 8, "Balls in play: " + string(_remaining), {
-        font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center
+    scr_draw_pill(20, room_height - 50, "Balls in play: " + string(_remaining), {
+        color: make_color_rgb(156, 163, 175)
     });
 }

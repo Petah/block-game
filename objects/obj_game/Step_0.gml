@@ -36,7 +36,6 @@ switch (self.state)
         if (self.fire_delay <= 0 && self.balls_fired < self.balls_to_return)
         {
             // Create a ball and set its direction
-            show_debug_message("Firing ball " + string(self.balls_fired + 1) + " of " + string(self.balls_to_return));
             var _ball = instance_create_layer(self.launch_x, self.launch_y, "instances", obj_ball);
 
             // Apply debug speed multiplier if exists
@@ -47,8 +46,12 @@ switch (self.state)
                 _ball.ball_speed = _speed;
             }
 
-            _ball.hspeed = lengthdir_x(_speed, self.aim_angle);
-            _ball.vspeed = lengthdir_y(_speed, self.aim_angle);
+            // Apply physics impulse in the aim direction
+            var _impulse_x = lengthdir_x(_speed, self.aim_angle);
+            var _impulse_y = lengthdir_y(_speed, self.aim_angle);
+            with (_ball) {
+                physics_apply_impulse(_ball.x, _ball.y, _impulse_x, _impulse_y);
+            }
 
             self.balls_fired++;
             self.fire_delay = self.fire_interval;

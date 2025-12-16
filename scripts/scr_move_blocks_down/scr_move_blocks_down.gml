@@ -2,10 +2,11 @@ function scr_move_blocks_down() {
     // Move all blocks down one row
     with (obj_block)
     {
-        y += obj_game.grid_cell_size;
+        // Use phy_position_y for physics objects
+        phy_position_y += obj_game.grid_cell_size;
 
         // Check if any block reached the bottom (steel blocks don't cause game over)
-        if (y >= obj_game.grid_bottom_y)
+        if (phy_position_y >= obj_game.grid_bottom_y)
         {
             if (self.block_type == "steel")
             {

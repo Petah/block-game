@@ -137,12 +137,13 @@ if (self.game_over)
     draw_text(room_width / 2, _panel_y + 120, "Score: " + string(self.score));
 
     draw_set_color(make_color_rgb(156, 163, 175));
-    draw_text(room_width / 2, _panel_y + 160, "Press R to restart");
+    draw_text(room_width / 2, _panel_y + 150, "Press R to restart");
+    draw_text(room_width / 2, _panel_y + 175, "Press M for Level Select");
 }
 
 
-// === WIN OVERLAY ===
-if (self.game_won)
+// === LEVEL COMPLETE OVERLAY ===
+if (self.level_complete)
 {
     // Darken background
     draw_set_color(c_black);
@@ -150,9 +151,9 @@ if (self.game_won)
     draw_rectangle(0, 0, room_width, room_height, false);
     draw_set_alpha(1);
 
-    // Win panel
-    var _panel_w = 300;
-    var _panel_h = 200;
+    // Level complete panel
+    var _panel_w = 400;
+    var _panel_h = 350;
     var _panel_x = room_width / 2 - _panel_w / 2;
     var _panel_y = room_height / 2 - _panel_h / 2;
 
@@ -162,16 +163,40 @@ if (self.game_won)
     draw_set_color(make_color_rgb(34, 197, 94)); // Green border #22c55e
     draw_roundrect(_panel_x, _panel_y, _panel_x + _panel_w, _panel_y + _panel_h, true);
 
-    // Text
+    // Title
     draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
     draw_set_color(make_color_rgb(34, 197, 94));
-    draw_text(room_width / 2, _panel_y + 40, "YOU WIN!");
+    draw_text_transformed(room_width / 2, _panel_y + 50, "LEVEL COMPLETE!", 1.5, 1.5, 0);
 
+    // Level number
     draw_set_color(c_white);
-    draw_text(room_width / 2, _panel_y + 90, "Final Score: " + string(self.score));
+    draw_text(room_width / 2, _panel_y + 100, "Level " + string(self.level));
 
+    // Draw stars using sprites
+    var _star_y = _panel_y + 160;
+    var _star_spacing = 70;
+    var _star_start = room_width / 2 - _star_spacing;
+    var _star_scale = 0.5;
+
+    for (var i = 0; i < 3; i++)
+    {
+        var _star_x = _star_start + i * _star_spacing;
+        var _star_spr = (i < self.stars_earned) ? spr_star_filled : spr_star_empty;
+        draw_sprite_ext(_star_spr, 0, _star_x, _star_y, _star_scale, _star_scale, 0, c_white, 1);
+    }
+
+    // Stats
     draw_set_color(make_color_rgb(156, 163, 175));
-    draw_text(room_width / 2, _panel_y + 160, "Press R to restart");
+    draw_text(room_width / 2, _panel_y + 220, "Turns: " + string(self.turns) + "  |  Score: " + string(self.score));
+
+    // Instructions
+    draw_set_color(c_white);
+    draw_text(room_width / 2, _panel_y + 280, "Click: Next Level");
+    draw_set_color(make_color_rgb(156, 163, 175));
+    draw_text(room_width / 2, _panel_y + 310, "Press M for Level Select");
+
+    draw_set_valign(fa_top);
 }
 
 

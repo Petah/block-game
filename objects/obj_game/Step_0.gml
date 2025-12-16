@@ -1,11 +1,35 @@
-// Restart game on R key when game is over or won
-if ((self.game_over || self.game_won) && keyboard_check_pressed(ord("R")))
+// Game over input handling
+if (self.game_over)
 {
-    room_restart();
+    if (keyboard_check_pressed(ord("R")))
+    {
+        room_restart();
+    }
+    if (keyboard_check_pressed(ord("M")))
+    {
+        room_goto(rm_main_menu);
+    }
+}
+
+// Level complete input handling
+if (self.level_complete)
+{
+    // Click to go to next level
+    if (mouse_check_button_pressed(mb_left))
+    {
+        global.selected_level = self.level + 1;
+        room_restart();
+    }
+    // M to go to level select
+    if (keyboard_check_pressed(ord("M")))
+    {
+        room_goto(rm_main_menu);
+    }
+    exit;
 }
 
 // Don't process if game ended
-if (self.game_over || self.game_won) exit;
+if (self.game_over) exit;
 
 // State machine for game flow
 switch (self.state)
@@ -30,6 +54,7 @@ switch (self.state)
             self.balls_fired = 0;
             self.balls_returned = 0;
             self.fire_delay = 0;
+            self.turns++; // Count turns for star rating
             // Lock in the number of balls to wait for (won't change mid-turn)
             self.balls_to_return = self.num_balls + self.bonus_balls;
         }
@@ -71,19 +96,45 @@ switch (self.state)
         // balls_to_return is locked at start, bonus_balls only increases from splits (which create balls)
         if (self.balls_returned >= self.balls_to_return + self.bonus_balls)
         {
-            // All balls returned - advance to next turn
-            self.level++;
-
-            scr_move_blocks_down();
-
-            // Spawn new row at top (if not game over)
-            if (!self.game_over)
-            {
-                scr_spawn_blocks();
+            // Check if level is complete (no non-steel blocks remaining)
+            var _non_steel_count = 0;
+            with (obj_block) {
+                if (block_type != "steel") _non_steel_count++;
             }
 
-            // Increase ball count for next turn
-            self.num_balls++;
+            if (_non_steel_count == 0)
+            {
+                // Level complete!
+                self.level_complete = true;
+
+                // Clear any remaining steel blocks
+                with (obj_block) { instance_destroy(); }
+
+                // Calculate and save stars
+                self.stars_earned = scr_complete_level(self.level, self.turns);
+            }
+            else
+            {
+                // Move blocks down every turn
+                scr_move_blocks_down();
+
+                // Get current level data to check if designed or random
+                var _level_data = scr_get_level_data(self.level);
+
+                if (_level_data.layout == undefined)
+                {
+                    // Random level - spawn new rows and increase balls
+                    self.level++;
+
+                    if (!self.game_over)
+                    {
+                        scr_spawn_blocks();
+                    }
+
+                    self.num_balls++;
+                }
+                // For designed levels, don't spawn new rows or increase balls
+            }
 
             // Reset bonus balls for next turn
             self.bonus_balls = 0;

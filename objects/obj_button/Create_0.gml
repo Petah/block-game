@@ -7,6 +7,11 @@ self.height = 50;
 self.hovered = false;
 self.pressed = false;
 
+// Level button properties
+self.locked = false;
+self.stars = 0;
+self.level_num = 0;
+
 // Callback (set by creator)
 self.on_click = undefined;
 

@@ -8,17 +8,18 @@
   - [x] Larger ball (bigger collision radius)
   - [x] Fireball (passes through blocks without bouncing)
   - [x] Split ball (ball splits into 2 on first bounce)
-- [ ] Special block types
-  - [ ] Explosive blocks (destroy adjacent blocks)
-  - [ ] Steel blocks (indestructible, must clear around them)
-  - [ ] Rainbow blocks (change color/health each turn)
+    - [ ] Fix issue with not splitting correctly
+- [x] Special block types
+  - [x] Explosive blocks (destroy adjacent blocks)
+  - [x] Steel blocks (indestructible, must clear around them)
+  - [x] Rainbow blocks (change color/health each turn)
 - [x] Ball collection point moves to where first ball lands
 - [ ] Combo system for hitting multiple blocks with one ball
-- [x] Ball auto-death timer (8 seconds without hitting blocks)
+- [x] Ball auto-death timer (12 seconds without hitting blocks)
 
 ## Visual Polish
 
-- [ ] Block color based on health (green -> yellow -> orange -> red)
+- [x] Block color based on health (blue -> green -> yellow -> orange -> red -> purple -> pink)
 - [ ] Block damage/crack sprites as health decreases
 - [x] Particle effects on block destruction
 - [x] Screen shake on big combos

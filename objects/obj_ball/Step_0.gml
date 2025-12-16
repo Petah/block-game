@@ -212,17 +212,7 @@ if (_steps > 0)
                     part_particles_create(obj_particles.part_sys, _block.x, _block.y, _destroy_part, _destroy_count);
 
                     instance_destroy(_block);
-
-                    // Check if only steel blocks remain (win condition)
-                    var _non_steel_count = 0;
-                    with (obj_block)
-                    {
-                        if (block_type != "steel") _non_steel_count++;
-                    }
-                    if (_non_steel_count == 0)
-                    {
-                        obj_game.game_won = true;
-                    }
+                    // Level completion is checked in obj_game when all balls return
                 }
             }
 

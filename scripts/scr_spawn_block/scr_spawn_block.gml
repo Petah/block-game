@@ -6,7 +6,7 @@
 /// @returns {Id.Instance} The created block instance
 
 function scr_spawn_block(_x, _y, _type) {
-    var _block = instance_create_layer(_x, _y, "Instances", obj_block);
+    var _block = instance_create_layer(_x, _y, "instances", obj_block);
 
     // Don't animate - frame is set based on type/health
     _block.image_speed = 0;

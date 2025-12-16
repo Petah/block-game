@@ -66,7 +66,7 @@ if (_steps > 0)
             self.will_split = false;
 
             // Create new ball
-            var _new_ball = instance_create_layer(x, y, "Instances", obj_ball);
+            var _new_ball = instance_create_layer(x, y, "instances", obj_ball);
             _new_ball.ball_speed = self.ball_speed;
             _new_ball.vspeed = _vsp;
             _new_ball.is_bonus = true;
@@ -142,9 +142,6 @@ if (_steps > 0)
                 x += _step_x;
                 y += _step_y;
             }
-
-            // Reset idle timer on block hit
-            self.idle_timer = 0;
 
             // Steel blocks are indestructible
             if (_block.block_type == "steel")
@@ -243,22 +240,6 @@ if (_move_speed > 0)
     part_particles_create(obj_particles.part_sys, x, y, _trail_part, _trail_count);
 }
 
-// Increment idle timer and check for timeout
-self.idle_timer++;
-if (self.idle_timer >= self.idle_timeout)
-{
-    // Ball has been bouncing without hitting blocks for too long
-    // First ball to return sets the new launch position
-    if (obj_game.balls_returned == 0)
-    {
-        obj_game.launch_x = x;
-    }
-
-    obj_game.balls_returned++;
-    instance_destroy();
-    exit;
-}
-
 // Destroy ball when it goes off bottom
 if (y > room_height + _ball_h)
 {
@@ -268,6 +249,7 @@ if (y > room_height + _ball_h)
         obj_game.launch_x = x;
     }
 
+    show_debug_message("Ball returned. Total returned: {0} " + string(obj_game.balls_returned + 1), self.id);
     obj_game.balls_returned++;
     instance_destroy();
     exit;

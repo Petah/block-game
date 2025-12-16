@@ -25,7 +25,7 @@ for (var row = 0; row < _grid_rows; row++) {
         var _bx = _start_x + col * (_btn_size + _btn_gap);
         var _by = _start_y + row * (_btn_size + _btn_gap);
 
-        var _btn = instance_create_layer(_bx, _by, "Instances", obj_button);
+        var _btn = instance_create_layer(_bx, _by, "instances", obj_button);
         _btn.width = _btn_size;
         _btn.height = _btn_size;
         _btn.level_num = _level;

@@ -32,7 +32,7 @@ function scr_spawn_blocks_row(_spawn_powerups = true) {
                 }
             }
         } else if (_spawn_powerups && random(100) < 20) { // 20% chance for power-up in empty cell
-            var _powerup = instance_create_layer(_x, obj_game.grid_start_y, "Instances", obj_power_up);
+            var _powerup = instance_create_layer(_x, obj_game.grid_start_y, "instances", obj_power_up);
             _powerup.type = irandom(3);
             _powerup.image_index = _powerup.type;
         }

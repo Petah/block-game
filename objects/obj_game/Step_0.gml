@@ -25,8 +25,7 @@ switch (self.state)
             self.balls_returned = 0;
             self.fire_delay = 0;
             self.turns++; // Count turns for star rating
-            // Lock in the number of balls to wait for (won't change mid-turn)
-            self.balls_to_return = self.num_balls + self.bonus_balls;
+            self.balls_to_return = self.num_balls;
         }
         break;
 
@@ -37,7 +36,8 @@ switch (self.state)
         if (self.fire_delay <= 0 && self.balls_fired < self.balls_to_return)
         {
             // Create a ball and set its direction
-            var _ball = instance_create_layer(self.launch_x, self.launch_y, "Instances", obj_ball);
+            show_debug_message("Firing ball " + string(self.balls_fired + 1) + " of " + string(self.balls_to_return));
+            var _ball = instance_create_layer(self.launch_x, self.launch_y, "instances", obj_ball);
 
             // Apply debug speed multiplier if exists
             var _speed = _ball.ball_speed;
@@ -64,7 +64,7 @@ switch (self.state)
     case "waiting":
         // Wait for all balls to return
         // balls_to_return is locked at start, bonus_balls only increases from splits (which create balls)
-        if (self.balls_returned >= self.balls_to_return + self.bonus_balls)
+        if (instance_number(obj_ball) == 0)
         {
             // Check if level is complete (no non-steel blocks remaining)
             var _non_steel_count = 0;
@@ -84,7 +84,7 @@ switch (self.state)
                 self.stars_earned = scr_complete_level(self.level, self.turns);
 
                 // Show level complete overlay
-                instance_create_layer(0, 0, "Instances", obj_level_complete);
+                instance_create_layer(0, 0, "instances", obj_level_complete);
             }
             else
             {

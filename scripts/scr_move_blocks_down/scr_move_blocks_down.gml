@@ -15,7 +15,7 @@ function scr_move_blocks_down() {
             else if (!obj_game.game_over)
             {
                 obj_game.game_over = true;
-                instance_create_layer(0, 0, "Instances", obj_game_over);
+                instance_create_layer(0, 0, "ui", obj_game_over);
             }
         }
 

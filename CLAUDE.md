@@ -47,7 +47,7 @@ GameMaker Studio projects are typically built and run through the GameMaker IDE.
 Sprite assets are created as SVGs in the `svg/` folder and rendered to PNG using resvg:
 
 ```bash
-/c/work/commands/resvg.exe "/c/Users/petah/GameMakerProjects/Block Game/svg/example.svg" "/c/Users/petah/GameMakerProjects/Block Game/svg/example.png"
+/c/work/commands/resvg.exe "/c/Users/petah/GameMakerProjects/Block Game/svg/example.svg" "/c/Users/petah/GameMakerProjects/Block Game/svg/rendered/example.png"
 ```
 
 SVG files use gradients and highlights for a polished look. See `svg/ball.svg` and `svg/block.svg` for examples.

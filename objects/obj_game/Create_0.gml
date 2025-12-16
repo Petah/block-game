@@ -2,7 +2,7 @@
 depth = 1000;
 
 // Spawn debug overlay
-instance_create_layer(0, 0, "Instances", obj_debug);
+instance_create_layer(0, 0, "ui", obj_debug);
 
 // Initialize progress and get selected level
 scr_init_progress();
@@ -34,7 +34,7 @@ self.launch_x = room_width / 2; // Where balls launch from
 self.launch_y = room_height - 50; // Y position for launching
 
 // Spawn shooter
-instance_create_layer(self.launch_x, self.launch_y, "Instances", obj_shooter);
+instance_create_layer(self.launch_x, self.launch_y, "instances", obj_shooter);
 
 // Game state
 self.state = "aiming";         // "aiming", "firing", "waiting"
@@ -54,13 +54,23 @@ if (_level_data.layout != undefined) {
 self.grid_cell_size = room_width / self.grid_cols;
 self.grid_start_x = self.grid_cell_size / 2; // First column center
 self.grid_start_y = self.header_height + self.grid_cell_size / 2; // Below header bar
-self.grid_bottom_y = room_height - 150; // Game over line
+
+// Calculate grid_bottom_y aligned to grid (leave room for shooter at bottom)
+var _min_bottom_margin = 140; // Minimum space for shooter area
+var _available_height = room_height - self.header_height - _min_bottom_margin;
+var _num_rows = floor(_available_height / self.grid_cell_size);
+self.grid_bottom_y = self.header_height + (_num_rows * self.grid_cell_size); // Aligned to grid
+
+// Spawn danger zone
+instance_create_layer(0, 0, "bg_instances", obj_danger_zone);
+obj_danger_zone.x = room_width / 2;
+obj_danger_zone.y = self.grid_bottom_y;
 
 // Spawn particle system manager
-instance_create_layer(0, 0, "Instances", obj_particles);
+instance_create_layer(0, 0, "bg_instances", obj_particles);
 
 // Spawn screen shake manager
-instance_create_layer(0, 0, "Instances", obj_screen_shake);
+instance_create_layer(0, 0, "bg_instances", obj_screen_shake);
 
 // Combo system
 self.combo = 0;
@@ -78,7 +88,7 @@ if (_level_data.layout != undefined) {
         var _start_x = room_width / 2 - _spacing * 1.5;
 
         for (var i = 0; i < 4; i++) {
-            var _p = instance_create_layer(_start_x + i * _spacing, _y, "Instances", obj_power_up);
+            var _p = instance_create_layer(_start_x + i * _spacing, _y, "instances", obj_power_up);
             _p.type = i;
             _p.image_index = i;
         }

@@ -46,26 +46,6 @@ scr_draw_text(room_width - 30, 48, "x" + string(self.num_balls), {
 });
 
 
-// === DANGER ZONE ===
-var _danger_y = self.grid_bottom_y;
-
-// Red danger line
-draw_set_color(make_color_rgb(239, 68, 68)); // #ef4444
-draw_set_alpha(0.8);
-draw_line_width(0, _danger_y, room_width, _danger_y, 4);
-
-// Faded danger area
-draw_set_alpha(0.1);
-draw_rectangle(0, _danger_y + 4, room_width, _danger_y + 44, false);
-
-// Danger zone text
-scr_draw_text(room_width / 2, _danger_y + 18, "DANGER ZONE", {
-    font: fnt_sm, color: make_color_rgb(239, 68, 68), halign: fa_center, alpha: 0.8
-});
-
-draw_set_alpha(1);
-
-
 // === AIMING STATE ===
 if (self.state == "aiming")
 {
@@ -78,7 +58,7 @@ if (self.state == "aiming")
 // === FIRING/WAITING STATE - BOTTOM UI ===
 if (self.state == "firing" || self.state == "waiting")
 {
-    var _remaining = self.balls_to_return - self.balls_returned;
+    var _remaining = instance_number(obj_ball);
     scr_draw_pill(20, room_height - 50, "Balls in play: " + string(_remaining), {
         color: make_color_rgb(156, 163, 175)
     });

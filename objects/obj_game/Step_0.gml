@@ -1,35 +1,5 @@
-// Game over input handling
-if (self.game_over)
-{
-    if (keyboard_check_pressed(ord("R")))
-    {
-        room_restart();
-    }
-    if (keyboard_check_pressed(ord("M")))
-    {
-        room_goto(rm_main_menu);
-    }
-}
-
-// Level complete input handling
-if (self.level_complete)
-{
-    // Click to go to next level
-    if (mouse_check_button_pressed(mb_left))
-    {
-        global.selected_level = self.level + 1;
-        room_restart();
-    }
-    // M to go to level select
-    if (keyboard_check_pressed(ord("M")))
-    {
-        room_goto(rm_main_menu);
-    }
-    exit;
-}
-
-// Don't process if game ended
-if (self.game_over) exit;
+// Don't process if game ended or level complete
+if (self.level_complete || self.game_over) exit;
 
 // State machine for game flow
 switch (self.state)
@@ -112,6 +82,9 @@ switch (self.state)
 
                 // Calculate and save stars
                 self.stars_earned = scr_complete_level(self.level, self.turns);
+
+                // Show level complete overlay
+                instance_create_layer(0, 0, "Instances", obj_level_complete);
             }
             else
             {

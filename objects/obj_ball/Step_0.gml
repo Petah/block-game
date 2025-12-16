@@ -60,16 +60,16 @@ if (_steps > 0)
         }
 
 
-        // Handle split power-up
-        if (self.will_split)
+        // Handle split power-up (bonus balls can't split)
+        if (self.will_split && !self.is_bonus)
         {
             self.will_split = false;
 
-            // Get absolute horizontal speed
             // Create new ball
             var _new_ball = instance_create_layer(x, y, "Instances", obj_ball);
             _new_ball.ball_speed = self.ball_speed;
             _new_ball.vspeed = _vsp;
+            _new_ball.is_bonus = true;
 
             // One ball goes left, one goes right
             _new_ball.hspeed = _hsp * -1; // New ball goes left

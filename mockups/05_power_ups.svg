@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 900">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f23"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+
+    <!-- Card gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e32"/>
+      <stop offset="100%" style="stop-color:#16162a"/>
+    </linearGradient>
+
+    <!-- Power-up gradients -->
+    <linearGradient id="powerBall" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="powerFire" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <linearGradient id="powerSplit" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="powerBig" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+
+    <!-- Ball gradient -->
+    <radialGradient id="ballGrad" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#ff8a8a"/>
+      <stop offset="100%" style="stop-color:#ff6b6b"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="900" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="360" y="60" font-family="Arial, sans-serif" font-size="36" font-weight="bold"
+        fill="white" text-anchor="middle">POWER-UPS</text>
+  <text x="360" y="90" font-family="Arial, sans-serif" font-size="16"
+        fill="#9ca3af" text-anchor="middle">Collect these to gain advantages!</text>
+
+  <!-- Extra Ball -->
+  <g transform="translate(40, 130)">
+    <rect width="640" height="160" rx="16" fill="url(#cardGrad)" stroke="#22c55e" stroke-width="2"/>
+
+    <!-- Icon -->
+    <circle cx="90" cy="80" r="45" fill="url(#powerBall)" stroke="#16a34a" stroke-width="3"/>
+    <text x="90" y="92" font-family="Arial, sans-serif" font-size="32" font-weight="bold"
+          fill="white" text-anchor="middle">+1</text>
+
+    <!-- Text -->
+    <text x="180" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">Extra Ball</text>
+    <text x="180" y="85" font-family="Arial, sans-serif" font-size="16" fill="#9ca3af">Adds one ball to your collection permanently.</text>
+    <text x="180" y="115" font-family="Arial, sans-serif" font-size="16" fill="#9ca3af">More balls = more damage per turn!</text>
+
+    <!-- Visual example -->
+    <g transform="translate(500, 50)">
+      <circle cx="20" cy="30" r="12" fill="url(#ballGrad)" opacity="0.5"/>
+      <circle cx="50" cy="30" r="12" fill="url(#ballGrad)" opacity="0.5"/>
+      <circle cx="80" cy="30" r="12" fill="url(#ballGrad)"/>
+      <text x="110" y="35" font-family="Arial, sans-serif" font-size="20" fill="#22c55e">NEW!</text>
+    </g>
+  </g>
+
+  <!-- Fireball -->
+  <g transform="translate(40, 310)">
+    <rect width="640" height="160" rx="16" fill="url(#cardGrad)" stroke="#f97316" stroke-width="2"/>
+
+    <!-- Icon -->
+    <circle cx="90" cy="80" r="45" fill="url(#powerFire)" stroke="#ea580c" stroke-width="3"/>
+    <text x="90" y="92" font-family="Arial, sans-serif" font-size="36" text-anchor="middle">🔥</text>
+
+    <!-- Text -->
+    <text x="180" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">Fireball</text>
+    <text x="180" y="85" font-family="Arial, sans-serif" font-size="16" fill="#9ca3af">Next ball deals 3x damage and pierces through blocks!</text>
+    <text x="180" y="115" font-family="Arial, sans-serif" font-size="16" fill="#9ca3af">Great for clearing tough rows quickly.</text>
+
+    <!-- Visual example -->
+    <g transform="translate(480, 45)">
+      <circle cx="30" cy="35" r="14" fill="#ff6b6b"/>
+      <circle cx="30" cy="35" r="20" fill="none" stroke="#f97316" stroke-width="3" opacity="0.7"/>
+      <text x="60" y="30" font-family="Arial, sans-serif" font-size="14" fill="#f97316">3x DMG</text>
+      <text x="60" y="50" font-family="Arial, sans-serif" font-size="14" fill="#f97316">PIERCE</text>
+    </g>
+  </g>
+
+  <!-- Split Ball -->
+  <g transform="translate(40, 490)">
+    <rect width="640" height="160" rx="16" fill="url(#cardGrad)" stroke="#3b82f6" stroke-width="2"/>
+
+    <!-- Icon -->
+    <circle cx="90" cy="80" r="45" fill="url(#powerSplit)" stroke="#2563eb" stroke-width="3"/>
+    <text x="90" y="92" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">⚡</text>
+
+    <!-- Text -->
+    <text x="180" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">Split Ball</text>
+    <text x="180" y="85" font-family="Arial, sans-serif" font-size="16" fill="#9ca3af">Ball splits into 2 balls on first block hit!</text>
+    <text x="180" y="115" font-family="Arial, sans-serif" font-size="16" fill="#9ca3af">Double the coverage, double the fun.</text>
+
+    <!-- Visual example -->
+    <g transform="translate(480, 40)">
+      <circle cx="30" cy="30" r="12" fill="url(#ballGrad)"/>
+      <line x1="50" y1="30" x2="80" y2="30" stroke="white" stroke-width="2" stroke-dasharray="4,4"/>
+      <circle cx="100" cy="15" r="10" fill="url(#ballGrad)"/>
+      <circle cx="100" cy="45" r="10" fill="url(#ballGrad)"/>
+    </g>
+  </g>
+
+  <!-- Big Ball -->
+  <g transform="translate(40, 670)">
+    <rect width="640" height="160" rx="16" fill="url(#cardGrad)" stroke="#a855f7" stroke-width="2"/>
+
+    <!-- Icon -->
+    <circle cx="90" cy="80" r="45" fill="url(#powerBig)" stroke="#7c3aed" stroke-width="3"/>
+    <text x="90" y="92" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">⬤</text>
+
+    <!-- Text -->
+    <text x="180" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">Big Ball</text>
+    <text x="180" y="85" font-family="Arial, sans-serif" font-size="16" fill="#9ca3af">Next ball is 2x larger with 2x damage!</text>
+    <text x="180" y="115" font-family="Arial, sans-serif" font-size="16" fill="#9ca3af">Hits more blocks with each bounce.</text>
+
+    <!-- Visual example -->
+    <g transform="translate(490, 35)">
+      <circle cx="20" cy="35" r="10" fill="url(#ballGrad)" opacity="0.5"/>
+      <line x1="40" y1="35" x2="60" y2="35" stroke="white" stroke-width="2" stroke-dasharray="4,4"/>
+      <circle cx="90" cy="35" r="22" fill="url(#ballGrad)"/>
+      <text x="90" y="42" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">2x</text>
+    </g>
+  </g>
+</svg>

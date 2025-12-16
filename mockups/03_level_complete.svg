@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1280">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f23"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+
+    <!-- Panel gradient -->
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e32"/>
+      <stop offset="100%" style="stop-color:#16162a"/>
+    </linearGradient>
+
+    <!-- Star gradient -->
+    <linearGradient id="starGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700"/>
+      <stop offset="100%" style="stop-color:#ffaa00"/>
+    </linearGradient>
+
+    <!-- Empty star gradient -->
+    <linearGradient id="starEmptyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a4a5a"/>
+      <stop offset="100%" style="stop-color:#3a3a4a"/>
+    </linearGradient>
+
+    <!-- Button gradient -->
+    <linearGradient id="btnPrimaryGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+
+    <linearGradient id="btnSecondaryGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3d3d6b"/>
+      <stop offset="100%" style="stop-color:#2a2a4a"/>
+    </linearGradient>
+
+    <!-- Glow effect -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Star glow -->
+    <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background (darkened gameplay) -->
+  <rect width="720" height="1280" fill="url(#bgGrad)"/>
+  <rect width="720" height="1280" fill="black" opacity="0.7"/>
+
+  <!-- Confetti particles -->
+  <rect x="100" y="150" width="8" height="8" fill="#22c55e" transform="rotate(45 104 154)"/>
+  <rect x="200" y="200" width="6" height="6" fill="#fbbf24" transform="rotate(30 203 203)"/>
+  <rect x="500" y="180" width="8" height="8" fill="#3b82f6" transform="rotate(60 504 184)"/>
+  <rect x="600" y="220" width="6" height="6" fill="#ef4444" transform="rotate(15 603 223)"/>
+  <rect x="150" y="300" width="6" height="6" fill="#a855f7" transform="rotate(45 153 303)"/>
+  <rect x="550" y="280" width="8" height="8" fill="#22c55e" transform="rotate(30 554 284)"/>
+  <rect x="80" y="250" width="6" height="6" fill="#fbbf24" transform="rotate(60 83 253)"/>
+  <rect x="650" y="300" width="6" height="6" fill="#3b82f6" transform="rotate(15 653 303)"/>
+
+  <!-- Main panel -->
+  <rect x="110" y="280" width="500" height="520" rx="24" fill="url(#panelGrad)" stroke="#22c55e" stroke-width="3"/>
+
+  <!-- Success header glow -->
+  <ellipse cx="360" cy="340" rx="150" ry="40" fill="#22c55e" opacity="0.1" filter="url(#glow)"/>
+
+  <!-- Title -->
+  <text x="360" y="360" font-family="Arial, sans-serif" font-size="42" font-weight="bold"
+        fill="#22c55e" text-anchor="middle" filter="url(#glow)">LEVEL COMPLETE!</text>
+
+  <!-- Level number -->
+  <text x="360" y="420" font-family="Arial, sans-serif" font-size="28"
+        fill="white" text-anchor="middle">Level 5</text>
+
+  <!-- Stars -->
+  <g transform="translate(180, 460)" filter="url(#starGlow)">
+    <!-- Star 1 (filled) -->
+    <polygon points="50,0 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35"
+             fill="url(#starGrad)" stroke="#cc9900" stroke-width="2"/>
+  </g>
+  <g transform="translate(310, 440)" filter="url(#starGlow)">
+    <!-- Star 2 (filled, larger, center) -->
+    <polygon points="50,0 63,40 105,40 71,65 84,105 50,80 16,105 29,65 -5,40 37,40"
+             fill="url(#starGrad)" stroke="#cc9900" stroke-width="2"/>
+  </g>
+  <g transform="translate(440, 460)" filter="url(#starGlow)">
+    <!-- Star 3 (empty) -->
+    <polygon points="50,0 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35"
+             fill="url(#starEmptyGrad)" stroke="#5a5a6a" stroke-width="2"/>
+  </g>
+
+  <!-- Stats section -->
+  <line x1="160" y1="590" x2="560" y2="590" stroke="#3a3a5a" stroke-width="1"/>
+
+  <text x="360" y="640" font-family="Arial, sans-serif" font-size="18"
+        fill="#9ca3af" text-anchor="middle">Turns: 8  |  Score: 12,450</text>
+
+  <!-- New best indicator -->
+  <rect x="280" y="660" width="160" height="30" rx="15" fill="#7c3aed" opacity="0.8"/>
+  <text x="360" y="682" font-family="Arial, sans-serif" font-size="14" font-weight="bold"
+        fill="white" text-anchor="middle">NEW BEST!</text>
+
+  <!-- Buttons -->
+  <!-- Next Level button -->
+  <g transform="translate(160, 720)">
+    <rect width="400" height="60" rx="12" fill="url(#btnPrimaryGrad)" stroke="#16a34a" stroke-width="2"/>
+    <text x="200" y="40" font-family="Arial, sans-serif" font-size="22" font-weight="bold"
+          fill="white" text-anchor="middle">Next Level →</text>
+  </g>
+
+  <!-- Level Select button -->
+  <g transform="translate(160, 800)">
+    <rect width="190" height="50" rx="10" fill="url(#btnSecondaryGrad)" stroke="#5a5a8a" stroke-width="2"/>
+    <text x="95" y="33" font-family="Arial, sans-serif" font-size="16"
+          fill="white" text-anchor="middle">Level Select</text>
+  </g>
+
+  <!-- Replay button -->
+  <g transform="translate(370, 800)">
+    <rect width="190" height="50" rx="10" fill="url(#btnSecondaryGrad)" stroke="#5a5a8a" stroke-width="2"/>
+    <text x="95" y="33" font-family="Arial, sans-serif" font-size="16"
+          fill="white" text-anchor="middle">Replay Level</text>
+  </g>
+
+  <!-- Star rating explanation -->
+  <text x="360" y="920" font-family="Arial, sans-serif" font-size="14"
+        fill="#6a6a8a" text-anchor="middle">Complete in 6 turns or less for 3 stars</text>
+</svg>

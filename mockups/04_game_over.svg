@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1280">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f23"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+
+    <!-- Panel gradient -->
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e32"/>
+      <stop offset="100%" style="stop-color:#16162a"/>
+    </linearGradient>
+
+    <!-- Button gradients -->
+    <linearGradient id="btnPrimaryGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+
+    <linearGradient id="btnSecondaryGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3d3d6b"/>
+      <stop offset="100%" style="stop-color:#2a2a4a"/>
+    </linearGradient>
+
+    <!-- Block gradients for background blocks -->
+    <linearGradient id="blockRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f87171"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+
+    <!-- Danger glow -->
+    <filter id="dangerGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background (darkened gameplay with blocks crossing danger zone) -->
+  <rect width="720" height="1280" fill="url(#bgGrad)"/>
+
+  <!-- Faded blocks in background showing game state -->
+  <g opacity="0.3">
+    <rect x="40" y="850" width="80" height="80" rx="8" fill="url(#blockRed)"/>
+    <rect x="130" y="850" width="80" height="80" rx="8" fill="url(#blockRed)"/>
+    <rect x="220" y="850" width="80" height="80" rx="8" fill="url(#blockRed)"/>
+    <rect x="400" y="850" width="80" height="80" rx="8" fill="url(#blockRed)"/>
+    <rect x="490" y="850" width="80" height="80" rx="8" fill="url(#blockRed)"/>
+  </g>
+
+  <!-- Danger zone (blocks crossed it) -->
+  <line x1="0" y1="900" x2="720" y2="900" stroke="#ef4444" stroke-width="4" opacity="0.8"/>
+  <rect x="0" y="900" width="720" height="80" fill="#ef4444" opacity="0.15"/>
+
+  <!-- Dark overlay -->
+  <rect width="720" height="1280" fill="black" opacity="0.75"/>
+
+  <!-- Main panel -->
+  <rect x="110" y="380" width="500" height="400" rx="24" fill="url(#panelGrad)" stroke="#ef4444" stroke-width="3"/>
+
+  <!-- Danger glow behind title -->
+  <ellipse cx="360" cy="440" rx="120" ry="30" fill="#ef4444" opacity="0.2" filter="url(#dangerGlow)"/>
+
+  <!-- Title -->
+  <text x="360" y="460" font-family="Arial, sans-serif" font-size="48" font-weight="bold"
+        fill="#ef4444" text-anchor="middle" filter="url(#dangerGlow)">GAME OVER</text>
+
+  <!-- Skull/X icon -->
+  <g transform="translate(335, 490)">
+    <circle cx="25" cy="25" r="30" fill="none" stroke="#ef4444" stroke-width="3" opacity="0.5"/>
+    <line x1="10" y1="10" x2="40" y2="40" stroke="#ef4444" stroke-width="4" opacity="0.7"/>
+    <line x1="40" y1="10" x2="10" y2="40" stroke="#ef4444" stroke-width="4" opacity="0.7"/>
+  </g>
+
+  <!-- Stats -->
+  <text x="360" y="590" font-family="Arial, sans-serif" font-size="22"
+        fill="white" text-anchor="middle">Level reached: 5</text>
+
+  <text x="360" y="630" font-family="Arial, sans-serif" font-size="22"
+        fill="white" text-anchor="middle">Final Score: 12,450</text>
+
+  <!-- High score indicator -->
+  <rect x="260" y="650" width="200" height="30" rx="15" fill="#fbbf24" opacity="0.2"/>
+  <text x="360" y="672" font-family="Arial, sans-serif" font-size="14"
+        fill="#fbbf24" text-anchor="middle">New High Score!</text>
+
+  <!-- Buttons -->
+  <!-- Try Again button -->
+  <g transform="translate(160, 710)">
+    <rect width="190" height="50" rx="10" fill="url(#btnPrimaryGrad)" stroke="#dc2626" stroke-width="2"/>
+    <text x="95" y="33" font-family="Arial, sans-serif" font-size="18" font-weight="bold"
+          fill="white" text-anchor="middle">Try Again</text>
+  </g>
+
+  <!-- Level Select button -->
+  <g transform="translate(370, 710)">
+    <rect width="190" height="50" rx="10" fill="url(#btnSecondaryGrad)" stroke="#5a5a8a" stroke-width="2"/>
+    <text x="95" y="33" font-family="Arial, sans-serif" font-size="18"
+          fill="white" text-anchor="middle">Level Select</text>
+  </g>
+
+  <!-- Tip text -->
+  <text x="360" y="850" font-family="Arial, sans-serif" font-size="14"
+        fill="#6a6a8a" text-anchor="middle">Tip: Clear blocks before they reach the danger zone!</text>
+
+  <!-- Keyboard hints -->
+  <text x="360" y="1100" font-family="Arial, sans-serif" font-size="14"
+        fill="#4a4a6a" text-anchor="middle">Press R to restart  |  Press M for menu</text>
+</svg>

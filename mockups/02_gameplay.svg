@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1280">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f23"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+
+    <!-- Header gradient -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#252550"/>
+      <stop offset="100%" style="stop-color:#16162a"/>
+    </linearGradient>
+
+    <!-- Level badge gradient -->
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f46e5"/>
+      <stop offset="100%" style="stop-color:#3730a3"/>
+    </linearGradient>
+
+    <!-- Block gradients -->
+    <linearGradient id="blockRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f87171"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <linearGradient id="blockOrange" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fb923c"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <linearGradient id="blockYellow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="blockGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ade80"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="blockBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="blockPurple" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+
+    <!-- Special block gradients -->
+    <linearGradient id="blockExplosive" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fcd34d"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="blockSteel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9ca3af"/>
+      <stop offset="100%" style="stop-color:#4b5563"/>
+    </linearGradient>
+    <linearGradient id="blockRainbow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="25%" style="stop-color:#eab308"/>
+      <stop offset="50%" style="stop-color:#22c55e"/>
+      <stop offset="75%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+
+    <!-- Ball gradient -->
+    <radialGradient id="ballGrad" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#ff8a8a"/>
+      <stop offset="100%" style="stop-color:#ff6b6b"/>
+    </radialGradient>
+
+    <!-- Power-up gradients -->
+    <linearGradient id="powerBall" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="powerFire" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+
+    <!-- Danger zone gradient -->
+    <linearGradient id="dangerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444" stop-opacity="0.3"/>
+      <stop offset="100%" style="stop-color:#ef4444" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="1280" fill="url(#bgGrad)"/>
+
+  <!-- Header background -->
+  <rect width="720" height="90" fill="url(#headerGrad)"/>
+  <line x1="0" y1="90" x2="720" y2="90" stroke="#3f3f7a" stroke-width="2"/>
+
+  <!-- Score section -->
+  <text x="30" y="35" font-family="Arial, sans-serif" font-size="14" fill="#9ca3af">SCORE</text>
+  <text x="30" y="65" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white">12,450</text>
+
+  <!-- Level badge -->
+  <rect x="310" y="27" width="100" height="36" rx="8" fill="url(#badgeGrad)"/>
+  <text x="360" y="52" font-family="Arial, sans-serif" font-size="16" font-weight="bold"
+        fill="white" text-anchor="middle">LEVEL 5</text>
+
+  <!-- Ball count section -->
+  <text x="690" y="35" font-family="Arial, sans-serif" font-size="14" fill="#9ca3af" text-anchor="end">BALLS</text>
+  <circle cx="630" cy="58" r="10" fill="url(#ballGrad)"/>
+  <text x="690" y="65" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="end">x12</text>
+
+  <!-- Block grid - Row 1 -->
+  <g transform="translate(40, 120)">
+    <rect width="80" height="80" rx="8" fill="url(#blockRed)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">5</text>
+  </g>
+  <g transform="translate(130, 120)">
+    <rect width="80" height="80" rx="8" fill="url(#blockOrange)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">8</text>
+  </g>
+  <g transform="translate(220, 120)">
+    <rect width="80" height="80" rx="8" fill="url(#blockYellow)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">12</text>
+  </g>
+  <g transform="translate(310, 120)">
+    <rect width="80" height="80" rx="8" fill="url(#blockGreen)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">15</text>
+  </g>
+  <g transform="translate(400, 120)">
+    <rect width="80" height="80" rx="8" fill="url(#blockBlue)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">18</text>
+  </g>
+  <g transform="translate(490, 120)">
+    <rect width="80" height="80" rx="8" fill="url(#blockPurple)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">22</text>
+  </g>
+  <g transform="translate(580, 120)">
+    <rect width="80" height="80" rx="8" fill="url(#blockRed)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">3</text>
+  </g>
+
+  <!-- Block grid - Row 2 with special blocks -->
+  <g transform="translate(40, 210)">
+    <rect width="80" height="80" rx="8" fill="url(#blockSteel)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">STEEL</text>
+  </g>
+  <g transform="translate(130, 210)">
+    <rect width="80" height="80" rx="8" fill="url(#blockExplosive)"/>
+    <text x="40" y="45" font-family="Arial, sans-serif" font-size="20" text-anchor="middle">💥</text>
+    <text x="40" y="65" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#7c2d12" text-anchor="middle">3</text>
+  </g>
+  <g transform="translate(310, 210)">
+    <rect width="80" height="80" rx="8" fill="url(#blockRainbow)" stroke="white" stroke-width="2"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">✨</text>
+  </g>
+  <g transform="translate(490, 210)">
+    <rect width="80" height="80" rx="8" fill="url(#blockOrange)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">7</text>
+  </g>
+  <g transform="translate(580, 210)">
+    <rect width="80" height="80" rx="8" fill="url(#blockGreen)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">4</text>
+  </g>
+
+  <!-- Block grid - Row 3 -->
+  <g transform="translate(130, 300)">
+    <rect width="80" height="80" rx="8" fill="url(#blockBlue)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">9</text>
+  </g>
+  <g transform="translate(220, 300)">
+    <rect width="80" height="80" rx="8" fill="url(#blockPurple)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">11</text>
+  </g>
+  <g transform="translate(400, 300)">
+    <rect width="80" height="80" rx="8" fill="url(#blockYellow)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">6</text>
+  </g>
+  <g transform="translate(490, 300)">
+    <rect width="80" height="80" rx="8" fill="url(#blockRed)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">2</text>
+  </g>
+
+  <!-- Block grid - Row 4 with damage shown -->
+  <g transform="translate(40, 390)">
+    <rect width="80" height="80" rx="8" fill="url(#blockGreen)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">1</text>
+  </g>
+  <g transform="translate(310, 390)">
+    <rect width="80" height="80" rx="8" fill="url(#blockOrange)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">3</text>
+  </g>
+
+  <!-- Power-ups on grid -->
+  <g transform="translate(220, 390)">
+    <circle cx="40" cy="40" r="25" fill="url(#powerBall)" stroke="#16a34a" stroke-width="2"/>
+    <text x="40" y="47" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">+1</text>
+  </g>
+  <g transform="translate(490, 390)">
+    <circle cx="40" cy="40" r="25" fill="url(#powerFire)" stroke="#ea580c" stroke-width="2"/>
+    <text x="40" y="47" font-family="Arial, sans-serif" font-size="20" text-anchor="middle">🔥</text>
+  </g>
+
+  <!-- Danger zone -->
+  <rect x="0" y="900" width="720" height="80" fill="url(#dangerGrad)"/>
+  <line x1="0" y1="900" x2="720" y2="900" stroke="#ef4444" stroke-width="4" opacity="0.8"/>
+  <text x="360" y="940" font-family="Arial, sans-serif" font-size="14" fill="#ef4444" text-anchor="middle" opacity="0.8">DANGER ZONE</text>
+
+  <!-- Flying balls -->
+  <circle cx="200" cy="600" r="14" fill="url(#ballGrad)" stroke="#c74545" stroke-width="2"/>
+  <circle cx="350" cy="550" r="14" fill="url(#ballGrad)" stroke="#c74545" stroke-width="2"/>
+  <circle cx="520" cy="620" r="14" fill="url(#ballGrad)" stroke="#c74545" stroke-width="2"/>
+  <circle cx="150" cy="700" r="14" fill="url(#ballGrad)" stroke="#c74545" stroke-width="2"/>
+  <circle cx="450" cy="680" r="14" fill="url(#ballGrad)" stroke="#c74545" stroke-width="2"/>
+
+  <!-- Aim line (dotted) from launch point -->
+  <line x1="360" y1="1100" x2="200" y2="500" stroke="white" stroke-width="3" stroke-dasharray="10,10" opacity="0.6"/>
+
+  <!-- Shooter/Launch indicator -->
+  <polygon points="360,1100 345,1130 375,1130" fill="#4f46e5"/>
+  <circle cx="360" cy="1100" r="20" fill="url(#ballGrad)" stroke="#c74545" stroke-width="3"/>
+
+  <!-- Bottom UI - balls in play -->
+  <rect x="20" y="1180" width="160" height="40" rx="20" fill="#374151" opacity="0.8"/>
+  <text x="100" y="1207" font-family="Arial, sans-serif" font-size="14" fill="#9ca3af" text-anchor="middle">Balls in play: 5</text>
+
+  <!-- Combo indicator -->
+  <g transform="translate(540, 1180)">
+    <rect width="160" height="40" rx="20" fill="#7c3aed" opacity="0.9"/>
+    <text x="80" y="27" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">COMBO x3!</text>
+  </g>
+</svg>

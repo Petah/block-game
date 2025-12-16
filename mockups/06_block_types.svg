@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1000">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f23"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+
+    <!-- Card gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e32"/>
+      <stop offset="100%" style="stop-color:#16162a"/>
+    </linearGradient>
+
+    <!-- Block color gradients -->
+    <linearGradient id="blockRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f87171"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <linearGradient id="blockOrange" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fb923c"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <linearGradient id="blockYellow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="blockGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ade80"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="blockBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="blockPurple" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="blockPink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f472b6"/>
+      <stop offset="100%" style="stop-color:#db2777"/>
+    </linearGradient>
+
+    <!-- Special block gradients -->
+    <linearGradient id="blockExplosive" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fcd34d"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="blockSteel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9ca3af"/>
+      <stop offset="100%" style="stop-color:#4b5563"/>
+    </linearGradient>
+    <linearGradient id="blockRainbow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="20%" style="stop-color:#f97316"/>
+      <stop offset="40%" style="stop-color:#eab308"/>
+      <stop offset="60%" style="stop-color:#22c55e"/>
+      <stop offset="80%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="1000" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="360" y="60" font-family="Arial, sans-serif" font-size="36" font-weight="bold"
+        fill="white" text-anchor="middle">BLOCK TYPES</text>
+
+  <!-- Normal Blocks Section -->
+  <text x="40" y="120" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white">Normal Blocks</text>
+  <text x="40" y="145" font-family="Arial, sans-serif" font-size="14" fill="#9ca3af">Color indicates remaining health. Each hit removes 1 HP.</text>
+
+  <!-- Color scale -->
+  <g transform="translate(40, 170)">
+    <rect width="80" height="80" rx="8" fill="url(#blockRed)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">1-5</text>
+  </g>
+  <g transform="translate(130, 170)">
+    <rect width="80" height="80" rx="8" fill="url(#blockOrange)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">6-10</text>
+  </g>
+  <g transform="translate(220, 170)">
+    <rect width="80" height="80" rx="8" fill="url(#blockYellow)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">11-15</text>
+  </g>
+  <g transform="translate(310, 170)">
+    <rect width="80" height="80" rx="8" fill="url(#blockGreen)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">16-20</text>
+  </g>
+  <g transform="translate(400, 170)">
+    <rect width="80" height="80" rx="8" fill="url(#blockBlue)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">21-30</text>
+  </g>
+  <g transform="translate(490, 170)">
+    <rect width="80" height="80" rx="8" fill="url(#blockPurple)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">31-50</text>
+  </g>
+  <g transform="translate(580, 170)">
+    <rect width="80" height="80" rx="8" fill="url(#blockPink)"/>
+    <text x="40" y="50" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">51+</text>
+  </g>
+
+  <!-- Special Blocks Section -->
+  <text x="40" y="310" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white">Special Blocks</text>
+
+  <!-- Explosive Block -->
+  <g transform="translate(40, 340)">
+    <rect width="640" height="140" rx="16" fill="url(#cardGrad)" stroke="#f59e0b" stroke-width="2"/>
+
+    <!-- Block icon -->
+    <rect x="30" y="30" width="80" height="80" rx="8" fill="url(#blockExplosive)" stroke="#d97706" stroke-width="2"/>
+    <text x="70" y="65" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">💥</text>
+    <text x="70" y="90" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#7c2d12" text-anchor="middle">3</text>
+
+    <!-- Description -->
+    <text x="140" y="60" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">Explosive Block</text>
+    <text x="140" y="85" font-family="Arial, sans-serif" font-size="14" fill="#9ca3af">Explodes when destroyed, dealing 5 damage to all adjacent blocks!</text>
+    <text x="140" y="108" font-family="Arial, sans-serif" font-size="14" fill="#f59e0b">TIP: Use these strategically for chain reactions.</text>
+  </g>
+
+  <!-- Steel Block -->
+  <g transform="translate(40, 500)">
+    <rect width="640" height="140" rx="16" fill="url(#cardGrad)" stroke="#6b7280" stroke-width="2"/>
+
+    <!-- Block icon -->
+    <rect x="30" y="30" width="80" height="80" rx="8" fill="url(#blockSteel)" stroke="#374151" stroke-width="3"/>
+    <text x="70" y="75" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">STEEL</text>
+
+    <!-- Description -->
+    <text x="140" y="60" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">Steel Block</text>
+    <text x="140" y="85" font-family="Arial, sans-serif" font-size="14" fill="#9ca3af">Indestructible! Cannot be damaged by balls or explosions.</text>
+    <text x="140" y="108" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">These blocks remain even after level completion.</text>
+  </g>
+
+  <!-- Rainbow Block -->
+  <g transform="translate(40, 660)">
+    <rect width="640" height="140" rx="16" fill="url(#cardGrad)" stroke="#a855f7" stroke-width="2"/>
+
+    <!-- Block icon -->
+    <rect x="30" y="30" width="80" height="80" rx="8" fill="url(#blockRainbow)" stroke="white" stroke-width="2"/>
+    <text x="70" y="75" font-family="Arial, sans-serif" font-size="24" text-anchor="middle">✨</text>
+
+    <!-- Description -->
+    <text x="140" y="60" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">Rainbow Block</text>
+    <text x="140" y="85" font-family="Arial, sans-serif" font-size="14" fill="#9ca3af">Destroys all blocks of a random color when hit!</text>
+    <text x="140" y="108" font-family="Arial, sans-serif" font-size="14" fill="#a855f7">Extremely powerful - hit these first for massive combos!</text>
+  </g>
+
+  <!-- Scoring tip -->
+  <rect x="40" y="830" width="640" height="80" rx="12" fill="#1a1a2e" stroke="#4f46e5" stroke-width="1"/>
+  <text x="360" y="865" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">SCORING</text>
+  <text x="360" y="890" font-family="Arial, sans-serif" font-size="14" fill="#9ca3af" text-anchor="middle">Each block hit = 10 points × Combo multiplier</text>
+</svg>

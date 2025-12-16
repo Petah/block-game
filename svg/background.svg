@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="2400" viewBox="0 0 1080 2400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="40%" style="stop-color:#16162a"/>
+      <stop offset="70%" style="stop-color:#0f0f1a"/>
+      <stop offset="100%" style="stop-color:#0a0a12"/>
+    </linearGradient>
+    <radialGradient id="nebula1" cx="20%" cy="25%" r="40%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.15"/>
+      <stop offset="50%" style="stop-color:#4f46e5;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="nebula2" cx="80%" cy="60%" r="35%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:0.12"/>
+      <stop offset="50%" style="stop-color:#be185d;stop-opacity:0.06"/>
+      <stop offset="100%" style="stop-color:#be185d;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="nebula3" cx="30%" cy="85%" r="30%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="nebula4" cx="70%" cy="15%" r="25%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0"/>
+    </radialGradient>
+    <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.03"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Base gradient -->
+  <rect x="0" y="0" width="1080" height="2400" fill="url(#bgGrad)"/>
+
+  <!-- Nebula clouds -->
+  <rect x="0" y="0" width="1080" height="2400" fill="url(#nebula1)"/>
+  <rect x="0" y="0" width="1080" height="2400" fill="url(#nebula2)"/>
+  <rect x="0" y="0" width="1080" height="2400" fill="url(#nebula3)"/>
+  <rect x="0" y="0" width="1080" height="2400" fill="url(#nebula4)"/>
+
+  <!-- Diagonal shimmer -->
+  <rect x="0" y="0" width="1080" height="2400" fill="url(#shimmer)"/>
+
+  <!-- Geometric accent shapes -->
+  <g opacity="0.06">
+    <polygon points="0,400 200,300 200,500" fill="#6366f1"/>
+    <polygon points="1080,800 880,700 880,900" fill="#ec4899"/>
+    <polygon points="0,1400 150,1300 150,1500" fill="#8b5cf6"/>
+    <polygon points="1080,1800 930,1700 930,1900" fill="#06b6d4"/>
+    <polygon points="540,200 590,100 640,200" fill="#6366f1"/>
+    <polygon points="300,2200 350,2100 400,2200" fill="#ec4899"/>
+  </g>
+
+  <!-- Grid pattern -->
+  <g opacity="0.04">
+    <line x1="0" y1="0" x2="0" y2="2400" stroke="#6366f1" stroke-width="1"/>
+    <line x1="120" y1="0" x2="120" y2="2400" stroke="#6366f1" stroke-width="1"/>
+    <line x1="240" y1="0" x2="240" y2="2400" stroke="#6366f1" stroke-width="1"/>
+    <line x1="360" y1="0" x2="360" y2="2400" stroke="#6366f1" stroke-width="1"/>
+    <line x1="480" y1="0" x2="480" y2="2400" stroke="#6366f1" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="2400" stroke="#6366f1" stroke-width="1"/>
+    <line x1="720" y1="0" x2="720" y2="2400" stroke="#6366f1" stroke-width="1"/>
+    <line x1="840" y1="0" x2="840" y2="2400" stroke="#6366f1" stroke-width="1"/>
+    <line x1="960" y1="0" x2="960" y2="2400" stroke="#6366f1" stroke-width="1"/>
+    <line x1="1080" y1="0" x2="1080" y2="2400" stroke="#6366f1" stroke-width="1"/>
+    <line x1="0" y1="240" x2="1080" y2="240" stroke="#6366f1" stroke-width="1"/>
+    <line x1="0" y1="480" x2="1080" y2="480" stroke="#6366f1" stroke-width="1"/>
+    <line x1="0" y1="720" x2="1080" y2="720" stroke="#6366f1" stroke-width="1"/>
+    <line x1="0" y1="960" x2="1080" y2="960" stroke="#6366f1" stroke-width="1"/>
+    <line x1="0" y1="1200" x2="1080" y2="1200" stroke="#6366f1" stroke-width="1"/>
+    <line x1="0" y1="1440" x2="1080" y2="1440" stroke="#6366f1" stroke-width="1"/>
+    <line x1="0" y1="1680" x2="1080" y2="1680" stroke="#6366f1" stroke-width="1"/>
+    <line x1="0" y1="1920" x2="1080" y2="1920" stroke="#6366f1" stroke-width="1"/>
+    <line x1="0" y1="2160" x2="1080" y2="2160" stroke="#6366f1" stroke-width="1"/>
+  </g>
+
+  <!-- Bright stars with glow -->
+  <g filter="url(#glow)">
+    <circle cx="150" cy="180" r="3" fill="#ffffff" opacity="0.9"/>
+    <circle cx="920" cy="400" r="4" fill="#a5b4fc" opacity="0.9"/>
+    <circle cx="80" cy="850" r="3" fill="#ffffff" opacity="0.9"/>
+    <circle cx="990" cy="1100" r="3.5" fill="#f9a8d4" opacity="0.9"/>
+    <circle cx="200" cy="1500" r="3" fill="#ffffff" opacity="0.9"/>
+    <circle cx="870" cy="1750" r="4" fill="#a5b4fc" opacity="0.9"/>
+    <circle cx="120" cy="2100" r="3" fill="#ffffff" opacity="0.9"/>
+    <circle cx="950" cy="2300" r="3.5" fill="#f9a8d4" opacity="0.9"/>
+  </g>
+
+  <!-- Medium stars -->
+  <g opacity="0.8">
+    <circle cx="350" cy="120" r="2" fill="#ffffff"/>
+    <circle cx="700" cy="280" r="2.5" fill="#c4b5fd"/>
+    <circle cx="450" cy="550" r="2" fill="#ffffff"/>
+    <circle cx="600" cy="750" r="2" fill="#fbcfe8"/>
+    <circle cx="280" cy="950" r="2.5" fill="#ffffff"/>
+    <circle cx="800" cy="1200" r="2" fill="#c4b5fd"/>
+    <circle cx="400" cy="1400" r="2" fill="#ffffff"/>
+    <circle cx="650" cy="1600" r="2.5" fill="#fbcfe8"/>
+    <circle cx="300" cy="1850" r="2" fill="#ffffff"/>
+    <circle cx="750" cy="2000" r="2" fill="#c4b5fd"/>
+    <circle cx="500" cy="2250" r="2.5" fill="#ffffff"/>
+  </g>
+
+  <!-- Small stars scattered -->
+  <g opacity="0.6">
+    <circle cx="520" cy="80" r="1.2" fill="#ffffff"/>
+    <circle cx="180" cy="350" r="1" fill="#ffffff"/>
+    <circle cx="850" cy="500" r="1.2" fill="#ffffff"/>
+    <circle cx="380" cy="680" r="1" fill="#ffffff"/>
+    <circle cx="950" cy="880" r="1.2" fill="#ffffff"/>
+    <circle cx="150" cy="1050" r="1" fill="#ffffff"/>
+    <circle cx="720" cy="1280" r="1.2" fill="#ffffff"/>
+    <circle cx="550" cy="1450" r="1" fill="#ffffff"/>
+    <circle cx="100" cy="1650" r="1.2" fill="#ffffff"/>
+    <circle cx="820" cy="1900" r="1" fill="#ffffff"/>
+    <circle cx="420" cy="2080" r="1.2" fill="#ffffff"/>
+    <circle cx="680" cy="2350" r="1" fill="#ffffff"/>
+  </g>
+
+  <!-- Tiny sparkles -->
+  <g opacity="0.4">
+    <circle cx="620" cy="200" r="0.8" fill="#ffffff"/>
+    <circle cx="250" cy="480" r="0.8" fill="#ffffff"/>
+    <circle cx="780" cy="620" r="0.8" fill="#ffffff"/>
+    <circle cx="100" cy="780" r="0.8" fill="#ffffff"/>
+    <circle cx="500" cy="1000" r="0.8" fill="#ffffff"/>
+    <circle cx="900" cy="1150" r="0.8" fill="#ffffff"/>
+    <circle cx="200" cy="1350" r="0.8" fill="#ffffff"/>
+    <circle cx="650" cy="1550" r="0.8" fill="#ffffff"/>
+    <circle cx="350" cy="1750" r="0.8" fill="#ffffff"/>
+    <circle cx="800" cy="2050" r="0.8" fill="#ffffff"/>
+    <circle cx="450" cy="2180" r="0.8" fill="#ffffff"/>
+    <circle cx="980" cy="2380" r="0.8" fill="#ffffff"/>
+  </g>
+
+  <!-- Accent lines -->
+  <g opacity="0.1">
+    <line x1="0" y1="300" x2="300" y2="0" stroke="#6366f1" stroke-width="2"/>
+    <line x1="780" y1="0" x2="1080" y2="300" stroke="#ec4899" stroke-width="2"/>
+    <line x1="0" y1="1800" x2="200" y2="1600" stroke="#8b5cf6" stroke-width="2"/>
+    <line x1="880" y1="2400" x2="1080" y2="2200" stroke="#06b6d4" stroke-width="2"/>
+  </g>
+</svg>

@@ -32,6 +32,7 @@ function scr_spawn_block(_x, _y, _type) {
             case "rainbow":
                 _block.block_type = "rainbow";
                 _block.health = 3;
+                _block.initial_health = 3;
                 _block.sprite_index = spr_block_rainbow;
                 _block.image_index = 0;
                 break;

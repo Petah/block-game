@@ -32,25 +32,16 @@ scr_draw_text(100, 48, string(self.score), { font: fnt_lg, color: c_white });
 
 // Lives display (hearts)
 var _heart_x = 200;
-var _heart_y = 45;
+var _heart_y = 55;
 var _heart_spacing = 28;
 scr_draw_text(_heart_x, 24, "LIVES", { font: fnt_sm, color: make_color_rgb(156, 163, 175) });
 for (var i = 0; i < 3; i++)
 {
     var _filled = (i < self.lives);
     var _hx = _heart_x + i * _heart_spacing;
-
-    // Draw heart shape
-    draw_set_color(_filled ? make_color_rgb(239, 68, 68) : make_color_rgb(80, 80, 100)); // Red or gray
-    draw_set_alpha(_filled ? 1 : 0.4);
-
-    // Simple heart using circles and triangle
-    var _hs = 8; // heart size
-    draw_circle(_hx - _hs/2, _heart_y, _hs/2, false);
-    draw_circle(_hx + _hs/2, _heart_y, _hs/2, false);
-    draw_triangle(_hx - _hs, _heart_y + 2, _hx + _hs, _heart_y + 2, _hx, _heart_y + _hs + 4, false);
-
-    draw_set_alpha(1);
+    var _alpha = _filled ? 1 : 0.3;
+    var _color = _filled ? c_white : c_gray;
+    draw_sprite_ext(spr_heart, 0, _hx, _heart_y, 1, 1, 0, _color, _alpha);
 }
 
 // Level badge (center)
@@ -87,7 +78,7 @@ scr_draw_text(room_width - 30, 48, "x" + string(self.num_balls), {
 
 
 // === PLAYING STATE - INSTRUCTIONS ===
-var _text_y = self.grid_bottom_y - 50;
+var _text_y = obj_danger_zone.y - 50;
 if (self.state == "playing" && !self.is_dragging && self.balls_available > 0)
 {
     scr_draw_text(room_width / 2, _text_y, "Drag back to aim, release to fire", {

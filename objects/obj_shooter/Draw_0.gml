@@ -1,6 +1,3 @@
-// Draw the sprite
-draw_self();
-
 // Draw slingshot visualization when dragging
 if (obj_game.is_dragging && obj_game.pull_strength > 0.1)
 {
@@ -43,3 +40,6 @@ if (obj_game.is_dragging && obj_game.pull_strength > 0.1)
     draw_set_alpha(1);
     draw_set_color(c_white);
 }
+
+// Draw the sprite
+draw_self();

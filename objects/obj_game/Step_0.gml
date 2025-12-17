@@ -1,73 +1,110 @@
 // Don't process if game ended or level complete
 if (self.level_complete || self.game_over) exit;
 
-// State machine for game flow
-switch (self.state)
-{
-    case "aiming":
-        // Update aim based on mouse position
-        var _dx = mouse_x - self.launch_x;
-        var _dy = mouse_y - self.launch_y;
+// Count balls currently in play
+var _balls_in_flight = instance_number(obj_ball);
 
-        // Calculate angle (only allow upward angles)
-        if (_dy < -10) // Mouse must be above launch point
+// === SLINGSHOT AIMING AND FIRING ===
+if (self.state == "playing")
+{
+    // Start drag when clicking in the launch area (danger zone / bottom area)
+    if (mouse_check_button_pressed(mb_left) && !self.is_dragging)
+    {
+        // Only start drag if we have balls and click is in lower portion of screen
+        if (self.balls_available > 0 && mouse_y > self.grid_bottom_y)
         {
-            self.aim_angle = point_direction(self.launch_x, self.launch_y, mouse_x, mouse_y);
-            // Clamp angle to prevent shooting downward (between 20 and 160 degrees)
+            self.is_dragging = true;
+            self.drag_start_x = mouse_x;
+            self.drag_start_y = mouse_y;
+        }
+    }
+
+    // Update aim while dragging
+    if (self.is_dragging)
+    {
+        // Calculate pull vector (from current mouse to drag start = direction ball will go)
+        var _dx = self.drag_start_x - mouse_x;
+        var _dy = self.drag_start_y - mouse_y;
+        var _pull_dist = point_distance(0, 0, _dx, _dy);
+
+        // Calculate aim angle (opposite of drag direction)
+        if (_pull_dist > 10)
+        {
+            self.aim_angle = point_direction(0, 0, _dx, _dy);
+            // Clamp to upward angles only (between 20 and 160 degrees)
             self.aim_angle = clamp(self.aim_angle, 20, 160);
         }
 
-        // Fire on mouse click
-        if (mouse_check_button_pressed(mb_left))
-        {
-            self.state = "firing";
-            self.balls_fired = 0;
-            self.balls_returned = 0;
-            self.fire_delay = 0;
-            self.turns++; // Count turns for star rating
-            self.balls_to_return = self.num_balls;
-        }
-        break;
+        // Calculate pull strength (0 to 1)
+        self.pull_strength = clamp(_pull_dist / self.max_pull_distance, 0, 1);
 
-    case "firing":
-        // Fire balls with delay between each
-        self.fire_delay--;
+        // Update launch position to drag start point
+        self.launch_x = clamp(self.drag_start_x, 50, room_width - 50);
+    }
 
-        if (self.fire_delay <= 0 && self.balls_fired < self.balls_to_return)
+    // Fire on release
+    if (mouse_check_button_released(mb_left) && self.is_dragging)
+    {
+        self.is_dragging = false;
+
+        // Only fire if pulled back enough
+        if (self.pull_strength > 0.1)
         {
-            // Create a ball and set its direction
+            // Create and fire a ball
             var _ball = instance_create_layer(self.launch_x, self.launch_y, "instances", obj_ball);
 
             // Apply debug speed multiplier if exists
-            var _speed = _ball.ball_speed;
+            var _speed = _ball.ball_speed * self.pull_strength;
             if (instance_exists(obj_debug))
             {
                 _speed *= obj_debug.speed_multiplier;
-                _ball.ball_speed = _speed;
             }
+            _ball.ball_speed = _speed;
 
             // Apply physics impulse in the aim direction
             var _impulse_x = lengthdir_x(_speed, self.aim_angle);
             var _impulse_y = lengthdir_y(_speed, self.aim_angle);
             with (_ball) {
-                physics_apply_impulse(_ball.x, _ball.y, _impulse_x, _impulse_y);
+                physics_apply_impulse(x, y, _impulse_x, _impulse_y);
             }
 
-            self.balls_fired++;
-            self.fire_delay = self.fire_interval;
+            // Use a ball
+            self.balls_available--;
+            self.turns++; // Count each shot for star rating
         }
 
-        // Switch to waiting once all balls fired
-        if (self.balls_fired >= self.balls_to_return)
-        {
-            self.state = "waiting";
-        }
-        break;
+        // Reset pull strength
+        self.pull_strength = 0;
+    }
 
-    case "waiting":
-        // Wait for all balls to return
-        // balls_to_return is locked at start, bonus_balls only increases from splits (which create balls)
-        if (instance_number(obj_ball) == 0)
+    // Cancel drag on right click
+    if (mouse_check_button_pressed(mb_right) && self.is_dragging)
+    {
+        self.is_dragging = false;
+        self.pull_strength = 0;
+    }
+
+    // Check for turn end condition: no balls in flight and no balls available
+    if (_balls_in_flight == 0 && self.balls_available == 0 && !self.is_dragging)
+    {
+        self.state = "turn_ending";
+        self.turn_end_timer = self.turn_end_delay;
+    }
+}
+
+// === TURN ENDING ===
+if (self.state == "turn_ending")
+{
+    // If a ball returns during this phase, go back to playing
+    if (self.balls_available > 0)
+    {
+        self.state = "playing";
+    }
+    else
+    {
+        self.turn_end_timer--;
+
+        if (self.turn_end_timer <= 0)
         {
             // Check if level is complete (no non-steel blocks remaining)
             var _non_steel_count = 0;
@@ -91,7 +128,7 @@ switch (self.state)
             }
             else
             {
-                // Move blocks down every turn
+                // Move blocks down
                 scr_move_blocks_down();
 
                 // Get current level data to check if designed or random
@@ -109,19 +146,21 @@ switch (self.state)
 
                     self.num_balls++;
                 }
-                // For designed levels, don't spawn new rows or increase balls
+
+                // Reset balls for next turn
+                self.balls_available = self.num_balls;
+
+                // Reset bonus balls for next turn
+                self.bonus_balls = 0;
+
+                // Reset combo at turn end
+                self.combo = 0;
+
+                // Back to playing
+                self.state = "playing";
             }
-
-            // Reset bonus balls for next turn
-            self.bonus_balls = 0;
-
-            // Ready for next turn
-            self.state = "aiming";
-
-            // Reset combo at turn end
-            self.combo = 0;
         }
-        break;
+    }
 }
 
 // Update combo timer

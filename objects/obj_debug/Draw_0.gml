@@ -29,8 +29,8 @@ for (var _row = 0; _row <= _num_rows; _row++)
 
 draw_set_alpha(1);
 
-// Draw aiming line with bounces
-if (obj_game.state == "aiming")
+// Draw aiming line with bounces when dragging to aim
+if (obj_game.is_dragging)
 {
     var _start_x = obj_game.launch_x;
     var _start_y = obj_game.launch_y;

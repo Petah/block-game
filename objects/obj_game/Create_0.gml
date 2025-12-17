@@ -19,25 +19,29 @@ self.turns = 0;
 // Get level data
 var _level_data = scr_get_level_data(self.level);
 
-// Ball shooting system
-self.num_balls = _level_data.balls; // From level data
-self.balls_fired = 0;          // Balls fired this turn
-self.balls_returned = 0;       // Balls that came back
-self.balls_to_return = 0;      // Locked count at start of turn
-self.fire_delay = 0;           // Timer between ball shots
-self.fire_interval = 5;        // Frames between each ball
+// Ball shooting system (slingshot style)
+self.num_balls = _level_data.balls; // Total balls available
+self.balls_available = self.num_balls; // Balls ready to fire
 
-// Aiming
-self.is_aiming = false;
-self.aim_angle = 90;           // Default aim straight up
-self.launch_x = room_width / 2; // Where balls launch from
-self.launch_y = room_height - 50; // Y position for launching
+// Slingshot aiming
+self.is_dragging = false;
+self.drag_start_x = 0;
+self.drag_start_y = 0;
+self.aim_angle = 90;           // Current aim direction
+self.pull_strength = 0;        // How far pulled back (0-1)
+self.max_pull_distance = 150;  // Max drag distance for full power
+
+// Launch position (where balls fire from)
+self.launch_x = room_width / 2;
+self.launch_y = room_height - 80;
 
 // Spawn shooter
 instance_create_layer(self.launch_x, self.launch_y, "instances", obj_shooter);
 
 // Game state
-self.state = "aiming";         // "aiming", "firing", "waiting"
+self.state = "playing";        // "playing", "turn_ending"
+self.turn_end_timer = 0;       // Timer before turn ends after all balls return
+self.turn_end_delay = 60;      // Frames to wait before ending turn (1 second)
 
 // Bonus balls collected this turn (resets each turn)
 self.bonus_balls = 0;

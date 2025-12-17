@@ -14,15 +14,16 @@ if (keyboard_check_pressed(ord("F")))
     else
         self.speed_multiplier = 1;
 
-    // Apply to all existing balls
+    // Apply to all existing balls (using physics velocity)
     with (obj_ball)
     {
-        var _current_speed = point_distance(0, 0, hspeed, vspeed);
-        var _dir = point_direction(0, 0, hspeed, vspeed);
-        var _new_speed = other.speed_multiplier * 8; // Base speed is 8
+        var _current_speed = point_distance(0, 0, phy_speed_x, phy_speed_y);
+        var _dir = point_direction(0, 0, phy_speed_x, phy_speed_y);
+        var _base_speed = 800; // Base physics speed
+        var _new_speed = other.speed_multiplier * _base_speed;
 
-        hspeed = lengthdir_x(_new_speed, _dir);
-        vspeed = lengthdir_y(_new_speed, _dir);
+        phy_speed_x = lengthdir_x(_new_speed, _dir);
+        phy_speed_y = lengthdir_y(_new_speed, _dir);
         ball_speed = _new_speed;
     }
 }

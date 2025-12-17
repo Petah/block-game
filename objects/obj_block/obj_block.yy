@@ -3,6 +3,7 @@
   "%Name":"obj_block",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
@@ -18,7 +19,7 @@
   "physicsDensity":0.0,
   "physicsFriction":0.0,
   "physicsGroup":1,
-  "physicsKinematic":true,
+  "physicsKinematic":false,
   "physicsLinearDamping":0.0,
   "physicsObject":false,
   "physicsRestitution":1.0,

@@ -63,17 +63,22 @@ function scr_spawn_block(_x, _y, _type) {
     _block.image_xscale = obj_game.grid_cell_size / _block.sprite_width;
     _block.image_yscale = obj_game.grid_cell_size / _block.sprite_height;
 
+    // Set home position for spring-back effect
+    _block.home_x = _x;
+    _block.home_y = _y;
+
     // Create physics fixture to match scaled size
-    // First unbind any default fixture
     with (_block) {
         // Create new fixture matching the scaled size
         var _fix = physics_fixture_create();
         var _half_size = obj_game.grid_cell_size / 2 - 2;
         physics_fixture_set_box_shape(_fix, _half_size, _half_size);
-        physics_fixture_set_restitution(_fix, 1.0);
-        physics_fixture_set_friction(_fix, 0.0);
-        physics_fixture_set_density(_fix, 0.0);
-        physics_fixture_set_kinematic(_fix);
+        physics_fixture_set_restitution(_fix, 0.5); // Less bouncy so ball doesn't lose energy
+        //physics_fixture_set_friction(_fix, 1.0);
+        physics_fixture_set_linear_damping(_fix, 1.0);
+        physics_fixture_set_angular_damping(_fix, 1.0);
+        physics_fixture_set_collision_group(_fix, 1);
+        physics_fixture_set_density(_fix, 1.0);
         physics_fixture_bind(_fix, id);
         physics_fixture_delete(_fix);
     }

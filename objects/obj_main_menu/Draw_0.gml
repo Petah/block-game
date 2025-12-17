@@ -1,26 +1,4 @@
-// Draw background gradient
-draw_rectangle_color(0, 0, room_width, room_height,
-    make_color_rgb(15, 15, 35),  // Top: #0f0f23
-    make_color_rgb(15, 15, 35),
-    make_color_rgb(26, 26, 46),  // Bottom: #1a1a2e
-    make_color_rgb(26, 26, 46),
-    false);
-
-// Draw title
-scr_draw_text(room_width / 2, 80, "BLOCK GAME", {
-    font: fnt_xl,
-    color: c_white,
-    halign: fa_center,
-    valign: fa_middle
-});
-
-// Draw subtitle
-scr_draw_text(room_width / 2, 160, "SELECT LEVEL", {
-    font: fnt_lg,
-    color: make_color_rgb(150, 150, 180),
-    halign: fa_center,
-    valign: fa_middle
-});
+draw_self();
 
 // Draw progress info
 var _unlocked = 0;
@@ -33,27 +11,6 @@ scr_draw_text(room_width / 2, 210, string(_unlocked) + " / " + string(self.total
     halign: fa_center,
     valign: fa_middle
 });
-
-// Draw fade gradients at top and bottom of scroll area
-draw_set_alpha(1);
-
-// Top fade
-for (var i = 0; i < 40; i++) {
-    var _alpha = 1 - (i / 40);
-    draw_set_color(make_color_rgb(15, 15, 35));
-    draw_set_alpha(_alpha);
-    draw_line(0, self.visible_top + i, room_width, self.visible_top + i);
-}
-
-// Bottom fade
-for (var i = 0; i < 40; i++) {
-    var _alpha = i / 40;
-    draw_set_color(make_color_rgb(26, 26, 46));
-    draw_set_alpha(_alpha);
-    draw_line(0, self.visible_bottom - 40 + i, room_width, self.visible_bottom - 40 + i);
-}
-
-draw_set_alpha(1);
 
 // Draw scroll bar on right side
 if (self.scroll_max > 0) {

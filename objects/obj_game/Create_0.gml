@@ -1,6 +1,3 @@
-// Draw behind other objects
-depth = 1000;
-
 // Spawn debug overlay
 instance_create_layer(0, 0, "ui", obj_debug);
 

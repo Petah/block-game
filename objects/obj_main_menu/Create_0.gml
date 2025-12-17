@@ -1,6 +1,3 @@
-// Draw behind other objects
-depth = 1000;
-
 // Initialize progress system
 scr_init_progress();
 

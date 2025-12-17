@@ -62,6 +62,8 @@
     {"id":{"name":"spr_danger_zone","path":"sprites/spr_danger_zone/spr_danger_zone.yy",},},
     {"id":{"name":"spr_heart","path":"sprites/spr_heart/spr_heart.yy",},},
     {"id":{"name":"spr_lock","path":"sprites/spr_lock/spr_lock.yy",},},
+    {"id":{"name":"spr_main_menu_overlay","path":"sprites/spr_main_menu_overlay/spr_main_menu_overlay.yy",},},
+    {"id":{"name":"spr_main_menu","path":"sprites/spr_main_menu/spr_main_menu.yy",},},
     {"id":{"name":"spr_pill","path":"sprites/spr_pill/spr_pill.yy",},},
     {"id":{"name":"spr_power_up","path":"sprites/spr_power_up/spr_power_up.yy",},},
     {"id":{"name":"spr_shooter","path":"sprites/spr_shooter/spr_shooter.yy",},},

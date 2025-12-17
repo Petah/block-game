@@ -4,7 +4,7 @@ if (self.level_complete || self.game_over) exit;
 // Count balls currently in play
 var _balls_in_flight = instance_number(obj_ball);
 
-// === SLINGSHOT AIMING AND FIRING ===
+// === SLINGSHOT AIMING ===
 if (self.state == "playing")
 {
     // Start drag when clicking in the launch area (danger zone / bottom area)
@@ -42,7 +42,7 @@ if (self.state == "playing")
         self.launch_x = clamp(self.drag_start_x, 50, room_width - 50);
     }
 
-    // Fire on release
+    // Fire on release - start burst firing all available balls
     if (mouse_check_button_released(mb_left) && self.is_dragging)
     {
         self.is_dragging = false;
@@ -50,27 +50,21 @@ if (self.state == "playing")
         // Only fire if pulled back enough
         if (self.pull_strength > 0.1)
         {
-            // Create and fire a ball
-            var _ball = instance_create_layer(self.launch_x, self.launch_y, "instances", obj_ball);
+            // Lock in firing parameters
+            self.balls_to_fire = self.balls_available;
+            self.fire_delay = 0;
+            self.turns++; // Count as one turn
 
-            // Apply debug speed multiplier if exists
-            var _speed = _ball.ball_speed * self.pull_strength;
+            // Calculate and lock fire speed
+            var _base_speed = 800;
             if (instance_exists(obj_debug))
             {
-                _speed *= obj_debug.speed_multiplier;
+                _base_speed *= obj_debug.speed_multiplier;
             }
-            _ball.ball_speed = _speed;
+            self.fire_speed = _base_speed * self.pull_strength;
 
-            // Apply physics impulse in the aim direction
-            var _impulse_x = lengthdir_x(_speed, self.aim_angle);
-            var _impulse_y = lengthdir_y(_speed, self.aim_angle);
-            with (_ball) {
-                physics_apply_impulse(x, y, _impulse_x, _impulse_y);
-            }
-
-            // Use a ball
-            self.balls_available--;
-            self.turns++; // Count each shot for star rating
+            // Switch to firing state
+            self.state = "firing";
         }
 
         // Reset pull strength
@@ -83,82 +77,97 @@ if (self.state == "playing")
         self.is_dragging = false;
         self.pull_strength = 0;
     }
+}
 
-    // Check for turn end condition: no balls in flight and no balls available
-    if (_balls_in_flight == 0 && self.balls_available == 0 && !self.is_dragging)
+// === BURST FIRING ===
+if (self.state == "firing")
+{
+    self.fire_delay--;
+
+    if (self.fire_delay <= 0 && self.balls_to_fire > 0 && self.balls_available > 0)
     {
-        self.state = "turn_ending";
-        self.turn_end_timer = self.turn_end_delay;
+        // Create and fire a ball
+        var _ball = instance_create_layer(self.launch_x, self.launch_y, "instances", obj_ball);
+        _ball.ball_speed = self.fire_speed;
+
+        // Apply physics impulse in the aim direction
+        var _impulse_x = lengthdir_x(self.fire_speed, self.aim_angle);
+        var _impulse_y = lengthdir_y(self.fire_speed, self.aim_angle);
+        with (_ball) {
+            physics_apply_impulse(x, y, _impulse_x, _impulse_y);
+        }
+
+        // Use a ball
+        self.balls_available--;
+        self.balls_to_fire--;
+        self.fire_delay = self.fire_interval;
+    }
+
+    // Switch to waiting once all balls fired
+    if (self.balls_to_fire <= 0 || self.balls_available <= 0)
+    {
+        self.state = "waiting";
     }
 }
 
-// === TURN ENDING ===
-if (self.state == "turn_ending")
+// === WAITING FOR BALLS TO RETURN ===
+if (self.state == "waiting")
 {
-    // If a ball returns during this phase, go back to playing
-    if (self.balls_available > 0)
+    // If all balls have returned, check for turn end
+    if (_balls_in_flight == 0)
     {
-        self.state = "playing";
-    }
-    else
-    {
-        self.turn_end_timer--;
+        // Check if level is complete (no non-steel blocks remaining)
+        var _non_steel_count = 0;
+        with (obj_block) {
+            if (block_type != "steel") _non_steel_count++;
+        }
 
-        if (self.turn_end_timer <= 0)
+        if (_non_steel_count == 0)
         {
-            // Check if level is complete (no non-steel blocks remaining)
-            var _non_steel_count = 0;
-            with (obj_block) {
-                if (block_type != "steel") _non_steel_count++;
-            }
+            // Level complete!
+            self.level_complete = true;
 
-            if (_non_steel_count == 0)
+            // Clear any remaining steel blocks
+            with (obj_block) { instance_destroy(); }
+
+            // Calculate and save stars
+            self.stars_earned = scr_complete_level(self.level, self.turns);
+
+            // Show level complete overlay
+            instance_create_layer(0, 0, "instances", obj_level_complete);
+        }
+        else
+        {
+            // Move blocks down
+            scr_move_blocks_down();
+
+            // Get current level data to check if designed or random
+            var _level_data = scr_get_level_data(self.level);
+
+            if (_level_data.layout == undefined)
             {
-                // Level complete!
-                self.level_complete = true;
+                // Random level - spawn new rows and increase balls
+                self.level++;
 
-                // Clear any remaining steel blocks
-                with (obj_block) { instance_destroy(); }
-
-                // Calculate and save stars
-                self.stars_earned = scr_complete_level(self.level, self.turns);
-
-                // Show level complete overlay
-                instance_create_layer(0, 0, "instances", obj_level_complete);
-            }
-            else
-            {
-                // Move blocks down
-                scr_move_blocks_down();
-
-                // Get current level data to check if designed or random
-                var _level_data = scr_get_level_data(self.level);
-
-                if (_level_data.layout == undefined)
+                if (!self.game_over)
                 {
-                    // Random level - spawn new rows and increase balls
-                    self.level++;
-
-                    if (!self.game_over)
-                    {
-                        scr_spawn_blocks_row();
-                    }
-
-                    self.num_balls++;
+                    scr_spawn_blocks_row();
                 }
 
-                // Reset balls for next turn
-                self.balls_available = self.num_balls;
-
-                // Reset bonus balls for next turn
-                self.bonus_balls = 0;
-
-                // Reset combo at turn end
-                self.combo = 0;
-
-                // Back to playing
-                self.state = "playing";
+                self.num_balls++;
             }
+
+            // Reset balls for next turn
+            self.balls_available = self.num_balls;
+
+            // Reset bonus balls for next turn
+            self.bonus_balls = 0;
+
+            // Reset combo at turn end
+            self.combo = 0;
+
+            // Back to playing
+            self.state = "playing";
         }
     }
 }

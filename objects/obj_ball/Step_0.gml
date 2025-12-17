@@ -12,11 +12,11 @@ if (_move_speed > 0)
 // Destroy ball when it goes off bottom
 if (y > room_height + sprite_height)
 {
-    // Return ball to available pool (can be fired again)
-    obj_game.balls_available++;
-
-    // Update launch position to where ball fell
-    obj_game.launch_x = clamp(x, 50, room_width - 50);
+    // Update launch position to where first ball returns
+    if (instance_number(obj_ball) == 1) // This is the last ball
+    {
+        obj_game.launch_x = clamp(x, 50, room_width - 50);
+    }
 
     instance_destroy();
     exit;

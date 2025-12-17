@@ -30,7 +30,7 @@ scr_draw_text(_badge_x + _badge_w / 2, _badge_y + 10, "LEVEL " + string(self.lev
     font: fnt_md, color: c_white, halign: fa_center
 });
 
-// Ball count section (right) - show available balls
+// Ball count section (right)
 scr_draw_text(room_width - 30, 24, "BALLS", {
     font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_right
 });
@@ -40,14 +40,8 @@ var _ball_icon_x = room_width - 90;
 var _ball_icon_y = 54;
 draw_sprite_ext(spr_ball, 0, _ball_icon_x, _ball_icon_y, 1, 1, 0, c_white, 1);
 
-// Ball count text (show available / total)
-var _balls_in_flight = instance_number(obj_ball);
-var _ball_text = string(self.balls_available);
-if (_balls_in_flight > 0)
-{
-    _ball_text = string(self.balls_available) + "+" + string(_balls_in_flight);
-}
-scr_draw_text(room_width - 30, 48, "x" + _ball_text, {
+// Ball count text
+scr_draw_text(room_width - 30, 48, "x" + string(self.num_balls), {
     font: fnt_lg, color: c_white, halign: fa_right
 });
 
@@ -60,23 +54,11 @@ if (self.state == "playing" && !self.is_dragging && self.balls_available > 0)
     });
 }
 
-// === TURN ENDING STATE ===
-if (self.state == "turn_ending")
+// === FIRING/WAITING STATE - BOTTOM UI ===
+if (self.state == "firing" || self.state == "waiting")
 {
-    var _progress = 1 - (self.turn_end_timer / self.turn_end_delay);
-    scr_draw_text(room_width / 2, room_height - 100, "Next turn in...", {
+    var _in_play = instance_number(obj_ball);
+    scr_draw_text(room_width / 2, room_height - 100, "Balls in play: " + string(_in_play), {
         font: fnt_sm, color: c_white, halign: fa_center, alpha: 0.7
     });
-
-    // Progress bar
-    var _bar_w = 200;
-    var _bar_h = 8;
-    var _bar_x = room_width / 2 - _bar_w / 2;
-    var _bar_y = room_height - 70;
-
-    draw_set_color(make_color_rgb(60, 60, 80));
-    draw_roundrect(_bar_x, _bar_y, _bar_x + _bar_w, _bar_y + _bar_h, false);
-
-    draw_set_color(make_color_rgb(34, 197, 94));
-    draw_roundrect(_bar_x, _bar_y, _bar_x + _bar_w * _progress, _bar_y + _bar_h, false);
 }

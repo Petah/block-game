@@ -9,9 +9,26 @@ draw_rectangle_color(0, 0, room_width, self.header_height,
 draw_set_color(make_color_rgb(63, 63, 122)); // #3f3f7a
 draw_line_width(0, self.header_height, room_width, self.header_height, 2);
 
-// Score section (left)
-scr_draw_text(30, 24, "SCORE", { font: fnt_sm, color: make_color_rgb(156, 163, 175) });
-scr_draw_text(30, 48, string(self.score), { font: fnt_lg, color: c_white });
+// Back button (left side)
+var _btn_cx = self.back_btn_x + self.back_btn_w / 2;
+var _btn_cy = self.back_btn_y + self.back_btn_h / 2;
+
+// Button background
+draw_set_color(make_color_rgb(55, 48, 163)); // #3730a3
+draw_set_alpha(0.8);
+draw_roundrect(self.back_btn_x, self.back_btn_y,
+               self.back_btn_x + self.back_btn_w, self.back_btn_y + self.back_btn_h, false);
+draw_set_alpha(1);
+
+// Draw back arrow (chevron pointing left)
+draw_set_color(c_white);
+var _arrow_size = 12;
+draw_line_width(_btn_cx + _arrow_size/2, _btn_cy - _arrow_size, _btn_cx - _arrow_size/2, _btn_cy, 3);
+draw_line_width(_btn_cx - _arrow_size/2, _btn_cy, _btn_cx + _arrow_size/2, _btn_cy + _arrow_size, 3);
+
+// Score section (after back button)
+scr_draw_text(100, 24, "SCORE", { font: fnt_sm, color: make_color_rgb(156, 163, 175) });
+scr_draw_text(100, 48, string(self.score), { font: fnt_lg, color: c_white });
 
 // Level badge (center)
 var _badge_w = 100;

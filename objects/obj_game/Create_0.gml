@@ -55,6 +55,12 @@ self.bonus_balls = 0;
 // UI
 self.header_height = 90;
 
+// Back button bounds (for click detection)
+self.back_btn_x = 10;
+self.back_btn_y = 10;
+self.back_btn_w = 70;
+self.back_btn_h = 70;
+
 // Grid settings - cols based on level layout or default for random
 if (_level_data.layout != undefined) {
     self.grid_cols = array_length(_level_data.layout[0]);

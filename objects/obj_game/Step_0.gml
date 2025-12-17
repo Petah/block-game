@@ -1,3 +1,17 @@
+// === BACK BUTTON (always active) ===
+if (mouse_check_button_pressed(mb_left))
+{
+    // Check if click is within back button bounds (GUI coordinates)
+    var _mx = device_mouse_x_to_gui(0);
+    var _my = device_mouse_y_to_gui(0);
+    if (_mx >= self.back_btn_x && _mx <= self.back_btn_x + self.back_btn_w &&
+        _my >= self.back_btn_y && _my <= self.back_btn_y + self.back_btn_h)
+    {
+        room_goto(rm_main_menu);
+        exit;
+    }
+}
+
 // Don't process if game ended or level complete
 if (self.level_complete || self.game_over) exit;
 

@@ -38,6 +38,7 @@ with (obj_block)
         if (obj_game.lives <= 0)
         {
             obj_game.game_over = true;
+            instance_create_layer(0, 0, "instances", obj_game_over);
         }
     }
 }
@@ -45,7 +46,6 @@ with (obj_block)
 // === CHECK FOR GAME OVER ===
 if (self.game_over)
 {
-    // TODO: Show game over screen
     exit;
 }
 

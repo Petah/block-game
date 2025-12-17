@@ -40,6 +40,7 @@ if (self.state == "playing")
 
         // Update launch position to drag start point
         self.launch_x = clamp(self.drag_start_x, 50, room_width - 50);
+        self.launch_y = clamp(self.drag_start_y, self.grid_bottom_y + 30, room_height - 30);
     }
 
     // Fire on release - start burst firing all available balls

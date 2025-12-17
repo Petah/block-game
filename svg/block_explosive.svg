@@ -1,18 +1,51 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
   <defs>
+    <!-- Block gradient - deep red/orange danger colors -->
     <linearGradient id="explosiveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#fcd34d;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#f97316;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#c2410c;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#fca5a5;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7f1d1d;stop-opacity:1" />
     </linearGradient>
-    <radialGradient id="explosionCenter" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#fef3c7;stop-opacity:1" />
-      <stop offset="60%" style="stop-color:#f97316;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#c2410c;stop-opacity:1" />
+    <!-- Bright center burst -->
+    <radialGradient id="burstCenter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#fef08a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
     </radialGradient>
+    <!-- Outer triangle gradient -->
+    <linearGradient id="outerTriangle" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ea580c;stop-opacity:1" />
+    </linearGradient>
   </defs>
-  <rect x="1" y="1" width="30" height="30" rx="4" ry="4" fill="url(#explosiveGradient)" stroke="#9a3412" stroke-width="1"/>
-  <rect x="4" y="3" width="24" height="6" rx="2" ry="2" fill="rgba(255,255,255,0.3)"/>
-  <!-- Explosion burst symbol -->
-  <polygon points="16,6 18,12 24,12 19,16 21,22 16,18 11,22 13,16 8,12 14,12" fill="url(#explosionCenter)" stroke="#fef3c7" stroke-width="0.5"/>
+
+  <!-- Block base -->
+  <rect x="1" y="1" width="30" height="30" rx="4" ry="4" fill="url(#explosiveGradient)" stroke="#7f1d1d" stroke-width="1"/>
+  <rect x="4" y="3" width="24" height="6" rx="2" ry="2" fill="rgba(255,255,255,0.25)"/>
+
+  <!-- Abstract explosion burst - outer triangles -->
+  <!-- Top -->
+  <polygon points="16,4 13,11 19,11" fill="url(#outerTriangle)"/>
+  <!-- Bottom -->
+  <polygon points="16,28 19,21 13,21" fill="url(#outerTriangle)"/>
+  <!-- Left -->
+  <polygon points="4,16 11,13 11,19" fill="url(#outerTriangle)"/>
+  <!-- Right -->
+  <polygon points="28,16 21,19 21,13" fill="url(#outerTriangle)"/>
+
+  <!-- Diagonal triangles (smaller) -->
+  <!-- Top-left -->
+  <polygon points="7,7 9,12 12,9" fill="#fcd34d"/>
+  <!-- Top-right -->
+  <polygon points="25,7 20,9 23,12" fill="#fcd34d"/>
+  <!-- Bottom-left -->
+  <polygon points="7,25 12,23 9,20" fill="#fcd34d"/>
+  <!-- Bottom-right -->
+  <polygon points="25,25 23,20 20,23" fill="#fcd34d"/>
+
+  <!-- Center hexagon burst -->
+  <polygon points="16,10 21,13 21,19 16,22 11,19 11,13" fill="url(#burstCenter)" stroke="#fef9c3" stroke-width="0.5"/>
+
+  <!-- Inner diamond -->
+  <polygon points="16,12 19,16 16,20 13,16" fill="#ffffff" opacity="0.8"/>
 </svg>

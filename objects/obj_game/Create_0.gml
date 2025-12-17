@@ -81,7 +81,7 @@ self.grid_bottom_y = self.header_height + (_num_rows * self.grid_cell_size); // 
 // Spawn danger zone
 instance_create_layer(0, 0, "bg_instances", obj_danger_zone);
 obj_danger_zone.x = room_width / 2;
-obj_danger_zone.y = self.grid_bottom_y;
+obj_danger_zone.y = room_height - 300;
 
 // Spawn physics walls (left, right, top)
 var _wall_thickness = 32;
@@ -124,12 +124,12 @@ if (_level_data.layout != undefined) {
     }
 } else {
     // Random generation for levels beyond 9
-    scr_spawn_blocks_row(false);
-    scr_move_blocks_down();
-    scr_spawn_blocks_row(false);
-    scr_move_blocks_down();
-    scr_spawn_blocks_row(false);
-    scr_move_blocks_down();
-    scr_spawn_blocks_row();
-    scr_move_blocks_down();
+    // scr_spawn_blocks_row(false);
+    // scr_move_blocks_down();
+    // scr_spawn_blocks_row(false);
+    // scr_move_blocks_down();
+    // scr_spawn_blocks_row(false);
+    // scr_move_blocks_down();
+    // scr_spawn_blocks_row();
+    // scr_move_blocks_down();
 }

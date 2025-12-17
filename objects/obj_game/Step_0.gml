@@ -4,6 +4,40 @@ if (self.level_complete || self.game_over) exit;
 // Count balls currently in play
 var _balls_in_flight = instance_number(obj_ball);
 
+// === CHECK FOR LEVEL COMPLETE (every frame) ===
+var _non_steel_count = 0;
+with (obj_block) {
+    if (block_type != "steel") _non_steel_count++;
+}
+
+if (_non_steel_count == 0)
+{
+    // Level complete!
+    self.level_complete = true;
+
+    // Explode all balls like fireworks
+    with (obj_ball)
+    {
+        // Create firework explosion at ball position
+        part_particles_create(obj_particles.part_sys, x, y, obj_particles.part_firework, 25);
+        part_particles_create(obj_particles.part_sys, x, y, obj_particles.part_firework_spark, 40);
+        instance_destroy();
+    }
+
+    // Big screen shake for celebration
+    obj_screen_shake.shake_amount = 10;
+
+    // Clear any remaining steel blocks
+    with (obj_block) { instance_destroy(); }
+
+    // Calculate and save stars
+    self.stars_earned = scr_complete_level(self.level, self.turns);
+
+    // Show level complete overlay
+    instance_create_layer(0, 0, "instances", obj_level_complete);
+    exit;
+}
+
 // === SLINGSHOT AIMING (allowed in playing or waiting states) ===
 if (self.state == "playing" || self.state == "waiting")
 {
@@ -117,37 +151,14 @@ if (self.state == "waiting")
     // Turn ends when all balls have returned (none in flight, all available)
     if (_balls_in_flight == 0 && self.balls_available >= self.num_balls && !self.is_dragging)
     {
-        // Check if level is complete (no non-steel blocks remaining)
-        var _non_steel_count = 0;
-        with (obj_block) {
-            if (block_type != "steel") _non_steel_count++;
-        }
+        // Reset bonus balls for next turn
+        self.bonus_balls = 0;
 
-        if (_non_steel_count == 0)
-        {
-            // Level complete!
-            self.level_complete = true;
+        // Reset combo at turn end
+        self.combo = 0;
 
-            // Clear any remaining steel blocks
-            with (obj_block) { instance_destroy(); }
-
-            // Calculate and save stars
-            self.stars_earned = scr_complete_level(self.level, self.turns);
-
-            // Show level complete overlay
-            instance_create_layer(0, 0, "instances", obj_level_complete);
-        }
-        else
-        {
-            // Reset bonus balls for next turn
-            self.bonus_balls = 0;
-
-            // Reset combo at turn end
-            self.combo = 0;
-
-            // Back to playing
-            self.state = "playing";
-        }
+        // Back to playing
+        self.state = "playing";
     }
 }
 

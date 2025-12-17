@@ -62,3 +62,25 @@ part_type_speed(self.part_fire_destroy, 4, 9, -0.2, 0);
 part_type_direction(self.part_fire_destroy, 0, 360, 0, 0);
 part_type_life(self.part_fire_destroy, 20, 35);
 part_type_gravity(self.part_fire_destroy, 0.15, 270);
+
+// Firework particles (for level complete celebration)
+self.part_firework = part_type_create();
+part_type_shape(self.part_firework, pt_shape_star);
+part_type_size(self.part_firework, 0.3, 0.8, -0.01, 0);
+part_type_color3(self.part_firework, c_white, c_yellow, c_fuchsia);
+part_type_alpha3(self.part_firework, 1, 0.8, 0);
+part_type_speed(self.part_firework, 5, 12, -0.15, 0);
+part_type_direction(self.part_firework, 0, 360, 0, 0);
+part_type_life(self.part_firework, 40, 70);
+part_type_gravity(self.part_firework, 0.1, 270);
+
+// Firework sparks (secondary particles)
+self.part_firework_spark = part_type_create();
+part_type_shape(self.part_firework_spark, pt_shape_pixel);
+part_type_size(self.part_firework_spark, 0.5, 1.5, -0.02, 0);
+part_type_color3(self.part_firework_spark, c_aqua, c_lime, c_yellow);
+part_type_alpha3(self.part_firework_spark, 1, 0.6, 0);
+part_type_speed(self.part_firework_spark, 3, 8, -0.1, 0);
+part_type_direction(self.part_firework_spark, 0, 360, 0, 0);
+part_type_life(self.part_firework_spark, 30, 50);
+part_type_gravity(self.part_firework_spark, 0.2, 270);

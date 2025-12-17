@@ -139,26 +139,6 @@ if (self.state == "waiting")
         }
         else
         {
-            // Move blocks down
-            scr_move_blocks_down();
-
-            // Get current level data to check if designed or random
-            var _level_data = scr_get_level_data(self.level);
-
-            if (_level_data.layout == undefined)
-            {
-                // Random level - spawn new rows and increase balls
-                self.level++;
-
-                if (!self.game_over)
-                {
-                    scr_spawn_blocks_row();
-                }
-
-                self.num_balls++;
-                self.balls_available = self.num_balls;
-            }
-
             // Reset bonus balls for next turn
             self.bonus_balls = 0;
 

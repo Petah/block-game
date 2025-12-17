@@ -264,7 +264,7 @@ function scr_get_level_data(_level) {
 
         case 20:
             // Level 20: Boss level - thick walls
-            _data.balls = 8;
+            _data.balls = 12;
             _data.layout = [
                 ["s", "s", 3, 3, 3, 3, "s", "s"],
                 ["s", 4, 4, 4, 4, 4, 4, "s"],

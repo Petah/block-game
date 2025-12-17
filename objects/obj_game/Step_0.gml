@@ -4,8 +4,8 @@ if (self.level_complete || self.game_over) exit;
 // Count balls currently in play
 var _balls_in_flight = instance_number(obj_ball);
 
-// === SLINGSHOT AIMING ===
-if (self.state == "playing")
+// === SLINGSHOT AIMING (allowed in playing or waiting states) ===
+if (self.state == "playing" || self.state == "waiting")
 {
     // Start drag when clicking in the launch area (danger zone / bottom area)
     if (mouse_check_button_pressed(mb_left) && !self.is_dragging)
@@ -114,8 +114,8 @@ if (self.state == "firing")
 // === WAITING FOR BALLS TO RETURN ===
 if (self.state == "waiting")
 {
-    // If all balls have returned, check for turn end
-    if (_balls_in_flight == 0)
+    // Turn ends when all balls have returned (none in flight, all available)
+    if (_balls_in_flight == 0 && self.balls_available >= self.num_balls && !self.is_dragging)
     {
         // Check if level is complete (no non-steel blocks remaining)
         var _non_steel_count = 0;
@@ -156,10 +156,8 @@ if (self.state == "waiting")
                 }
 
                 self.num_balls++;
+                self.balls_available = self.num_balls;
             }
-
-            // Reset balls for next turn
-            self.balls_available = self.num_balls;
 
             // Reset bonus balls for next turn
             self.bonus_balls = 0;

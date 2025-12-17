@@ -12,6 +12,8 @@ if (_move_speed > 0)
 // Destroy ball when it goes off bottom
 if (y > room_height + sprite_height)
 {
+    // Return ball to available pool
+    obj_game.balls_available++;
     instance_destroy();
     exit;
 }

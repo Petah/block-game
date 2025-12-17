@@ -22,7 +22,7 @@ var _balls_in_flight = instance_number(obj_ball);
 with (obj_block)
 {
     // If block goes past the danger zone line, lose a life
-    if (y > obj_game.grid_bottom_y + obj_game.grid_cell_size / 2)
+    if (y > obj_danger_zone.y + obj_game.grid_cell_size / 2)
     {
         // Reduce lives
         obj_game.lives--;
@@ -38,6 +38,11 @@ with (obj_block)
         if (obj_game.lives <= 0)
         {
             obj_game.game_over = true;
+
+            // Destroy all remaining balls and blocks
+            with (obj_ball) { instance_destroy(); }
+            with (obj_block) { instance_destroy(); }
+
             instance_create_layer(0, 0, "instances", obj_game_over);
         }
     }
@@ -90,7 +95,7 @@ if (self.state == "playing" || self.state == "waiting")
     if (mouse_check_button_pressed(mb_left) && !self.is_dragging)
     {
         // Only start drag if we have balls and click is in lower portion of screen
-        if (self.balls_available > 0 && mouse_y > self.grid_bottom_y)
+        if (self.balls_available > 0 && mouse_y > obj_danger_zone.y)
         {
             self.is_dragging = true;
             self.drag_start_x = mouse_x;
@@ -119,7 +124,7 @@ if (self.state == "playing" || self.state == "waiting")
 
         // Update launch position to drag start point
         self.launch_x = clamp(self.drag_start_x, 50, room_width - 50);
-        self.launch_y = clamp(self.drag_start_y, self.grid_bottom_y + 30, room_height - 30);
+        self.launch_y = clamp(self.drag_start_y, obj_danger_zone.y + 30, room_height - 30);
     }
 
     // Fire on release - start burst firing all available balls

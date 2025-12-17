@@ -12,10 +12,15 @@
 - [x] Special block types
   - [x] Explosive blocks (destroy adjacent blocks)
   - [x] Steel blocks (indestructible, must clear around them)
-  - [x] Rainbow blocks (change color/health each turn)
+  - [x] Rainbow blocks (regenerate health over time)
 - [x] Ball collection point moves to where first ball lands
 - [ ] Combo system for hitting multiple blocks with one ball
 - [x] Ball auto-death timer (12 seconds without hitting blocks)
+- [x] Lives system (3 lives, lose life when blocks reach danger zone)
+- [x] Slingshot aiming (drag back to aim, release to fire)
+- [x] Burst firing (all balls fire on release)
+- [x] Continuous play (can fire before all balls return)
+- [x] 109 hand-crafted levels with varied patterns
 
 ## Visual Polish
 
@@ -42,22 +47,29 @@
 ## UI/UX
 
 - [x] Main menu screen
+- [x] Scrollable level select (109 levels, 5 columns)
+- [x] Splash screen SVG with logo
+- [x] Menu background SVG with transparent button area
 - [ ] Pause menu
 - [x] High score system with local save
 - [ ] Tutorial/first-time player hints
 - [ ] Settings menu (sound volume, shooter style, etc.)
-- [ ] Touch controls for mobile (drag to aim)
+- [x] Touch controls for mobile (drag to aim - slingshot style)
 - [x] Styled header bar with score/level/ball count
+- [x] Lives display with heart icons
 - [x] Level badge display
 - [x] Danger zone indicator
 - [x] Game over overlay (separate object)
-- [x] Level complete overlay (separate object)
+- [x] Level complete overlay (separate object) with fireworks
+- [x] Back button to return to main menu
 - [x] Debug UI toggle (press D)
 - [x] 9-slice pill UI component
 
 ## Technical
 
 - [x] Remove unused obj_paddle
+- [x] Physics-based walls (obj_wall with Box2D fixtures)
+- [x] Physics-based ball movement (impulse-based)
 - [ ] Object pooling for balls (performance)
 - [x] Save/load game state (INI file persistence)
 - [ ] Analytics tracking (levels reached, etc.)
@@ -65,6 +77,7 @@
 - [x] Realistic ball-block collision (surface normal reflection)
 - [x] Test level with debug controls (T to toggle, R to restart)
 - [x] One function per script file convention
+- [x] Level data system (scr_levels with 109 layouts)
 
 ## Balance
 
@@ -79,11 +92,11 @@
 ## Android Release Requirements
 
 ### Touch Controls
-- [ ] Drag anywhere to aim (not just from shooter)
-- [ ] Visual aim indicator (dotted line trajectory)
-- [ ] Release to fire
+- [x] Drag anywhere to aim (slingshot style in danger zone)
+- [x] Visual aim indicator (dotted line trajectory)
+- [x] Release to fire (burst fires all balls)
 - [ ] Tap to speed up balls (2x speed while held)
-- [ ] Prevent accidental fires (minimum drag distance)
+- [x] Prevent accidental fires (minimum drag distance threshold)
 
 ### Screen & Display
 - [ ] Lock to portrait orientation

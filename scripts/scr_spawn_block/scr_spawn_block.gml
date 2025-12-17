@@ -64,10 +64,6 @@ function scr_spawn_block(_x, _y, _type) {
     _block.image_xscale = obj_game.grid_cell_size / _block.sprite_width;
     _block.image_yscale = obj_game.grid_cell_size / _block.sprite_height;
 
-    // Set home position for spring-back effect
-    _block.home_x = _x;
-    _block.home_y = _y;
-
     // Create physics fixture to match scaled size
     with (_block) {
         // Create new fixture matching the scaled size

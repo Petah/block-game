@@ -53,31 +53,55 @@ if (_block.health <= 0)
     // Screen shake scales with combo (bigger combos = more shake)
     var _shake = min(2 + obj_game.combo * 0.5, 8);
 
-    // Explosive blocks destroy adjacent blocks
+    // Explosive blocks push and damage nearby blocks using physics
     if (_block.block_type == "explosive")
     {
-        _shake = 6; // Big shake for explosion
+        _shake = 8; // Big shake for explosion
         var _bx = _block.x;
         var _by = _block.y;
-        var _cell = obj_game.grid_cell_size;
+        var _push_radius = obj_game.grid_cell_size * 3; // Affect blocks within 3 cells
+        var _push_strength = 800; // Physics impulse strength
 
-        // Check all 8 adjacent cells
-        var _dirs = [
-            [-_cell, -_cell], [0, -_cell], [_cell, -_cell],
-            [-_cell, 0],                   [_cell, 0],
-            [-_cell, _cell],  [0, _cell],  [_cell, _cell]
-        ];
-
-        for (var _d = 0; _d < 8; _d++)
+        // Find all blocks in radius and push them away
+        with (obj_block)
         {
-            var _adj = instance_position(_bx + _dirs[_d][0], _by + _dirs[_d][1], obj_block);
-            if (_adj != noone && _adj.block_type != "steel")
+            if (id == _block.id) continue; // Skip self
+
+            var _dist = point_distance(_bx, _by, x, y);
+            if (_dist < _push_radius && _dist > 0)
             {
-                // Destroy adjacent block
-                obj_game.combo++;
-                obj_game.score += 10;
-                part_particles_create(obj_particles.part_sys, _adj.x, _adj.y, obj_particles.part_fire_destroy, 12);
-                instance_destroy(_adj);
+                // Calculate push direction (away from explosion)
+                var _dir = point_direction(_bx, _by, x, y);
+                var _falloff = 1 - (_dist / _push_radius); // Stronger push when closer
+                var _force = _push_strength * _falloff;
+
+                // Apply physics impulse
+                var _ix = lengthdir_x(_force, _dir);
+                var _iy = lengthdir_y(_force, _dir);
+                physics_apply_impulse(x, y, _ix, _iy);
+
+                // Damage non-steel blocks
+                if (self.block_type != "steel")
+                {
+                    self.health--;
+                    obj_game.score += 10;
+                    obj_game.combo++;
+
+                    // Emit hit particles
+                    part_particles_create(obj_particles.part_sys, x, y, obj_particles.part_fire_destroy, 8);
+
+                    // Destroy if health depleted
+                    if (self.health <= 0)
+                    {
+                        part_particles_create(obj_particles.part_sys, x, y, obj_particles.part_fire_destroy, 15);
+                        instance_destroy();
+                    }
+                }
+                else
+                {
+                    // Steel blocks still get pushed but not damaged
+                    part_particles_create(obj_particles.part_sys, x, y, obj_particles.part_block_hit, 5);
+                }
             }
         }
     }

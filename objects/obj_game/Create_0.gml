@@ -15,6 +15,7 @@ self.game_won = false;
 self.level_complete = false;
 self.stars_earned = 0;
 self.turns = 0;
+self.lives = 3; // Player lives
 
 // Get level data
 var _level_data = scr_get_level_data(self.level);

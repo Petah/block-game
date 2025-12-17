@@ -18,6 +18,37 @@ if (self.level_complete || self.game_over) exit;
 // Count balls currently in play
 var _balls_in_flight = instance_number(obj_ball);
 
+// === CHECK FOR BLOCKS IN DANGER ZONE ===
+with (obj_block)
+{
+    // If block goes past the danger zone line, lose a life
+    if (y > obj_game.grid_bottom_y + obj_game.grid_cell_size / 2)
+    {
+        // Reduce lives
+        obj_game.lives--;
+
+        // Visual feedback
+        part_particles_create(obj_particles.part_sys, x, y, obj_particles.part_fire_destroy, 20);
+        obj_screen_shake.shake_amount = 5;
+
+        // Destroy this block
+        instance_destroy();
+
+        // Check for game over
+        if (obj_game.lives <= 0)
+        {
+            obj_game.game_over = true;
+        }
+    }
+}
+
+// === CHECK FOR GAME OVER ===
+if (self.game_over)
+{
+    // TODO: Show game over screen
+    exit;
+}
+
 // === CHECK FOR LEVEL COMPLETE (every frame) ===
 var _non_steel_count = 0;
 with (obj_block) {

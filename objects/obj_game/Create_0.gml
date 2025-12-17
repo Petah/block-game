@@ -66,6 +66,24 @@ instance_create_layer(0, 0, "bg_instances", obj_danger_zone);
 obj_danger_zone.x = room_width / 2;
 obj_danger_zone.y = self.grid_bottom_y;
 
+// Spawn physics walls (left, right, top)
+var _wall_thickness = 32;
+
+// Left wall
+var _left_wall = instance_create_layer(-_wall_thickness / 2, room_height / 2, "instances", obj_wall);
+_left_wall.wall_width = _wall_thickness;
+_left_wall.wall_height = room_height;
+
+// Right wall
+var _right_wall = instance_create_layer(room_width + _wall_thickness / 2, room_height / 2, "instances", obj_wall);
+_right_wall.wall_width = _wall_thickness;
+_right_wall.wall_height = room_height;
+
+// Top wall (below header)
+var _top_wall = instance_create_layer(room_width / 2, self.header_height - _wall_thickness / 2, "instances", obj_wall);
+_top_wall.wall_width = room_width;
+_top_wall.wall_height = _wall_thickness;
+
 // Spawn particle system manager
 instance_create_layer(0, 0, "bg_instances", obj_particles);
 

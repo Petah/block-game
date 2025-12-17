@@ -1,28 +1,3 @@
-// Ball dimensions
-var _ball_w = sprite_width / 2;
-var _ball_h = sprite_height / 2;
-
-// Handle wall bounces (physics doesn't have room boundaries by default)
-// Left wall
-if (x <= _ball_w)
-{
-    x = _ball_w;
-    phy_speed_x = abs(phy_speed_x);
-}
-// Right wall
-if (x >= room_width - _ball_w)
-{
-    x = room_width - _ball_w;
-    phy_speed_x = -abs(phy_speed_x);
-}
-// Top wall (below header)
-var _top_limit = obj_game.header_height;
-if (y <= _top_limit + _ball_h)
-{
-    y = _top_limit + _ball_h;
-    phy_speed_y = abs(phy_speed_y);
-}
-
 // Get current physics velocity
 var _move_speed = point_distance(0, 0, phy_speed_x, phy_speed_y);
 
@@ -35,7 +10,7 @@ if (_move_speed > 0)
 }
 
 // Destroy ball when it goes off bottom
-if (y > room_height + _ball_h)
+if (y > room_height + sprite_height)
 {
     // First ball to return sets the new launch position
     if (obj_game.balls_returned == 0)

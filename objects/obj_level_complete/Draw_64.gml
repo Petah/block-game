@@ -1,8 +1,4 @@
-// Darken background
-draw_set_color(c_black);
-draw_set_alpha(0.7);
-draw_rectangle(0, 0, room_width, room_height, false);
-draw_set_alpha(1);
+scr_draw_overlay();
 
 // Level complete panel
 var _panel_w = 400;
@@ -10,56 +6,41 @@ var _panel_h = 350;
 var _panel_x = room_width / 2 - _panel_w / 2;
 var _panel_y = room_height / 2 - _panel_h / 2;
 
-draw_set_color(make_color_rgb(30, 30, 50));
-draw_roundrect(_panel_x, _panel_y, _panel_x + _panel_w, _panel_y + _panel_h, false);
+var _pad = 16;
 
-draw_set_color(make_color_rgb(34, 197, 94)); // Green border #22c55e
-draw_roundrect(_panel_x, _panel_y, _panel_x + _panel_w, _panel_y + _panel_h, true);
+draw_sprite_stretched(spr_ui_modal_green, 0, _panel_x, _panel_y, _panel_w, _panel_h);
+
+scr_draw_button(_panel_x + _pad, _panel_y + 200, _panel_w - 2 * _pad, 62, "NEXT LEVEL");
+scr_draw_button(_panel_x + _pad, _panel_y + 270, _panel_w - 2 * _pad, 62, "BACK");
 
 // Title
 var _cx = room_width / 2;
-scr_draw_text(_cx, _panel_y + 50, "LEVEL COMPLETE!", {
-    font: fnt_xl, color: make_color_rgb(34, 197, 94), halign: fa_center, valign: fa_middle
+scr_draw_text(_cx + 3, _panel_y + 80 + 3, "LEVEL COMPLETE!", {
+    font: fnt_xl, color: c_black, halign: fa_center, valign: fa_middle
+});
+scr_draw_text(_cx, _panel_y + 80, "LEVEL COMPLETE!", {
+    font: fnt_xl, color: c_white, halign: fa_center, valign: fa_middle
 });
 
 // Level number
-scr_draw_text(_cx, _panel_y + 100, "Level " + string(obj_game.level), {
+scr_draw_text(_cx, _panel_y + 120, "Level " + string(obj_game.level), {
     font: fnt_lg, color: c_white, halign: fa_center, valign: fa_middle
 });
 
 // Draw stars using sprites
-var _star_y = _panel_y + 160;
-var _star_spacing = 70;
-var _star_start = _cx - _star_spacing;
-
-for (var i = 0; i < 3; i++)
-{
-    var _star_x = _star_start + i * _star_spacing;
-    var _star_spr = (i < obj_game.stars_earned) ? spr_star_filled : spr_star_empty;
-    draw_sprite_ext(_star_spr, 0, _star_x, _star_y, 0.5, 0.5, 0, c_white, 1);
-}
-
-// Show message if extra balls were used
-if (obj_game.used_extra_balls)
-{
-    scr_draw_text(_cx, _star_y + 40, "Extra balls used - no stars earned", {
-        font: fnt_sm, color: make_color_rgb(251, 191, 36), halign: fa_center, valign: fa_middle
-    });
-}
+draw_sprite_ext(obj_game.stars_earned >= 1 ? spr_star_filled : spr_star_empty, 0, _panel_x + _panel_w / 2 - sprite_get_width(spr_star_empty) * 0.7, _panel_y, 0.8, 0.8, 15, c_white, 1); 
+draw_sprite_ext(obj_game.stars_earned >= 3 ? spr_star_filled : spr_star_empty, 0, _panel_x + _panel_w / 2 + sprite_get_width(spr_star_empty) * 0.7, _panel_y, 0.8, 0.8, -15, c_white, 1);
+draw_sprite_ext(obj_game.stars_earned >= 2 ? spr_star_filled : spr_star_empty, 0, _panel_x + _panel_w / 2, _panel_y - 15, 1,  1, 0, c_white, 1);
 
 // Stats
-scr_draw_text(_cx, _panel_y + 220, "Turns: " + string(obj_game.turns) + "  |  Score: " + string(obj_game.score), {
-    font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center, valign: fa_middle
+scr_draw_text(_cx, _panel_y + 180, "Turns: " + string(obj_game.turns) + "  |  Score: " + string(obj_game.score), {
+    font: fnt_sm, color: c_white, halign: fa_center, valign: fa_middle
 });
 
 // Instructions
-scr_draw_text(_cx, _panel_y + 280, "Click: Next Level", {
-    font: fnt_md, color: c_white, halign: fa_center, valign: fa_middle
-});
-scr_draw_text(_cx, _panel_y + 310, "Press M for Level Select", {
-    font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center, valign: fa_middle
-});
-
-// Reset draw settings
-draw_set_color(c_white);
-draw_set_alpha(1);
+// scr_draw_text(_cx, _panel_y + 280, "Click: Next Level", {
+//     font: fnt_md, color: c_white, halign: fa_center, valign: fa_middle
+// });
+// scr_draw_text(_cx, _panel_y + 310, "Press M for Level Select", {
+//     font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center, valign: fa_middle
+// });

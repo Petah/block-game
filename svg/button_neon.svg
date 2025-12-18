@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <!-- Dark base -->
+    <linearGradient id="neonBase" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1f2937"/>
+      <stop offset="100%" style="stop-color:#111827"/>
+    </linearGradient>
+    <!-- Cyan glow -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Outer glow -->
+  <rect x="2" y="2" width="58" height="58" rx="6" fill="none" stroke="#06b6d4" stroke-width="3" opacity="0.3"/>
+
+  <!-- Main dark body -->
+  <rect x="4" y="4" width="54" height="54" rx="5" fill="url(#neonBase)" stroke="#0e7490" stroke-width="1"/>
+
+  <!-- Neon border -->
+  <rect x="6" y="6" width="50" height="50" rx="4" fill="none" stroke="#22d3ee" stroke-width="2" filter="url(#glow)"/>
+
+  <!-- Inner accent lines -->
+  <line x1="12" y1="12" x2="50" y2="12" stroke="#06b6d4" stroke-width="1" opacity="0.6"/>
+  <line x1="12" y1="50" x2="50" y2="50" stroke="#06b6d4" stroke-width="1" opacity="0.6"/>
+  <line x1="12" y1="12" x2="12" y2="50" stroke="#06b6d4" stroke-width="1" opacity="0.4"/>
+  <line x1="50" y1="12" x2="50" y2="50" stroke="#06b6d4" stroke-width="1" opacity="0.4"/>
+
+  <!-- Center glow dot -->
+  <circle cx="31" cy="31" r="4" fill="#22d3ee" opacity="0.3"/>
+  <circle cx="31" cy="31" r="2" fill="#22d3ee" opacity="0.6"/>
+</svg>

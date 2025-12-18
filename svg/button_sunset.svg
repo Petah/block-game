@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <!-- Sunset gradient -->
+    <linearGradient id="sunsetGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fcd34d"/>
+      <stop offset="35%" style="stop-color:#f97316"/>
+      <stop offset="70%" style="stop-color:#dc2626"/>
+      <stop offset="100%" style="stop-color:#7f1d1d"/>
+    </linearGradient>
+    <!-- Sun glow -->
+    <radialGradient id="sunGlow" cx="50%" cy="30%" r="50%">
+      <stop offset="0%" style="stop-color:#fef3c7;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#fef3c7;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Drop shadow -->
+  <rect x="4" y="6" width="56" height="56" rx="6" fill="#7f1d1d" opacity="0.5"/>
+
+  <!-- Main body -->
+  <rect x="2" y="2" width="58" height="58" rx="6" fill="url(#sunsetGrad)" stroke="#fb923c" stroke-width="1.5"/>
+
+  <!-- Sun glow overlay -->
+  <rect x="2" y="2" width="58" height="58" rx="6" fill="url(#sunGlow)"/>
+
+  <!-- Abstract horizon lines -->
+  <line x1="8" y1="38" x2="54" y2="38" stroke="#fef3c7" stroke-width="1" opacity="0.3"/>
+  <line x1="12" y1="44" x2="50" y2="44" stroke="#fef3c7" stroke-width="0.8" opacity="0.2"/>
+  <line x1="16" y1="50" x2="46" y2="50" stroke="#fef3c7" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Top reflection -->
+  <ellipse cx="30" cy="14" rx="18" ry="8" fill="#ffffff" opacity="0.2"/>
+</svg>

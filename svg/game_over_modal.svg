@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="340" viewBox="0 0 340 340">
+  <defs>
+    <!-- Panel background gradient -->
+    <linearGradient id="panelBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d2d3d"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <!-- Red accent gradient for header -->
+    <linearGradient id="headerBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626"/>
+      <stop offset="100%" style="stop-color:#991b1b"/>
+    </linearGradient>
+    <!-- Button gradient (gold/yellow) -->
+    <linearGradient id="buttonBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="50%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <!-- Inner shadow -->
+    <filter id="innerShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feOffset dx="0" dy="2"/>
+      <feGaussianBlur stdDeviation="3" result="shadow"/>
+      <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
+    </filter>
+    <!-- Outer glow -->
+    <filter id="redGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#ef4444" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Main panel with red glow -->
+  <rect x="10" y="10" width="320" height="320" rx="20" ry="20"
+        fill="url(#panelBg)"
+        stroke="#ef4444"
+        stroke-width="3"
+        filter="url(#redGlow)"/>
+
+  <!-- Inner border highlight -->
+  <rect x="15" y="15" width="310" height="310" rx="17" ry="17"
+        fill="none"
+        stroke="rgba(255,255,255,0.1)"
+        stroke-width="1"/>
+
+  <!-- Header bar -->
+  <rect x="20" y="20" width="300" height="60" rx="12" ry="12"
+        fill="url(#headerBg)"/>
+
+  <!-- Header shine -->
+  <rect x="20" y="20" width="300" height="25" rx="12" ry="12"
+        fill="rgba(255,255,255,0.15)"/>
+
+  <!-- Broken heart icon in header -->
+  <g transform="translate(40, 30) scale(0.4)">
+    <!-- Left half -->
+    <path d="M50 90 C50 90 10 60 10 30 C10 15 22 5 38 5 C46 5 50 12 50 18 L46 40 L54 52 L44 70 L50 90 Z"
+          fill="#fca5a5" transform="translate(-3, 0)"/>
+    <!-- Right half -->
+    <path d="M50 90 L56 70 L46 52 L54 40 L50 18 C50 12 54 5 62 5 C78 5 90 15 90 30 C90 60 50 90 50 90 Z"
+          fill="#f87171" transform="translate(3, 0)"/>
+  </g>
+
+  <!-- Decorative corner accents -->
+  <path d="M30 80 L30 70 Q30 60 40 60 L50 60" stroke="#ef4444" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M310 80 L310 70 Q310 60 300 60 L290 60" stroke="#ef4444" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M30 260 L30 270 Q30 280 40 280 L50 280" stroke="#ef4444" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M310 260 L310 270 Q310 280 300 280 L290 280" stroke="#ef4444" stroke-width="2" fill="none" opacity="0.5"/>
+
+  <!-- Extra balls button area -->
+  <rect x="30" y="160" width="280" height="55" rx="10" ry="10"
+        fill="url(#buttonBg)"
+        stroke="#b45309"
+        stroke-width="2"/>
+  <!-- Button shine -->
+  <rect x="30" y="160" width="280" height="22" rx="10" ry="10"
+        fill="rgba(255,255,255,0.25)"/>
+
+  <!-- Divider line -->
+  <line x1="50" y1="235" x2="290" y2="235" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+  <!-- Bottom section subtle pattern -->
+  <g opacity="0.03">
+    <line x1="30" y1="250" x2="310" y2="250" stroke="#fff" stroke-width="1"/>
+    <line x1="30" y1="270" x2="310" y2="270" stroke="#fff" stroke-width="1"/>
+    <line x1="30" y1="290" x2="310" y2="290" stroke="#fff" stroke-width="1"/>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+  <!-- Plasma orb -->
+  <circle cx="4" cy="4" r="3.5" fill="#c026d3" opacity="0.6"/>
+  <circle cx="4" cy="4" r="2.5" fill="#d946ef"/>
+  <circle cx="4" cy="4" r="1.5" fill="#f0abfc"/>
+  <circle cx="4" cy="4" r="0.8" fill="#ffffff"/>
+  <!-- Energy wisps -->
+  <path d="M1 4 Q2 2 4 2" stroke="#e879f9" stroke-width="0.5" fill="none"/>
+  <path d="M7 4 Q6 6 4 6" stroke="#e879f9" stroke-width="0.5" fill="none"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+  <!-- Heavy debris chunk -->
+  <polygon points="1,2 4,0 7,2 6,5 4,7 2,5" fill="#2d2d2d"/>
+  <polygon points="2,3 4,1 5,3 4,5" fill="#404040"/>
+  <line x1="2" y1="3" x2="5" y2="5" stroke="#505050" stroke-width="0.5"/>
+</svg>

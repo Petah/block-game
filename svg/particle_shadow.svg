@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+  <!-- Shadow wisp -->
+  <ellipse cx="4" cy="4" rx="3.5" ry="2" fill="#1f2937" opacity="0.7"/>
+  <polygon points="4,1 6,3 5,5 4,4 3,5 2,3" fill="#374151"/>
+  <polygon points="4,2 5,3 4,4 3,3" fill="#4b5563"/>
+  <circle cx="3" cy="3" r="0.8" fill="#6b21a8" opacity="0.6"/>
+  <circle cx="5" cy="3" r="0.8" fill="#6b21a8" opacity="0.6"/>
+</svg>

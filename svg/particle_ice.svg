@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+  <!-- Ice crystal shard -->
+  <polygon points="4,0 7,4 4,8 1,4" fill="#7dd3fc"/>
+  <polygon points="4,1 6,4 4,7 2,4" fill="#bae6fd"/>
+  <line x1="4" y1="0" x2="4" y2="8" stroke="#e0f2fe" stroke-width="0.5"/>
+  <line x1="1" y1="4" x2="7" y2="4" stroke="#e0f2fe" stroke-width="0.5"/>
+  <circle cx="4" cy="4" r="1" fill="#ffffff" opacity="0.8"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+  <!-- Flame particle -->
+  <polygon points="4,0 6,4 5,5 4,3 3,5 2,4" fill="#fbbf24"/>
+  <polygon points="4,1 5,4 4,5 3,4" fill="#f97316"/>
+  <polygon points="4,2 4.5,4 4,5 3.5,4" fill="#fef9c3"/>
+  <circle cx="4" cy="6" r="1.5" fill="#ef4444" opacity="0.6"/>
+</svg>

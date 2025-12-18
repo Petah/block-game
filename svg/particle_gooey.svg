@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+  <!-- Goo droplet -->
+  <ellipse cx="4" cy="5" rx="3" ry="2.5" fill="#34d399"/>
+  <ellipse cx="4" cy="3" rx="2" ry="2.5" fill="#34d399"/>
+  <circle cx="3" cy="3" r="1" fill="#a7f3d0" opacity="0.7"/>
+  <circle cx="4" cy="5" r="0.5" fill="#ffffff" opacity="0.5"/>
+</svg>

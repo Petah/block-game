@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+  <!-- Metallic shard -->
+  <polygon points="4,0 7,4 4,8 1,4" fill="#c0c0c0"/>
+  <polygon points="4,1 6,4 4,7 2,4" fill="#e8e8e8"/>
+  <polygon points="4,2 5,4 4,6 3,4" fill="#ffffff"/>
+</svg>

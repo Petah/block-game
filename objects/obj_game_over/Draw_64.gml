@@ -6,7 +6,7 @@ draw_set_alpha(1);
 
 // Game over panel
 var _panel_w = 340;
-var _panel_h = 340;
+var _panel_h = 390;
 var _panel_x = room_width / 2 - _panel_w / 2;
 var _panel_y = room_height / 2 - _panel_h / 2;
 
@@ -54,14 +54,30 @@ scr_draw_text(_cx, _btn_y + 38, "(No stars for this level)", {
     font: fnt_sm, color: make_color_rgb(80, 60, 20), halign: fa_center
 });
 
+// Skip button
+var _skip_btn_y = _panel_y + 225;
+self.skip_btn_x = _btn_x;
+self.skip_btn_y = _skip_btn_y;
+self.skip_btn_w = _btn_w;
+self.skip_btn_h = 40;
+
+draw_set_color(make_color_rgb(100, 100, 120));
+draw_roundrect(_btn_x, _skip_btn_y, _btn_x + _btn_w, _skip_btn_y + 40, false);
+draw_set_color(make_color_rgb(70, 70, 90));
+draw_roundrect(_btn_x, _skip_btn_y, _btn_x + _btn_w, _skip_btn_y + 40, true);
+
+scr_draw_text(_cx, _skip_btn_y + 12, "Skip Level", {
+    font: fnt_md, color: c_white, halign: fa_center
+});
+
 // Other options
-scr_draw_text(_cx, _panel_y + 240, "Press R to restart", {
+scr_draw_text(_cx, _panel_y + 280, "Press R to restart", {
     font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center
 });
-scr_draw_text(_cx, _panel_y + 270, "Press M for Level Select", {
+scr_draw_text(_cx, _panel_y + 310, "Press M for Level Select", {
     font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center
 });
-scr_draw_text(_cx, _panel_y + 310, "High Score: " + string(scr_get_high_score()), {
+scr_draw_text(_cx, _panel_y + 355, "High Score: " + string(scr_get_high_score()), {
     font: fnt_sm, color: make_color_rgb(251, 191, 36), halign: fa_center
 });
 

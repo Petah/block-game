@@ -32,4 +32,14 @@ if (mouse_check_button_pressed(mb_left))
         // Restart the level
         room_restart();
     }
+
+    // Check if click is within skip button
+    if (variable_instance_exists(id, "skip_btn_x") &&
+        _mx >= self.skip_btn_x && _mx <= self.skip_btn_x + self.skip_btn_w &&
+        _my >= self.skip_btn_y && _my <= self.skip_btn_y + self.skip_btn_h)
+    {
+        // Move to next level without completing current one
+        global.selected_level = obj_game.level + 1;
+        room_restart();
+    }
 }

@@ -41,7 +41,9 @@ for (var i = 0; i < 3; i++)
     var _hx = _heart_x + i * _heart_spacing;
     var _alpha = _filled ? 1 : 0.3;
     var _color = _filled ? c_white : c_gray;
-    draw_sprite_ext(spr_heart, 0, _hx, _heart_y, 1, 1, 0, _color, _alpha);
+    var _width = 32;
+    var _scale = _width / sprite_get_width(spr_heart);
+    draw_sprite_ext(spr_heart, 0, _hx, _heart_y, _scale, _scale, 0, _color, _alpha);
 }
 
 // Level badge (center)

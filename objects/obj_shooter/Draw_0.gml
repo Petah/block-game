@@ -33,10 +33,6 @@ if (obj_game.is_dragging && obj_game.pull_strength > 0.1)
         draw_circle(_dot_x, _dot_y, _dot_size, false);
     }
 
-    // Draw ball preview at launch point
-    draw_set_alpha(_pull);
-    draw_sprite_ext(spr_ball, 0, x, y, 1, 1, 0, c_white, _pull * 0.8);
-
     draw_set_alpha(1);
     draw_set_color(c_white);
 }

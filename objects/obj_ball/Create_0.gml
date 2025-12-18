@@ -10,3 +10,6 @@ self.will_split = false; // Split into 2 balls on next block hit
 
 // Physics is set on the object, but we can adjust properties here
 phy_bullet = true; // Prevent tunneling through thin objects
+
+// Disable animation
+image_speed = 0;

@@ -3,7 +3,7 @@
 /// @param {Real} _x - X position
 /// @param {Real} _y - Y position
 /// @param {String} _text - Text to draw
-/// @param {Struct} [_options] - Optional struct with: font, color, halign, valign, alpha
+/// @param {Struct} [_options] - Optional struct with: font, color, halign, valign, alpha, shadow
 function scr_draw_text(_x, _y, _text, _options = {}) {
     // Store current settings
     var _prev_font = draw_get_font();
@@ -16,20 +16,26 @@ function scr_draw_text(_x, _y, _text, _options = {}) {
     if (variable_struct_exists(_options, "font")) {
         draw_set_font(_options.font);
     }
-    if (variable_struct_exists(_options, "color")) {
-        draw_set_color(_options.color);
-    }
     if (variable_struct_exists(_options, "halign")) {
         draw_set_halign(_options.halign);
     }
     if (variable_struct_exists(_options, "valign")) {
         draw_set_valign(_options.valign);
     }
-    if (variable_struct_exists(_options, "alpha")) {
-        draw_set_alpha(_options.alpha);
+
+    if (variable_struct_exists(_options, "shadow") && _options.shadow) {
+        // Draw shadow
+        draw_set_color(c_black);
+        draw_set_alpha(0.8);
+        draw_text(_x + _options.shadow, _y + _options.shadow, _text);
     }
 
+    if (variable_struct_exists(_options, "color")) {
+        draw_set_color(_options.color);
+    }
+    
     // Draw the text
+    draw_set_alpha(1);
     draw_text(_x, _y, _text);
 
     // Restore previous settings

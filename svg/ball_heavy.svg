@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <radialGradient id="heavyGrad" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" style="stop-color:#525252"/>
+      <stop offset="50%" style="stop-color:#2d2d2d"/>
+      <stop offset="100%" style="stop-color:#0f0f0f"/>
+    </radialGradient>
+  </defs>
+  <!-- Base circle -->
+  <circle cx="8" cy="8" r="7" fill="url(#heavyGrad)" stroke="#000000" stroke-width="0.8"/>
+  <!-- Weight bands -->
+  <circle cx="8" cy="8" r="5" fill="none" stroke="#404040" stroke-width="1"/>
+  <circle cx="8" cy="8" r="3" fill="none" stroke="#505050" stroke-width="0.8"/>
+  <!-- Center bolt -->
+  <polygon points="8,5 10,8 8,11 6,8" fill="#606060"/>
+  <polygon points="8,6 9,8 8,10 7,8" fill="#808080"/>
+  <!-- Small highlight -->
+  <ellipse cx="5" cy="5" rx="1.5" ry="1" fill="#707070" opacity="0.6"/>
+</svg>

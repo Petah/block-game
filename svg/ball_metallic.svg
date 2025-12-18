@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8e8e8"/>
+      <stop offset="25%" style="stop-color:#c0c0c0"/>
+      <stop offset="50%" style="stop-color:#a0a0a0"/>
+      <stop offset="75%" style="stop-color:#c0c0c0"/>
+      <stop offset="100%" style="stop-color:#707070"/>
+    </linearGradient>
+  </defs>
+  <!-- Base circle -->
+  <circle cx="8" cy="8" r="7" fill="url(#metalGrad)" stroke="#505050" stroke-width="0.5"/>
+  <!-- Chrome reflection bands -->
+  <path d="M4 5 Q8 3 12 5" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.8"/>
+  <path d="M5 11 Q8 13 11 11" stroke="#404040" stroke-width="1" fill="none" opacity="0.5"/>
+  <!-- Center highlight -->
+  <polygon points="8,4 10,8 8,12 6,8" fill="#ffffff" opacity="0.3"/>
+</svg>

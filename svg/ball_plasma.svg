@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <radialGradient id="plasmaGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#f0abfc"/>
+      <stop offset="50%" style="stop-color:#c026d3"/>
+      <stop offset="100%" style="stop-color:#6b21a8"/>
+    </radialGradient>
+  </defs>
+  <!-- Outer ring -->
+  <circle cx="8" cy="8" r="7" fill="none" stroke="url(#plasmaGrad)" stroke-width="2"/>
+  <!-- Inner orb -->
+  <circle cx="8" cy="8" r="4" fill="url(#plasmaGrad)"/>
+  <!-- Energy arcs -->
+  <path d="M3 8 Q5 5 8 4" stroke="#e879f9" stroke-width="0.8" fill="none"/>
+  <path d="M13 8 Q11 11 8 12" stroke="#e879f9" stroke-width="0.8" fill="none"/>
+  <path d="M5 12 Q6 9 8 8" stroke="#d946ef" stroke-width="0.6" fill="none"/>
+  <path d="M11 4 Q10 7 8 8" stroke="#d946ef" stroke-width="0.6" fill="none"/>
+  <!-- Core -->
+  <circle cx="8" cy="8" r="2" fill="#fae8ff"/>
+  <circle cx="8" cy="8" r="1" fill="#ffffff"/>
+</svg>

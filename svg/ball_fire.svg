@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <radialGradient id="fireGrad" cx="50%" cy="60%" r="50%">
+      <stop offset="0%" style="stop-color:#fef08a"/>
+      <stop offset="40%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#b91c1c"/>
+    </radialGradient>
+  </defs>
+  <!-- Core -->
+  <circle cx="8" cy="9" r="5" fill="url(#fireGrad)"/>
+  <!-- Flame tongues -->
+  <polygon points="8,1 6,5 8,4 10,5" fill="#fbbf24"/>
+  <polygon points="4,4 5,7 6,5" fill="#fb923c"/>
+  <polygon points="12,4 11,7 10,5" fill="#fb923c"/>
+  <polygon points="3,8 5,9 4,11" fill="#f97316"/>
+  <polygon points="13,8 11,9 12,11" fill="#f97316"/>
+  <!-- Inner glow -->
+  <circle cx="8" cy="9" r="3" fill="#fef9c3" opacity="0.6"/>
+  <circle cx="8" cy="9" r="1.5" fill="#ffffff" opacity="0.8"/>
+</svg>

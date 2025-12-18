@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <radialGradient id="shadowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#4b5563"/>
+      <stop offset="60%" style="stop-color:#1f2937"/>
+      <stop offset="100%" style="stop-color:#030712"/>
+    </radialGradient>
+  </defs>
+  <!-- Outer wisps -->
+  <polygon points="8,0 6,3 8,2 10,3" fill="#374151" opacity="0.6"/>
+  <polygon points="8,16 6,13 8,14 10,13" fill="#374151" opacity="0.6"/>
+  <polygon points="0,8 3,6 2,8 3,10" fill="#374151" opacity="0.6"/>
+  <polygon points="16,8 13,6 14,8 13,10" fill="#374151" opacity="0.6"/>
+  <!-- Core -->
+  <circle cx="8" cy="8" r="6" fill="url(#shadowGrad)"/>
+  <!-- Inner void -->
+  <circle cx="8" cy="8" r="3" fill="#111827"/>
+  <!-- Eyes/void marks -->
+  <ellipse cx="6" cy="7" rx="1" ry="1.5" fill="#6b21a8" opacity="0.8"/>
+  <ellipse cx="10" cy="7" rx="1" ry="1.5" fill="#6b21a8" opacity="0.8"/>
+  <!-- Subtle highlight -->
+  <path d="M5 4 Q8 3 11 4" stroke="#6b7280" stroke-width="0.5" fill="none" opacity="0.5"/>
+</svg>

@@ -80,8 +80,16 @@ if (_non_steel_count == 0)
     // Clear any remaining steel blocks
     with (obj_block) { instance_destroy(); }
 
-    // Calculate and save stars
-    self.stars_earned = scr_complete_level(self.level, self.turns);
+    // Calculate and save stars (0 stars if extra balls were used)
+    if (self.used_extra_balls)
+    {
+        self.stars_earned = 0;
+        scr_unlock_level(self.level + 1); // Still unlock next level
+    }
+    else
+    {
+        self.stars_earned = scr_complete_level(self.level, self.turns);
+    }
 
     // Show level complete overlay
     instance_create_layer(0, 0, "instances", obj_level_complete);

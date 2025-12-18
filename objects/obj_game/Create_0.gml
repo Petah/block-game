@@ -13,12 +13,32 @@ self.level_complete = false;
 self.stars_earned = 0;
 self.turns = 0;
 self.lives = 3; // Player lives
+self.used_extra_balls = false; // Track if player used extra balls (no stars if true)
+
+// Check if restarting with extra balls
+if (variable_global_exists("restart_with_extra_balls") && global.restart_with_extra_balls)
+{
+    self.used_extra_balls = true;
+    global.restart_with_extra_balls = false; // Reset flag
+}
+else
+{
+    // Reset extra balls count when starting level fresh
+    global.extra_balls_count = 0;
+}
 
 // Get level data
 var _level_data = scr_get_level_data(self.level);
 
 // Ball shooting system (slingshot style with burst fire)
 self.num_balls = _level_data.balls; // Total balls available
+
+// Add extra balls if restarting with extra balls option
+if (self.used_extra_balls && variable_global_exists("extra_balls_count"))
+{
+    self.num_balls += global.extra_balls_count;
+}
+
 self.balls_available = self.num_balls; // Balls ready to fire
 
 // Slingshot aiming

@@ -39,6 +39,14 @@ for (var i = 0; i < 3; i++)
     draw_sprite_ext(_star_spr, 0, _star_x, _star_y, 0.5, 0.5, 0, c_white, 1);
 }
 
+// Show message if extra balls were used
+if (obj_game.used_extra_balls)
+{
+    scr_draw_text(_cx, _star_y + 40, "Extra balls used - no stars earned", {
+        font: fnt_sm, color: make_color_rgb(251, 191, 36), halign: fa_center, valign: fa_middle
+    });
+}
+
 // Stats
 scr_draw_text(_cx, _panel_y + 220, "Turns: " + string(obj_game.turns) + "  |  Score: " + string(obj_game.score), {
     font: fnt_sm, color: make_color_rgb(156, 163, 175), halign: fa_center, valign: fa_middle

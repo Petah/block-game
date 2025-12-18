@@ -102,6 +102,8 @@ draw_text(room_width - 10, 100, "DEBUG MODE [D]");
 draw_text(room_width - 10, 120, "Speed: " + string(self.speed_multiplier) + "x [F]");
 draw_text(room_width - 10, 140, "Test Room [T]");
 draw_text(room_width - 10, 160, "Restart [R]");
+draw_text(room_width - 10, 180, "Win [W]");
+draw_text(room_width - 10, 200, "Lose [L]");
 
 // Debug phsyics
 var _flag = phy_debug_render_aabb | phy_debug_render_collision_pairs | phy_debug_render_coms | phy_debug_render_core_shapes | phy_debug_render_joints | phy_debug_render_obb | phy_debug_render_shapes;

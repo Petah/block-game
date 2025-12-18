@@ -43,3 +43,21 @@ if (keyboard_check_pressed(ord("R")))
 {
     room_restart();
 }
+
+// Press W to trigger level complete (Win)
+if (keyboard_check_pressed(ord("W")))
+{
+    if (!instance_exists(obj_level_complete) && !instance_exists(obj_game_over))
+    {
+        instance_create_layer(0, 0, "Instances", obj_level_complete);
+    }
+}
+
+// Press L to trigger game over (Lose)
+if (keyboard_check_pressed(ord("L")))
+{
+    if (!instance_exists(obj_level_complete) && !instance_exists(obj_game_over))
+    {
+        instance_create_layer(0, 0, "Instances", obj_game_over);
+    }
+}

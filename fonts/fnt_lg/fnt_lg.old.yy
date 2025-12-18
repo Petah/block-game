@@ -208,8 +208,8 @@
   "maintainGms1Font":false,
   "name":"fnt_lg",
   "parent":{
-    "name":"Block Game",
-    "path":"Block Game.yyp",
+    "name":"fonts",
+    "path":"folders/fonts.yy",
   },
   "pointRounding":0,
   "ranges":[

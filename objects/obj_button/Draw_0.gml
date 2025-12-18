@@ -30,24 +30,19 @@ if (self.level_num > 0)
     else
     {
         // Level button - draw number larger
-        scr_draw_text(x, y - 8, self.text, {
+        scr_draw_text(x, y - 14, self.text, {
             font: fnt_xl,
             color: c_white,
             halign: fa_center,
-            valign: fa_middle
+            valign: fa_middle,
+            shadow: 2
         });
 
         // Draw stars below the number using sprites
-        var _star_y = y + 28;
-        var _star_spacing = 26;
-        var _star_start = x - _star_spacing;
+        draw_sprite_ext(self.stars >= 1 ? spr_star_filled : spr_star_empty, 0, x - 22, y + 32, 0.18, 0.18, 15, c_white, 1);
+        draw_sprite_ext(self.stars >= 3 ? spr_star_filled : spr_star_empty, 0, x + 22, y + 32, 0.18, 0.18, -15, c_white, 1);
+        draw_sprite_ext(self.stars >= 2 ? spr_star_filled : spr_star_empty, 0, x, y + 24, 0.25, 0.25, 0, c_white, 1);
 
-        for (var i = 0; i < 3; i++)
-        {
-            var _star_x = _star_start + i * _star_spacing;
-            var _star_spr = (i < self.stars) ? spr_star_filled : spr_star_empty;
-            draw_sprite_ext(_star_spr, 0, _star_x, _star_y, 0.18, 0.18, 0, c_white, 1);
-        }
     }
 }
 else

@@ -42,7 +42,6 @@ if (self.level_num > 0)
         draw_sprite_ext(self.stars >= 1 ? spr_star_filled : spr_star_empty, 0, x - 22, y + 32, 0.18, 0.18, 15, c_white, 1);
         draw_sprite_ext(self.stars >= 3 ? spr_star_filled : spr_star_empty, 0, x + 22, y + 32, 0.18, 0.18, -15, c_white, 1);
         draw_sprite_ext(self.stars >= 2 ? spr_star_filled : spr_star_empty, 0, x, y + 24, 0.25, 0.25, 0, c_white, 1);
-
     }
 }
 else

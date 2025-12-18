@@ -28,7 +28,7 @@ self.drag_start_scroll = 0;
 self.scroll_velocity = 0;
 
 // Visible area for clipping
-self.visible_top = 280;
+self.visible_top = 200;
 self.visible_bottom = room_height - 50;
 
 // Create all level buttons

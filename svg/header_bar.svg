@@ -1,112 +1,106 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="90" viewBox="0 0 720 90">
   <defs>
-    <!-- Header background gradient -->
+    <!-- Green background gradient -->
     <linearGradient id="headerBg" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#252550"/>
-      <stop offset="100%" style="stop-color:#16162a"/>
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="50%" style="stop-color:#16a34a"/>
+      <stop offset="100%" style="stop-color:#15803d"/>
     </linearGradient>
-    <!-- Button gradient -->
-    <linearGradient id="buttonBg" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#4f46e5"/>
-      <stop offset="100%" style="stop-color:#3730a3"/>
-    </linearGradient>
-    <!-- Level badge gradient -->
-    <linearGradient id="badgeBg" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#6366f1"/>
-      <stop offset="50%" style="stop-color:#4f46e5"/>
-      <stop offset="100%" style="stop-color:#3730a3"/>
+    <!-- Grey button gradient -->
+    <linearGradient id="greyBtn" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6b7280"/>
+      <stop offset="50%" style="stop-color:#4b5563"/>
+      <stop offset="100%" style="stop-color:#374151"/>
     </linearGradient>
     <!-- Heart gradient -->
     <linearGradient id="heartGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#f87171"/>
+      <stop offset="0%" style="stop-color:#fca5a5"/>
       <stop offset="50%" style="stop-color:#ef4444"/>
       <stop offset="100%" style="stop-color:#b91c1c"/>
     </linearGradient>
     <!-- Ball gradient -->
     <radialGradient id="ballGrad" cx="35%" cy="35%" r="60%">
-      <stop offset="0%" style="stop-color:#60a5fa"/>
-      <stop offset="100%" style="stop-color:#2563eb"/>
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="30%" style="stop-color:#fca5a5"/>
+      <stop offset="100%" style="stop-color:#ef4444"/>
     </radialGradient>
-    <!-- Subtle glow -->
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+    <!-- Level badge gradient -->
+    <linearGradient id="levelBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef08a"/>
+      <stop offset="50%" style="stop-color:#facc15"/>
+      <stop offset="100%" style="stop-color:#ca8a04"/>
+    </linearGradient>
   </defs>
 
   <!-- Background -->
   <rect x="0" y="0" width="720" height="90" fill="url(#headerBg)"/>
 
-  <!-- Bottom border line -->
-  <line x1="0" y1="88" x2="720" y2="88" stroke="#4f46e5" stroke-width="2"/>
-  <line x1="0" y1="89" x2="720" y2="89" stroke="#3730a3" stroke-width="1"/>
+  <!-- Subtle pattern overlay -->
+  <line x1="0" y1="30" x2="720" y2="30" stroke="#ffffff" stroke-width="1" opacity="0.1"/>
+  <line x1="0" y1="60" x2="720" y2="60" stroke="#ffffff" stroke-width="1" opacity="0.1"/>
 
-  <!-- Back button -->
-  <g transform="translate(10, 10)">
-    <rect x="0" y="0" width="70" height="70" rx="12" ry="12" fill="url(#buttonBg)" opacity="0.9"/>
-    <rect x="2" y="2" width="66" height="30" rx="10" ry="10" fill="rgba(255,255,255,0.1)"/>
+  <!-- Bottom edge -->
+  <rect x="0" y="86" width="720" height="4" fill="#14532d"/>
+
+  <!-- Back button (grey) -->
+  <g transform="translate(12, 12)">
+    <rect x="0" y="0" width="66" height="66" rx="10" fill="url(#greyBtn)" stroke="#9ca3af" stroke-width="1"/>
+    <!-- Highlight -->
+    <rect x="3" y="3" width="60" height="28" rx="8" fill="rgba(255,255,255,0.15)"/>
     <!-- Back arrow -->
-    <path d="M40 25 L28 35 L40 45" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="28" y1="35" x2="48" y2="35" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+    <polygon points="38,22 26,33 38,44" fill="#ffffff"/>
+    <rect x="26" y="29" width="20" height="8" rx="2" fill="#ffffff"/>
   </g>
 
-  <!-- Score section -->
-  <g transform="translate(100, 15)">
-    <text x="0" y="12" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af" font-weight="bold">SCORE</text>
-    <text x="0" y="42" font-family="Arial, sans-serif" font-size="28" fill="#ffffff" font-weight="bold">12,450</text>
-  </g>
-
-  <!-- Lives section -->
-  <g transform="translate(240, 15)">
-    <text x="0" y="12" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af" font-weight="bold">LIVES</text>
-    <!-- Hearts -->
-    <g transform="translate(0, 22)">
-      <!-- Heart 1 (filled) -->
-      <path d="M12 28 C12 28 0 20 0 11 C0 5 4 2 8 2 C10 2 12 4 12 6 C12 4 14 2 16 2 C20 2 24 5 24 11 C24 20 12 28 12 28 Z"
-            fill="url(#heartGrad)" stroke="#991b1b" stroke-width="1"/>
-      <!-- Heart 2 (filled) -->
-      <g transform="translate(30, 0)">
-        <path d="M12 28 C12 28 0 20 0 11 C0 5 4 2 8 2 C10 2 12 4 12 6 C12 4 14 2 16 2 C20 2 24 5 24 11 C24 20 12 28 12 28 Z"
-              fill="url(#heartGrad)" stroke="#991b1b" stroke-width="1"/>
-      </g>
-      <!-- Heart 3 (empty) -->
-      <g transform="translate(60, 0)" opacity="0.3">
-        <path d="M12 28 C12 28 0 20 0 11 C0 5 4 2 8 2 C10 2 12 4 12 6 C12 4 14 2 16 2 C20 2 24 5 24 11 C24 20 12 28 12 28 Z"
-              fill="#4b5563" stroke="#6b7280" stroke-width="1"/>
-      </g>
+  <!-- Hearts section -->
+  <g transform="translate(100, 18)">
+    <!-- Heart 1 -->
+    <g transform="translate(0, 0)">
+      <path d="M16 48 C16 48 0 34 0 18 C0 8 6 2 13 2 C16 2 19 5 19 8 C19 5 22 2 25 2 C32 2 38 8 38 18 C38 34 22 48 22 48 Z"
+            transform="scale(0.7)" fill="url(#heartGrad)" stroke="#991b1b" stroke-width="1"/>
+    </g>
+    <!-- Heart 2 -->
+    <g transform="translate(32, 0)">
+      <path d="M16 48 C16 48 0 34 0 18 C0 8 6 2 13 2 C16 2 19 5 19 8 C19 5 22 2 25 2 C32 2 38 8 38 18 C38 34 22 48 22 48 Z"
+            transform="scale(0.7)" fill="url(#heartGrad)" stroke="#991b1b" stroke-width="1"/>
+    </g>
+    <!-- Heart 3 -->
+    <g transform="translate(64, 0)">
+      <path d="M16 48 C16 48 0 34 0 18 C0 8 6 2 13 2 C16 2 19 5 19 8 C19 5 22 2 25 2 C32 2 38 8 38 18 C38 34 22 48 22 48 Z"
+            transform="scale(0.7)" fill="url(#heartGrad)" stroke="#991b1b" stroke-width="1"/>
     </g>
   </g>
 
-  <!-- Level badge (centered) -->
-  <g transform="translate(310, 20)">
-    <rect x="0" y="0" width="100" height="50" rx="12" ry="12" fill="url(#badgeBg)" filter="url(#glow)"/>
-    <rect x="3" y="3" width="94" height="20" rx="9" ry="9" fill="rgba(255,255,255,0.15)"/>
-    <text x="50" y="22" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)" font-weight="bold" text-anchor="middle">LEVEL</text>
-    <text x="50" y="42" font-family="Arial, sans-serif" font-size="20" fill="#ffffff" font-weight="bold" text-anchor="middle">24</text>
+  <!-- Level badge (center) -->
+  <g transform="translate(310, 10)">
+    <rect x="0" y="0" width="100" height="70" rx="12" fill="url(#levelBg)" stroke="#a16207" stroke-width="2"/>
+    <!-- Inner highlight -->
+    <rect x="4" y="4" width="92" height="30" rx="9" fill="rgba(255,255,255,0.3)"/>
+    <!-- Level text -->
+    <text x="50" y="28" font-family="Arial, sans-serif" font-size="14" fill="#78350f" font-weight="bold" text-anchor="middle">LEVEL</text>
+    <text x="50" y="58" font-family="Arial, sans-serif" font-size="28" fill="#78350f" font-weight="bold" text-anchor="middle">24</text>
   </g>
 
-  <!-- Turns counter -->
-  <g transform="translate(440, 15)">
-    <text x="0" y="12" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af" font-weight="bold">TURNS</text>
-    <text x="0" y="42" font-family="Arial, sans-serif" font-size="28" fill="#fbbf24" font-weight="bold">5</text>
-  </g>
-
-  <!-- Ball count section (right side) -->
-  <g transform="translate(560, 15)">
-    <text x="130" y="12" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af" font-weight="bold" text-anchor="end">BALLS</text>
-    <!-- Ball icon -->
-    <circle cx="30" cy="38" r="16" fill="url(#ballGrad)" stroke="#1d4ed8" stroke-width="2"/>
-    <ellipse cx="24" cy="32" rx="6" ry="4" fill="rgba(255,255,255,0.4)"/>
+  <!-- Balls section (right side) -->
+  <g transform="translate(520, 12)">
+    <!-- Ball icons -->
+    <g transform="translate(0, 8)">
+      <circle cx="20" cy="25" r="18" fill="url(#ballGrad)" stroke="#b91c1c" stroke-width="1.5"/>
+      <ellipse cx="13" cy="19" rx="5" ry="3" fill="rgba(255,255,255,0.5)"/>
+    </g>
+    <g transform="translate(30, 8)">
+      <circle cx="20" cy="25" r="18" fill="url(#ballGrad)" stroke="#b91c1c" stroke-width="1.5"/>
+      <ellipse cx="13" cy="19" rx="5" ry="3" fill="rgba(255,255,255,0.5)"/>
+    </g>
+    <g transform="translate(60, 8)">
+      <circle cx="20" cy="25" r="18" fill="url(#ballGrad)" stroke="#b91c1c" stroke-width="1.5"/>
+      <ellipse cx="13" cy="19" rx="5" ry="3" fill="rgba(255,255,255,0.5)"/>
+    </g>
     <!-- Ball count -->
-    <text x="130" y="48" font-family="Arial, sans-serif" font-size="32" fill="#ffffff" font-weight="bold" text-anchor="end">x8</text>
+    <text x="165" y="45" font-family="Arial, sans-serif" font-size="36" fill="#ffffff" font-weight="bold" text-anchor="end">x8</text>
   </g>
 
-  <!-- Decorative elements -->
-  <circle cx="95" cy="45" r="2" fill="#4f46e5" opacity="0.5"/>
-  <circle cx="230" cy="45" r="2" fill="#4f46e5" opacity="0.5"/>
-  <circle cx="425" cy="45" r="2" fill="#4f46e5" opacity="0.5"/>
-  <circle cx="545" cy="45" r="2" fill="#4f46e5" opacity="0.5"/>
+  <!-- Decorative corner accents -->
+  <polygon points="0,0 30,0 0,30" fill="#4ade80" opacity="0.3"/>
+  <polygon points="720,0 690,0 720,30" fill="#4ade80" opacity="0.3"/>
 </svg>

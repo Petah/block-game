@@ -1,3 +1,4 @@
+draw_sprite(spr_background, 0, camera_get_view_x(view_camera[0]) + room_width / 2, camera_get_view_y(view_camera[0]) + room_height / 2);
 draw_set_alpha(0.7);
 with (obj_button_level) {
     if (self._parent != noone) {

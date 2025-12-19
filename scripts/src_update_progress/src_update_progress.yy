@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"src_update_progress",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"src_update_progress",
+  "parent":{
+    "name":"scripts",
+    "path":"folders/scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

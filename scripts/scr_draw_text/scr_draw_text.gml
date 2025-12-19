@@ -13,24 +13,24 @@ function scr_draw_text(_x, _y, _text, _options = {}) {
     var _prev_alpha = draw_get_alpha();
 
     // Apply options
-    if (variable_struct_exists(_options, "font")) {
+    if (_options[$ "font"]) {
         draw_set_font(_options.font);
     }
-    if (variable_struct_exists(_options, "halign")) {
+    if (_options[$ "halign"]) {
         draw_set_halign(_options.halign);
     }
-    if (variable_struct_exists(_options, "valign")) {
+    if (_options[$ "valign"]) {
         draw_set_valign(_options.valign);
     }
 
-    if (variable_struct_exists(_options, "shadow") && _options.shadow) {
+    if (_options[$ "shadow"]) {
         // Draw shadow
         draw_set_color(c_black);
         draw_set_alpha(0.8);
         draw_text(_x + _options.shadow, _y + _options.shadow, _text);
     }
 
-    if (variable_struct_exists(_options, "color")) {
+    if (_options[$ "color"]) {
         draw_set_color(_options.color);
     }
     

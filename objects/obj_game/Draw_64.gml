@@ -1,13 +1,13 @@
 // Header gradient background
 draw_set_alpha(1);
-draw_rectangle_color(0, 0, room_width, self.header_height,
+draw_rectangle_color(0, 0, room_width, global._header_height,
     make_color_rgb(37, 37, 80), make_color_rgb(37, 37, 80),  // Top: #252550
     make_color_rgb(22, 22, 42), make_color_rgb(22, 22, 42),  // Bottom: #16162a
     false);
 
 // Header bottom border
 draw_set_color(make_color_rgb(63, 63, 122)); // #3f3f7a
-draw_line_width(0, self.header_height, room_width, self.header_height, 2);
+draw_line_width(0, global._header_height, room_width, global._header_height, 2);
 
 // Back button (left side)
 var _btn_cx = self.back_btn_x + self.back_btn_w / 2;
@@ -50,7 +50,7 @@ for (var i = 0; i < 3; i++)
 var _badge_w = 100;
 var _badge_h = 36;
 var _badge_x = room_width / 2 - _badge_w / 2;
-var _badge_y = (self.header_height - _badge_h) / 2;
+var _badge_y = (global._header_height - _badge_h) / 2;
 
 // Badge gradient background (rounded rectangle approximation)
 draw_set_color(make_color_rgb(79, 70, 229)); // #4f46e5
@@ -59,7 +59,7 @@ draw_set_color(make_color_rgb(55, 48, 163)); // #3730a3
 draw_roundrect(_badge_x + 2, _badge_y + _badge_h/2, _badge_x + _badge_w - 2, _badge_y + _badge_h - 2, false);
 
 // Level text
-scr_draw_text(_badge_x + _badge_w / 2, _badge_y + 10, "LEVEL " + string(self.level), {
+scr_draw_text(_badge_x + _badge_w / 2, _badge_y + 10, "LEVEL " + string(global._generated_level.level_data.level), {
     font: fnt_md, color: c_white, halign: fa_center
 });
 

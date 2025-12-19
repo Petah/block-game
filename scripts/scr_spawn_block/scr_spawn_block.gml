@@ -51,13 +51,8 @@ function scr_spawn_block(_x, _y, _type) {
         _block.sprite_index = spr_block;
 
         // Set sprite frame based on health (7 color tiers)
-        if (_block.health <= 2) _block.image_index = 0;       // Blue
-        else if (_block.health <= 4) _block.image_index = 1;  // Green
-        else if (_block.health <= 6) _block.image_index = 2;  // Yellow
-        else if (_block.health <= 9) _block.image_index = 3;  // Orange
-        else if (_block.health <= 12) _block.image_index = 4; // Red
-        else if (_block.health <= 16) _block.image_index = 5; // Purple
-        else _block.image_index = 6;                          // Pink
+        var _frames = sprite_get_number(_block.sprite_index);
+        _block.image_index = min(floor(((_block.health - 1) / global._generated_level.level_data.max_health) * _frames), _frames - 1);
     }
 
     // Scale block to fit grid cell size

@@ -1,2 +1,1 @@
-scr_button_step(self.next_level);
-scr_button_step(self.back);
+scr_button_step(self._buttons);

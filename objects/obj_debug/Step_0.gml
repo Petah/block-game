@@ -28,16 +28,6 @@ if (keyboard_check_pressed(ord("F")))
     }
 }
 
-// Press T to toggle test level (-1)
-if (keyboard_check_pressed(ord("T")))
-{
-    if (global.selected_level == -1)
-        global.selected_level = 1;
-    else
-        global.selected_level = -1;
-    room_restart();
-}
-
 // Press R to restart current room
 if (keyboard_check_pressed(ord("R")))
 {

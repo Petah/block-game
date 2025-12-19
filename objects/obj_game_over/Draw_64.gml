@@ -8,7 +8,7 @@ var _cx = room_width / 2;
 scr_draw_text(_cx, self._panel_y + 40, "GAME OVER", {
     font: fnt_xl, color: c_white, halign: fa_center, valign: fa_middle, shadow: 3
 });
-scr_draw_text(_cx, self._panel_y + 80, "Level: " + string(obj_game.level), {
+scr_draw_text(_cx, self._panel_y + 80, "Level: " + string(global._generated_level.level_data.level), {
     font: fnt_md, color: c_white, halign: fa_center
 });
 scr_draw_text(_cx, self._panel_y + 100, "Score: " + string(obj_game.score), {
@@ -16,11 +16,9 @@ scr_draw_text(_cx, self._panel_y + 100, "Score: " + string(obj_game.score), {
 });
 
 // Other options
-scr_draw_text(_cx, self._panel_y + 355, "High Score: " + string(scr_get_high_score()), {
+scr_draw_text(_cx, self._panel_y + 355, "High Score: " + string(global._generated_level.level_data.high_score), {
     font: fnt_sm, color: make_color_rgb(251, 191, 36), halign: fa_center
 });
 
 // Draw buttons
-scr_button_draw(self.skip);
-scr_button_draw(self.extra_balls);
-scr_button_draw(self.back);
+scr_button_draw(self._buttons);

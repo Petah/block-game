@@ -57,7 +57,9 @@ if (self.game_over)
 // === CHECK FOR LEVEL COMPLETE (every frame) ===
 var _non_steel_count = 0;
 with (obj_block) {
-    if (block_type != "steel") _non_steel_count++;
+    if (block_type != "steel") {
+        _non_steel_count++;
+    }
 }
 
 if (_non_steel_count == 0)
@@ -65,30 +67,17 @@ if (_non_steel_count == 0)
     // Level complete!
     self.level_complete = true;
 
-    // Explode all balls like fireworks
-    with (obj_ball)
-    {
-        // Create firework explosion at ball position
-        part_particles_create(obj_particles.part_sys, x, y, obj_particles.part_firework, 25);
-        part_particles_create(obj_particles.part_sys, x, y, obj_particles.part_firework_spark, 40);
-        instance_destroy();
-    }
-
-    // Big screen shake for celebration
-    obj_screen_shake.shake_amount = 10;
-
-    // Clear any remaining steel blocks
-    with (obj_block) { instance_destroy(); }
+    scr_clear_level();
 
     // Calculate and save stars (0 stars if extra balls were used)
     if (self.used_extra_balls)
     {
-        self.stars_earned = 0;
-        scr_unlock_level(self.level + 1); // Still unlock next level
+        // self.stars_earned = 0;
+        // @todo retry logic
     }
     else
     {
-        self.stars_earned = scr_complete_level(self.level, self.turns);
+        src_update_progress();
     }
 
     // Show level complete overlay
@@ -146,7 +135,7 @@ if (self.state == "playing" || self.state == "waiting")
             // Lock in firing parameters
             self.balls_to_fire = self.balls_available;
             self.fire_delay = 0;
-            self.turns++; // Count as one turn
+            self._turns++; // Count as one turn
 
             // Calculate and lock fire speed
             var _base_speed = 800;

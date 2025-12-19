@@ -1,6 +1,9 @@
 // Collision with block - 'other' is the block we hit
 var _block = other;
 
+// Play block hit sound
+scr_block_sound(_block);
+
 // Fireball passes through without physics bounce
 if (self.fireball)
 {
@@ -24,13 +27,7 @@ obj_game.score += 10;
 // Update sprite frame for normal blocks (color changes with health)
 if (_block.block_type == "normal")
 {
-    if (_block.health <= 2) _block.image_index = 0;
-    else if (_block.health <= 4) _block.image_index = 1;
-    else if (_block.health <= 6) _block.image_index = 2;
-    else if (_block.health <= 9) _block.image_index = 3;
-    else if (_block.health <= 12) _block.image_index = 4;
-    else if (_block.health <= 16) _block.image_index = 5;
-    else _block.image_index = 6;
+    scr_block_color(_block);
 }
 
 // Emit hit particles at block position

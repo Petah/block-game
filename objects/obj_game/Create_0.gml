@@ -10,6 +10,7 @@ self.stars_earned = 0;
 self._turns = 0;
 self.lives = 3; // Player lives
 self.used_extra_balls = false; // Track if player used extra balls (no stars if true)
+self._buttons = [];
 
 // Check if restarting with extra balls
 if (variable_global_exists("restart_with_extra_balls") && global.restart_with_extra_balls)
@@ -63,12 +64,10 @@ self.turn_end_delay = 60;      // Frames to wait before ending turn (1 second)
 // Bonus balls collected this turn (resets each turn)
 self.bonus_balls = 0;
 
-
-// Back button bounds (for click detection)
-self.back_btn_x = 10;
-self.back_btn_y = 10;
-self.back_btn_w = 70;
-self.back_btn_h = 70;
+// Back button to main menu
+scr_button_create(self._buttons, 10, 10, 70, 70, "<", function() {
+    room_goto(rm_main_menu);
+});
 
 // Grid settings - cols based on level layout or default for random
 self.grid_cols = array_length(global._generated_level.layout[0]);

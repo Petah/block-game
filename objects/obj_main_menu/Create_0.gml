@@ -1,69 +1,55 @@
-// Initialize progress system
-scr_init_progress();
+// Viewport drag variables
+self._dragging = false;
+self._drag_start_x = 0;
+self._drag_start_y = 0;
+self._drag_cam_start_x = 0;
+self._drag_cam_start_y = 0;
 
-// Title
-self.title = "BLOCK GAME";
+instance_create_layer(0, 0, "ui_under", obj_level_lines);
 
-// Total levels
-self.total_levels = 109;
+var _loaded = src_load();
+log_info("Loaded level {0}", _loaded);
+if (!_loaded) {
+    self._root = scr_button_level_create_instance({
+        seed: 1,
+        index: "1",
+        children: [],
+        enhancement: undefined,
+        icon: undefined,
+        level: 1,
+        stars: 0,
+        high_score: 0,
+        min_width: 3,
+        max_width: 3,
+        min_height: 3,
+        max_height: 3,
+        min_health: 1,
+        max_health: 1,
+        min_balls: 3,
+        max_balls: 3,
+        special_probability: 0,
+        steel_probability: 0,
+        rainbow_probability: 0,
+        explosive_probability: 0,
+    }, undefined, room_width / 2, room_height / 2);
+    array_push(global._game_state, self._root._level_data);
 
-// Level select grid configuration
-self.grid_cols = 5;
-self.grid_rows = ceil(self.total_levels / self.grid_cols); // 22 rows for 109 levels
-self.btn_size = 100;
-self.btn_gap = 16;
-self.grid_width = self.grid_cols * self.btn_size + (self.grid_cols - 1) * self.btn_gap;
-self.grid_start_x = (room_width - self.grid_width) / 2 + self.btn_size / 2;
-self.grid_start_y = 320;
+    var _left = scr_button_level_create_instance(scr_button_level_enhance(self._root._level_data, "More Balls"), self._root, room_width / 2 - global._level_spacing, room_height / 2);
+    array_push(global._game_state, _left._level_data);
 
-// Scrolling
-self.scroll_y = 0;
-self.scroll_target = 0;
-self.scroll_min = 0;
-self.scroll_max = max(0, (self.grid_rows * (self.btn_size + self.btn_gap)) - 700);
-self.mouse_down = false;
-self.is_dragging = false;
-self.drag_start_y = 0;
-self.drag_start_scroll = 0;
-self.scroll_velocity = 0;
+    var _right = scr_button_level_create_instance(scr_button_level_enhance(self._root._level_data, "Bigger Level"), self._root, room_width / 2 + global._level_spacing, room_height / 2);
+    array_push(global._game_state, _right._level_data);
 
-// Visible area for clipping
-self.visible_top = 200;
-self.visible_bottom = room_height - 50;
+    var _up = scr_button_level_create_instance(scr_button_level_enhance(self._root._level_data, "Stronger Blocks"), self._root, room_width / 2, room_height / 2 - global._level_spacing);
+    array_push(global._game_state, _up._level_data);
 
-// Create all level buttons
-self.level_buttons = [];
+    var _down = scr_button_level_create_instance(scr_button_level_enhance(self._root._level_data, "More Steel"), self._root, room_width / 2, room_height / 2 + global._level_spacing);
+    array_push(global._game_state, _down._level_data);
 
-for (var _level = 1; _level <= self.total_levels; _level++) {
-    var _row = floor((_level - 1) / self.grid_cols);
-    var _col = (_level - 1) mod self.grid_cols;
-    var _bx = self.grid_start_x + _col * (self.btn_size + self.btn_gap);
-    var _by = self.grid_start_y + _row * (self.btn_size + self.btn_gap);
+    self._root._level_data.children = [_left._level_data.index, _right._level_data.index, _up._level_data.index, _down._level_data.index];
+    self._root._children = [_left, _right, _up, _down];
 
-    var _btn = instance_create_layer(_bx, _by, "instances", obj_button);
-    _btn.width = self.btn_size;
-    _btn.height = self.btn_size;
-    _btn.level_num = _level;
-    _btn.base_y = _by; // Store base Y for scrolling
-
-    // Check if unlocked
-    if (scr_is_level_unlocked(_level)) {
-        _btn.text = string(_level);
-        _btn.locked = false;
-        _btn.stars = scr_get_level_stars(_level);
-
-        // Capture level number for callback
-        var _lvl = _level;
-        _btn.on_click = method({ lvl: _lvl }, function() {
-            global.selected_level = lvl;
-            room_goto(rm_game);
-        });
-    } else {
-        _btn.text = "";
-        _btn.locked = true;
-        _btn.stars = 0;
-        _btn.on_click = undefined;
-    }
-
-    array_push(self.level_buttons, _btn);
+    scr_save();
+} else {
+    self._root = _loaded;
 }

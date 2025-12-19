@@ -10,8 +10,8 @@
   "name":"obj_main_menu",
   "overriddenProperties":[],
   "parent":{
-    "name":"objects",
-    "path":"folders/objects.yy",
+    "name":"main_menu",
+    "path":"folders/main_menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

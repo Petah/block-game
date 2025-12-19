@@ -1,12 +1,12 @@
 scr_draw_overlay();
 
 // Game over panel
-draw_sprite_stretched(spr_ui_modal_red, 0, self._panel_x, self._panel_y, self._panel_w, self._panel_h);
+draw_sprite_stretched(sprite_index, 0, self._panel_x, self._panel_y, self._panel_w, self._panel_h);
 
 // Text
 var _cx = room_width / 2;
 scr_draw_text(_cx, self._panel_y + 40, "GAME OVER", {
-    font: fnt_xl, color: c_white, halign: fa_center, valign: fa_middle, shadow: 3
+    font: fnt_xxl, color: c_white, halign: fa_center, valign: fa_middle, shadow: 3
 });
 scr_draw_text(_cx, self._panel_y + 80, "Level: " + string(global._generated_level.level_data.index), {
     font: fnt_md, color: c_white, halign: fa_center

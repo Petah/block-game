@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_ui_modal_green",
+    "path":"sprites/spr_ui_modal_green/spr_ui_modal_green.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

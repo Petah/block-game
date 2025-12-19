@@ -1,14 +1,14 @@
 scr_draw_overlay();
 
 // Level complete panel
-draw_sprite_stretched(spr_ui_modal_green, 0, self._panel_x, self._panel_y, self._panel_w, self._panel_h);
+draw_sprite_stretched(sprite_index, 0, self._panel_x, self._panel_y, self._panel_w, self._panel_h);
 
 scr_button_draw(self._buttons);
 
 // Title
 var _cx = room_width / 2;
 scr_draw_text(_cx, self._panel_y + 80, "LEVEL COMPLETE!", {
-    font: fnt_xl, color: c_white, halign: fa_center, valign: fa_middle, shadow: 3
+    font: fnt_xxl, color: c_white, halign: fa_center, valign: fa_middle, shadow: 3
 });
 
 // Level number

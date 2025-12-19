@@ -1,5 +1,3 @@
-scr_button_step(self._buttons);
-
 // Don't process if game ended or level complete
 if (self.level_complete || self.game_over) exit;
 

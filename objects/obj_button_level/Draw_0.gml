@@ -7,7 +7,7 @@ if (self._level_data.stars > 0) {
 }
 
 scr_draw_text(x, y + (self._level_data.stars > 0 ? 5 : 0), string(self._level_data.index), {
-    font: fnt_xl,
+    font: fnt_xxl,
     color: c_white,
     halign: fa_center,
     valign: fa_middle,

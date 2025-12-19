@@ -1,6 +1,9 @@
 // Spawn debug overlay
 instance_create_layer(0, 0, "ui", obj_debug);
 
+// Spawn header bar
+instance_create_layer(0, 0, "ui", obj_header);
+
 // Game variables
 self.score = 0;
 self.game_over = false;
@@ -63,11 +66,6 @@ self.turn_end_delay = 60;      // Frames to wait before ending turn (1 second)
 
 // Bonus balls collected this turn (resets each turn)
 self.bonus_balls = 0;
-
-// Back button to main menu
-scr_button_create(self._buttons, 10, 10, 70, 70, "<", function() {
-    room_goto(rm_main_menu);
-});
 
 // Grid settings - cols based on level layout or default for random
 self.grid_cols = array_length(global._generated_level.layout[0]);

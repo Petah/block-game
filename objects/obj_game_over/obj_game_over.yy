@@ -31,7 +31,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_ui_modal_red",
+    "path":"sprites/spr_ui_modal_red/spr_ui_modal_red.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

@@ -1,0 +1,27 @@
+function scr_init_level_data() {
+    return {
+        seed: 1,
+        index: "1",
+        children: [],
+        enhancement: undefined,
+        icon: undefined,
+        level: 1,
+        stars: 0,
+        high_score: 0,
+        min_width: 3,
+        max_width: 3,
+        min_height: 3,
+        max_height: 3,
+        min_health: 1,
+        max_health: 1,
+        min_balls: 3,
+        max_balls: 3,
+        special_probability: 0,
+        steel_probability: 0,
+        min_steel: 0,
+        rainbow_probability: 0,
+        min_rainbow: 0,
+        explosive_probability: 0,
+        min_explosive: 0,
+    };
+}

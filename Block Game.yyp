@@ -60,6 +60,7 @@
     {"id":{"name":"scr_draw_pill","path":"scripts/scr_draw_pill/scr_draw_pill.yy",},},
     {"id":{"name":"scr_draw_text","path":"scripts/scr_draw_text/scr_draw_text.yy",},},
     {"id":{"name":"scr_init_game","path":"scripts/scr_init_game/scr_init_game.yy",},},
+    {"id":{"name":"scr_init_level_data","path":"scripts/scr_init_level_data/scr_init_level_data.yy",},},
     {"id":{"name":"scr_level_generator","path":"scripts/scr_level_generator/scr_level_generator.yy",},},
     {"id":{"name":"scr_save","path":"scripts/scr_save/scr_save.yy",},},
     {"id":{"name":"scr_spawn_block","path":"scripts/scr_spawn_block/scr_spawn_block.yy",},},

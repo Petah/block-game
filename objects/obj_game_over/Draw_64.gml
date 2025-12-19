@@ -8,7 +8,7 @@ var _cx = room_width / 2;
 scr_draw_text(_cx, self._panel_y + 40, "GAME OVER", {
     font: fnt_xl, color: c_white, halign: fa_center, valign: fa_middle, shadow: 3
 });
-scr_draw_text(_cx, self._panel_y + 80, "Level: " + string(global._generated_level.level_data.level), {
+scr_draw_text(_cx, self._panel_y + 80, "Level: " + string(global._generated_level.level_data.index), {
     font: fnt_md, color: c_white, halign: fa_center
 });
 scr_draw_text(_cx, self._panel_y + 100, "Score: " + string(obj_game.score), {

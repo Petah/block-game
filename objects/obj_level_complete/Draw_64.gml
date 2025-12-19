@@ -12,7 +12,7 @@ scr_draw_text(_cx, self._panel_y + 80, "LEVEL COMPLETE!", {
 });
 
 // Level number
-scr_draw_text(_cx, self._panel_y + 120, "Level " + string(global._generated_level.level_data.level), {
+scr_draw_text(_cx, self._panel_y + 120, "Level " + string(global._generated_level.level_data.index), {
     font: fnt_lg, color: c_white, halign: fa_center, valign: fa_middle
 });
 

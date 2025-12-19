@@ -53,3 +53,15 @@ if (!_loaded) {
 } else {
     self._root = _loaded;
 }
+
+if (variable_global_exists("_generated_level") && global._generated_level.level_data.index) {
+    for (var _i = 0; _i < array_length(global._game_state); _i++) {
+        var _level_data = global._game_state[_i];
+        if (_level_data.index == global._generated_level.level_data.index) {
+            var _cam_x = _level_data.x - room_width / 2;
+            var _cam_y = _level_data.y - room_height / 2;
+            camera_set_view_pos(view_camera[0], _cam_x, _cam_y);
+            break;
+        }
+    }
+}

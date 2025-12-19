@@ -52,14 +52,17 @@ function scr_button_level_enhance(_button_level_data, _fixed_enhancement, _count
         case "More Steel":
             _new_level_data.special_probability += 0.1;
             _new_level_data.steel_probability += 0.1;
+            _new_level_data.min_steel = _new_level_data.min_width * _new_level_data.min_height * _new_level_data.steel_probability;
             _new_level_data.icon = "spr_block_steel";
             break;
         case "More Rainbow":
             _new_level_data.rainbow_probability += 0.1;
+            _new_level_data.min_rainbow = _new_level_data.min_width * _new_level_data.min_height * _new_level_data.rainbow_probability;
             _new_level_data.icon = "spr_block_rainbow"; 
             break;
         case "More Explosive":
             _new_level_data.explosive_probability += 0.1;
+            _new_level_data.min_explosive = _new_level_data.min_width * _new_level_data.min_height * _new_level_data.explosive_probability;
             _new_level_data.icon = "spr_block_explosive";
             break;
     }

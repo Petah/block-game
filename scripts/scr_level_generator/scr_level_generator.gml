@@ -67,5 +67,44 @@ function scr_level_generator(_level_data) {
         array_push(_generated_level.layout, _row);
     }
 
+    for (var _i = 0; _i < _level_data.min_steel; _i++) {
+        var _attempts = _width * _height;
+        while (_attempts > 0) {
+            _attempts--;
+            var _rx = irandom_range(0, _width - 1);
+            var _ry = irandom_range(0, _height - 1);
+            if (_generated_level.layout[_ry][_rx] != "s") {
+                _generated_level.layout[_ry][_rx] = "s";
+                break;
+            }
+        }
+    }
+
+    for (var _i = 0; _i < _level_data.min_rainbow; _i++) {
+        var _attempts = _width * _height;
+        while (_attempts > 0) {
+            _attempts--;
+            var _rx = irandom_range(0, _width - 1);
+            var _ry = irandom_range(0, _height - 1);
+            if (_generated_level.layout[_ry][_rx] != "r") {
+                _generated_level.layout[_ry][_rx] = "r";
+                break;
+            }
+        }
+    }
+
+    for (var _i = 0; _i < _level_data.min_explosive; _i++) {
+        var _attempts = _width * _height;
+        while (_attempts > 0) {
+            _attempts--;
+            var _rx = irandom_range(0, _width - 1);
+            var _ry = irandom_range(0, _height - 1);
+            if (_generated_level.layout[_ry][_rx] != "e") {
+                _generated_level.layout[_ry][_rx] = "e";
+                break;
+            }
+        }
+    }
+
     return _generated_level;
 }

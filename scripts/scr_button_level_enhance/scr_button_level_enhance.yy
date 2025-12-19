@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_button_level_enhance",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_button_level_enhance",
+  "parent":{
+    "name":"main_menu",
+    "path":"folders/main_menu.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

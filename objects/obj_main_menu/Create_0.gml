@@ -10,28 +10,7 @@ instance_create_layer(0, 0, "ui_under", obj_level_lines);
 var _loaded = src_load();
 log_info("Loaded level {0}", _loaded);
 if (!_loaded) {
-    self._root = scr_button_level_create_instance({
-        seed: 1,
-        index: "1",
-        children: [],
-        enhancement: undefined,
-        icon: undefined,
-        level: 1,
-        stars: 0,
-        high_score: 0,
-        min_width: 3,
-        max_width: 3,
-        min_height: 3,
-        max_height: 3,
-        min_health: 1,
-        max_health: 1,
-        min_balls: 3,
-        max_balls: 3,
-        special_probability: 0,
-        steel_probability: 0,
-        rainbow_probability: 0,
-        explosive_probability: 0,
-    }, undefined, room_width / 2, room_height / 2);
+    self._root = scr_button_level_create_instance(scr_init_level_data(), undefined, room_width / 2, room_height / 2);
     array_push(global._game_state, self._root._level_data);
 
     var _left = scr_button_level_create_instance(scr_button_level_enhance(self._root._level_data, "More Balls"), self._root, room_width / 2 - global._level_spacing, room_height / 2);

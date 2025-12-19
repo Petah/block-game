@@ -10,7 +10,7 @@ function src_load() {
         var _data = global._game_state[_i];
         log_info("Loading button level {0} {1}", _i, _data);
         var _instance = instance_create_layer(_data.x, _data.y, "ui", obj_button_level);
-        _instance._level_data = {};
+        _instance._level_data = scr_init_level_data();
 
         var _keys = variable_struct_get_names(_data);
         for (var _k = array_length(_keys) - 1; _k >= 0; --_k) {
